@@ -7,6 +7,10 @@ const 	path 				= require('path'),
 		jsFolder 			= 'js/',
 		cssFolder 			= 'style/';
 
+//process.traceDeprecation = true
+
+
+
 module.exports = {
 
 	context: APP_DIR,
@@ -16,8 +20,8 @@ module.exports = {
 	},
 
 	output: {
-		path: BUILD_DIR,
-		filename: jsFolder + '[name].bundle.js'
+		path 		: BUILD_DIR,
+		filename 	: jsFolder + '[name].bundle.js'
 	},
 
 	module: {
@@ -40,11 +44,11 @@ module.exports = {
 
 		rules: [
 			{
-				test	: /\.js$/,
+				test	: /\.jsx$/,
 				exclude	: [/node_modules/],
 				use		: [{
 					loader 	: 'babel-loader',
-					options	: { presets: ['es2015'] }
+					options	: { presets: ['react','es2015'] }
 				}]
 			}
 		]
@@ -59,6 +63,8 @@ module.exports = {
 	]
 
 };
+
+
 
 /*
 
