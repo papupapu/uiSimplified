@@ -1,10 +1,11 @@
-const 	path 		= require('path'),
-		webpack 	= require('webpack'),
+const 	path 				= require('path'),
+		webpack 			= require('webpack'),
+		ExtractTextPlugin 	= require('extract-text-webpack-plugin'),
 
-		APP_DIR     = path.resolve(__dirname, 'src'),
-		BUILD_DIR   = path.resolve(__dirname, 'public'),
-		jsFolder 	= 'js/',
-		cssFolder 	= 'style/';
+		APP_DIR     		= path.resolve(__dirname, 'src'),
+		BUILD_DIR   		= path.resolve(__dirname, 'public'),
+		jsFolder 			= 'js/',
+		cssFolder 			= 'style/';
 
 module.exports = {
 
@@ -23,6 +24,22 @@ module.exports = {
 
 		rules: [
 			{
+				test    : /\.(png|woff|woff2|eot|ttf|svg)$/,
+				loader  : 'url-loader?limit=100000'
+			}
+		],
+
+		rules: [
+			{
+				test	: /\.css$/,
+				loader 	: ExtractTextPlugin.extract({
+					loader: 'css-loader?importLoaders=1'
+				})
+			}
+		],
+
+		rules: [
+			{
 				test	: /\.js$/,
 				exclude	: [/node_modules/],
 				use		: [{
@@ -32,7 +49,14 @@ module.exports = {
 			}
 		]
 
-	}
+	},
+
+	plugins: [
+		new ExtractTextPlugin({
+			filename	: cssFolder + '[name].bundle.js',
+			allChunks 	: true
+		})
+	]
 
 };
 
