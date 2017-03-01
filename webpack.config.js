@@ -7,10 +7,6 @@ const 	path 				= require('path'),
 		jsFolder 			= 'js/',
 		cssFolder 			= 'style/';
 
-//process.traceDeprecation = true
-
-
-
 module.exports = {
 
 	context: APP_DIR,
@@ -27,22 +23,19 @@ module.exports = {
 	module: {
 
 		rules: [
+		
 			{
 				test    : /\.(png|woff|woff2|eot|ttf|svg)$/,
 				loader  : 'url-loader?limit=100000'
-			}
-		],
+			},
 
-		rules: [
 			{
 				test	: /\.css$/,
 				loader 	: ExtractTextPlugin.extract({
 					loader: 'css-loader?importLoaders=1'
 				})
-			}
-		],
+			},
 
-		rules: [
 			{
 				test	: /\.jsx$/,
 				exclude	: [/node_modules/],
@@ -51,19 +44,21 @@ module.exports = {
 					options	: { presets: ['react','es2015'] }
 				}]
 			}
+
 		]
 
 	},
 
 	plugins: [
 		new ExtractTextPlugin({
-			filename	: cssFolder + '[name].bundle.js',
+			filename	: cssFolder + '[name].bundle.css',
 			allChunks 	: true
 		})
 	]
 
 };
 
+process.noDeprecation = true;
 
 
 /*

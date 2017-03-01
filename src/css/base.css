@@ -1,0 +1,70 @@
+/*
+
+	uiSimplified:
+	- standard rules
+
+*/
+
+*{
+	box-sizing:border-box;
+}
+
+html{
+	font-size:62.5%; /* set font size at 10px */
+}
+
+html, body{
+    height: 100%;
+    background-color: #f1f1f1;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sw{
+	margin:0 auto;
+	padding:0 1rem;
+	max-width:1000px;
+}
+
+.item{
+	margin:1rem 0;
+	padding:.6rem 1rem 1rem;
+	background:#FFF;
+}
+
+.item h3{
+	margin-bottom:.6rem;
+	font-size:2rem; line-height:2.4rem;
+}
+
+.item p{
+	font-size:1.4rem; line-height:1.8rem;
+}
+
+@media screen and (min-width: 375px) { /* iPhone 6 */
+
+	.sw{
+		margin:1.5rem auto;
+		padding:0 1.5rem;
+	}
+
+	.item{
+		padding:1.5rem;
+	}	
+
+}
+
+@media screen and (min-width: 768px) { /* iPad */
+
+	html{
+		font-size:75%;
+	}
+
+	.item h3{
+		margin-bottom:.8rem;
+		font-size:2.2rem; line-height:2.6rem;
+	}	
+
+}
