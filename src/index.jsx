@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 import ArticleIncipit from './components/ArticleIncipit.jsx';
 
-
-
 import './css/reset.css';
 import './css/fonts.css';
 import './css/base.css';

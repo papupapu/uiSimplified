@@ -46,6 +46,7 @@ class ArticleIncipit extends React.Component {
 
 		return(
 			<div className="item">
+				<div className="media"><div className="mediael"></div></div>
 				{title}
 				<p>{paragraph}</p>
 			</div>

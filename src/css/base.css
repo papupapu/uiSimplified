@@ -23,14 +23,13 @@ html, body{
 }
 
 .sw{
-	margin:0 auto;
-	padding:0 1rem;
+	margin:0 auto; padding:0 1rem;
 	max-width:1000px;
 }
 
 .item{
-	margin:1rem 0;
-	padding:.6rem 1rem 1rem;
+	position:relative;
+	margin:1rem 0; padding:77% 1rem 1rem;
 	background:#FFF;
 }
 
@@ -43,6 +42,25 @@ html, body{
 	font-size:1.4rem; line-height:1.8rem;
 }
 
+.media{
+	position:absolute;
+	top:0;left:0;
+	padding-top:75%;
+	width:100%;
+}
+
+.mediael{
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+	background:#333;
+}
+
 @media screen and (min-width: 375px) { /* iPhone 6 */
 
 	.sw{
@@ -51,7 +69,27 @@ html, body{
 	}
 
 	.item{
-		padding:1.5rem;
+		margin:1.5rem 0; padding:.6 1.5rem 1.5rem;
+	}	
+
+}
+
+@media screen and (min-width: 568px) { /* iPhone5 - landscape */
+
+	.item{
+		padding-top:.6rem;
+		height:16.5rem;
+	}
+
+	.media{
+		position:absolute;
+		top:0; left:0;
+		background:#333;
+	}
+
+	.item h3,
+	.item p{
+		margin-left:calc(40% + 1.5rem); 
 	}	
 
 }
