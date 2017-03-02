@@ -1,11 +1,8 @@
-import React    from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-
-import ArticleIncipit from './components/ArticleIncipit.jsx';
-
 import './css/reset.css';
 import './css/fonts.css';
-import './css/base.css';
+import ArticleIncipit from './components/ArticleIncipit';
 
 class UiSimplified extends React.Component {
 
@@ -15,7 +12,7 @@ class UiSimplified extends React.Component {
 
   };
 
-  composeArticlesIncipitObjects(headingTag) {
+  composeArticlesIncipitObjects (headingTag) {
 
     let articles = [];
 

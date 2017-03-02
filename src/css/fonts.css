@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab');
 
+*{
+	box-sizing:border-box;
+}
+
+/* set font size at 10px */
+html{
+	font-size:62.5%; 
+}
+
+html, body{
+    height: 100%;
+    background-color: #f1f1f1;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 h1, h2, h3, h4, h5, h6{
 	font-family:'Roboto Slab',Georgia;
 }
@@ -17,4 +35,18 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time{
 	font-family:'Roboto',helvetica,arial;
+}
+
+.sw{
+	margin:0 auto; padding:0 1rem;
+	max-width:1000px;
+}
+
+/* set font size at 12px from iPad upward */
+@media screen and (min-width: 768px) {
+
+	html{
+		font-size:75%;
+	}
+
 }

@@ -13,6 +13,7 @@
     "babel-preset-react": "^6.23.0",
     "body-parser": "^1.16.1",
     "css-loader": "^0.26.2",
+    "eslint": "^3.16.1",
     "express": "^4.14.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -20,6 +21,11 @@
     "webpack": "^2.2.1"
   },
   "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "2.0.0-beta.5"
   },
   "scripts": {

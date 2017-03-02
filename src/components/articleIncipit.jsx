@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import '../css/base.css';
 
 class ArticleIncipit extends React.Component {
 
@@ -46,7 +46,7 @@ class ArticleIncipit extends React.Component {
 
 		return(
 			<div className="item">
-				<div className="media"><div className="mediael"></div></div>
+				<div className="media"><img src="/images/surf.jpg" className="mediael" /></div>
 				{title}
 				<p>{paragraph}</p>
 			</div>
