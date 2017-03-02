@@ -49,6 +49,16 @@ module.exports = {
 
 	},
 
+	resolve: {
+
+	    extensions: [
+	      '.js',
+	      '.jsx',
+	      '.css'
+	    ],
+
+	},	
+
 	plugins: [
 		new ExtractTextPlugin({
 			filename	: cssFolder + '[name].bundle.css',
