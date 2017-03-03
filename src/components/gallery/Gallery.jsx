@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '../common/Image';
-import './Gallery.css';
+//import './Gallery.css';
 
 class Gallery extends React.Component {
 
