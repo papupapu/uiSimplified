@@ -13,14 +13,40 @@ class UiSimplified extends React.Component {
       {
         title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
         paragraph: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
+        media: [
+          {
+            type: 'foto',
+            src: '/images/surf.jpg',
+          },
+          {
+            type: 'foto',
+            src: '/images/surf.jpg',
+          },
+          {
+            type: 'foto',
+            src: '/images/surf.jpg',
+          },
+        ],
       },
       {
         title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
         paragraph: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
+        media: [
+          {
+            type: 'foto',
+            src: '/images/surf.jpg',
+          },
+        ],
       },
       {
         title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
         paragraph: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
+        media: [
+          {
+            type: 'foto',
+            src: '/images/surf.jpg',
+          },
+        ],
       },
     ];
   }

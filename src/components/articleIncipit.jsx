@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/base.css';
+import Image from './common/Image';
 
 class ArticleIncipit extends React.Component {
 
@@ -29,15 +30,27 @@ class ArticleIncipit extends React.Component {
     return htmlTitle;
   }
 
+  addMedia() {
+    const media = this.props.media;
+    let output;
+    if (media.length > 0) {
+      if (media.length > 1) {
+        output = 'gallery';
+      } else {
+        output = <Image src={media[0].src} class={'mediael'} alt={this.props.title} />;
+      }
+    }
+    return output;
+  }
+
   render() {
     const title = this.SEOTitle();
+    const media = this.addMedia();
     const paragraph = this.props.paragraph;
 
     return (
       <div className="item">
-        <div className="media">
-          <img src="/images/surf.jpg" className="mediael" alt={this.props.title} />
-        </div>
+        {media}
         {title}
         <p>{paragraph}</p>
       </div>
@@ -48,12 +61,14 @@ class ArticleIncipit extends React.Component {
 ArticleIncipit.propTypes = {
   title: React.PropTypes.string,
   paragraph: React.PropTypes.string,
+  media: React.PropTypes.instanceOf(Array),
   headingTag: React.PropTypes.string,
 };
 
 ArticleIncipit.defaultProps = {
   title: '',
   paragraph: '',
+  media: [],
   headingTag: '',
 };
 
