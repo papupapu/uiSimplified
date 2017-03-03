@@ -1,6 +1,7 @@
 import React from 'react';
-import '../css/base.css';
 import Image from './common/Image';
+import Gallery from './gallery/Gallery';
+import '../css/base.css';
 
 class ArticleIncipit extends React.Component {
 
@@ -35,9 +36,9 @@ class ArticleIncipit extends React.Component {
     let output;
     if (media.length > 0) {
       if (media.length > 1) {
-        output = 'gallery';
+        output = <div className="media"><Gallery src={media[0].src} class={'mediael'} alt={this.props.title} /></div>;
       } else {
-        output = <Image src={media[0].src} class={'mediael'} alt={this.props.title} />;
+        output = <div className="media"><Image src={media[0].src} class={'mediael'} alt={this.props.title} /></div>;
       }
     }
     return output;

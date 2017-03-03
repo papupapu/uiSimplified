@@ -1,5 +1,6 @@
 import React from 'react';
-import './Gallery.css';
+import Image from '../common/Image';
+// import './Gallery.css';
 
 class Gallery extends React.Component {
 
@@ -14,7 +15,7 @@ class Gallery extends React.Component {
   render() {
     return (
       <div className="gallery" ref={(gallery) => { this.gallery = gallery; }}>
-        gallery
+        <Image src={this.props.src} class={this.props.class} alt={this.props.title} />
       </div>
     );
   }

@@ -23,9 +23,7 @@ class Image extends React.Component {
       <img src={this.props.src} className={this.props.class} alt={this.props.alt} />;
 
     return (
-      <div className="media">
-        {img}
-      </div>
+      <figure>{img}</figure>
     );
   }
 
