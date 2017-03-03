@@ -5,35 +5,35 @@ import '../css/base.css';
 
 class ArticleIncipit extends React.Component {
 
-  SEOheading() {
+  addHeading() {
     const title = this.props.title;
     const subtitle = this.props.subtitle;
     const heading = {};
 
     switch (this.props.headingTag) {
       case 'h2':
-        heading.title = <h2>{title}</h2>;
-        heading.subtitle = <h3>{subtitle}</h3>;
+        heading.title = title !== '' && title !== undefined ? <h2>{title}</h2> : null;
+        heading.subtitle = subtitle !== '' && subtitle !== undefined ? <h3>{subtitle}</h3> : null;
         break;
       case 'h3':
-        heading.title = <h3>{title}</h3>;
-        heading.subtitle = <h4>{subtitle}</h4>;
+        heading.title = title !== '' && title !== undefined ? <h3>{title}</h3> : null;
+        heading.subtitle = subtitle !== '' && subtitle !== undefined ? <h4>{subtitle}</h4> : null;
         break;
       case 'h4':
-        heading.title = <h4>{title}</h4>;
-        heading.subtitle = <h5>{subtitle}</h5>;
+        heading.title = title !== '' && title !== undefined ? <h4>{title}</h4> : null;
+        heading.subtitle = subtitle !== '' && subtitle !== undefined ? <h5>{subtitle}</h5> : null;
         break;
       case 'h5':
-        heading.title = <h5>{title}</h5>;
-        heading.subtitle = <h6>{subtitle}</h6>;
+        heading.title = title !== '' && title !== undefined ? <h5>{title}</h5> : null;
+        heading.subtitle = subtitle !== '' && subtitle !== undefined ? <h6>{subtitle}</h6> : null;
         break;
       case 'h6':
-        heading.title = <h6>{title}</h6>;
-        heading.subtitle = <p>{subtitle}</p>;
+        heading.title = title !== '' && title !== undefined ? <h6>{title}</h6> : null;
+        heading.subtitle = subtitle !== '' && subtitle !== undefined ? <p>{subtitle}</p> : null;
         break;
       default:
-        heading.title = <h1>{title}</h1>;
-        heading.subtitle = <h2>{subtitle}</h2>;
+        heading.title = title !== '' && title !== undefined ? <h1>{title}</h1> : null;
+        heading.subtitle = subtitle !== '' && subtitle !== undefined ? <h2>{subtitle}</h2> : null;
     }
 
     return heading;
@@ -41,7 +41,7 @@ class ArticleIncipit extends React.Component {
 
   addMedia() {
     const media = this.props.media;
-    let output;
+    let output = null;
     if (media.length > 0) {
       if (media.length > 1) {
         output = <div className="media"><Gallery src={media[0].src} class={'mediael'} alt={this.props.title} /></div>;
@@ -53,12 +53,12 @@ class ArticleIncipit extends React.Component {
   }
 
   render() {
-    const heading = this.SEOheading();
+    const heading = this.addHeading();
     const media = this.addMedia();
 
     return (
       <article className="item">
-        {media !== null ? media : null}
+        {media}
         {heading.title}
         {heading.subtitle}
       </article>
