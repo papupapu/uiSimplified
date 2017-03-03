@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/reset.css';
 import './css/fonts.css';
-import ArticleIncipit from './components/ArticleIncipit';
+import Article from './components/article/Article';
 
 class UiSimplified extends React.Component {
 
@@ -51,26 +51,23 @@ class UiSimplified extends React.Component {
     ];
   }
 
-  composeArticlesIncipitObjects(headingTag) {
+  fakeFetchArticlesList(headingTag) {
     const articles = [];
-
     for (let i = 0; i < this.articleList.length; i += 1) {
       const obj = this.articleList[i];
       obj.headingTag = headingTag;
       articles.push(obj);
     }
-
     return articles;
   }
 
   render() {
-    const articles = this.composeArticlesIncipitObjects('h3');
-
+    const articles = this.fakeFetchArticlesList('h3');
     return (
       <div className="sw">
-        <ArticleIncipit {...articles[0]} />
-        <ArticleIncipit {...articles[1]} />
-        <ArticleIncipit {...articles[2]} />
+        <Article {...articles[0]} />
+        <Article {...articles[1]} />
+        <Article {...articles[2]} />
       </div>
     );
   }

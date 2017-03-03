@@ -1,7 +1,6 @@
 import React from 'react';
-import Image from './common/Image';
-import Gallery from './gallery/Gallery';
-import '../css/base.css';
+import Image from '../common/Image';
+import Gallery from '../gallery/Gallery';
 
 class ArticleIncipit extends React.Component {
 
@@ -55,13 +54,12 @@ class ArticleIncipit extends React.Component {
   render() {
     const heading = this.addHeading();
     const media = this.addMedia();
-
     return (
-      <article className="item">
+      <header>
         {media}
         {heading.title}
         {heading.subtitle}
-      </article>
+      </header>
     );
   }
 }
