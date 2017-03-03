@@ -5,30 +5,38 @@ import '../css/base.css';
 
 class ArticleIncipit extends React.Component {
 
-  SEOTitle() {
-    const textTitle = this.props.title;
-    let htmlTitle;
+  SEOheading() {
+    const title = this.props.title;
+    const subtitle = this.props.subtitle;
+    const heading = {};
 
     switch (this.props.headingTag) {
       case 'h2':
-        htmlTitle = <h2>{textTitle}</h2>;
+        heading.title = <h2>{title}</h2>;
+        heading.subtitle = <h3>{subtitle}</h3>;
         break;
       case 'h3':
-        htmlTitle = <h3>{textTitle}</h3>;
+        heading.title = <h3>{title}</h3>;
+        heading.subtitle = <h4>{subtitle}</h4>;
         break;
       case 'h4':
-        htmlTitle = <h4>{textTitle}</h4>;
+        heading.title = <h4>{title}</h4>;
+        heading.subtitle = <h5>{subtitle}</h5>;
         break;
       case 'h5':
-        htmlTitle = <h5>{textTitle}</h5>;
+        heading.title = <h5>{title}</h5>;
+        heading.subtitle = <h6>{subtitle}</h6>;
         break;
       case 'h6':
-        htmlTitle = <h6>{textTitle}</h6>;
+        heading.title = <h6>{title}</h6>;
+        heading.subtitle = <p>{subtitle}</p>;
         break;
       default:
-        htmlTitle = <h1>{textTitle}</h1>;
+        heading.title = <h1>{title}</h1>;
+        heading.subtitle = <h2>{subtitle}</h2>;
     }
-    return htmlTitle;
+
+    return heading;
   }
 
   addMedia() {
@@ -45,30 +53,29 @@ class ArticleIncipit extends React.Component {
   }
 
   render() {
-    const title = this.SEOTitle();
+    const heading = this.SEOheading();
     const media = this.addMedia();
-    const paragraph = this.props.paragraph;
 
     return (
-      <div className="item">
-        {media}
-        {title}
-        <p>{paragraph}</p>
-      </div>
+      <article className="item">
+        {media !== null ? media : null}
+        {heading.title}
+        {heading.subtitle}
+      </article>
     );
   }
 }
 
 ArticleIncipit.propTypes = {
   title: React.PropTypes.string,
-  paragraph: React.PropTypes.string,
+  subtitle: React.PropTypes.string,
   media: React.PropTypes.instanceOf(Array),
   headingTag: React.PropTypes.string,
 };
 
 ArticleIncipit.defaultProps = {
   title: '',
-  paragraph: '',
+  subtitle: '',
   media: [],
   headingTag: '',
 };
