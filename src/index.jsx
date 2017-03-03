@@ -26,10 +26,10 @@ class UiSimplified extends React.Component {
   }
 
   composeArticlesIncipitObjects(headingTag) {
-    const articles = this.articleList;
+    const articles = [];
 
-    for (let i = 0; i < articles.length; i + 1) {
-      const obj = articles[i];
+    for (let i = 0; i < this.articleList.length; i += 1) {
+      const obj = this.articleList[i];
       obj.headingTag = headingTag;
       articles.push(obj);
     }
