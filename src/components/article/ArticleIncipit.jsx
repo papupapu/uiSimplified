@@ -43,7 +43,7 @@ class ArticleIncipit extends React.Component {
     let output = null;
     if (media.length > 0) {
       if (media.length > 1) {
-        output = <div className="media"><Gallery src={media[0].src} class={'mediael'} alt={this.props.title} /></div>;
+        output = <div className="media"><Gallery media={media} class={'mediael'} device={this.props.device} /></div>;
       } else {
         output = <div className="media"><Image src={media[0].src} class={'mediael'} alt={this.props.title} /></div>;
       }
@@ -56,15 +56,16 @@ class ArticleIncipit extends React.Component {
     const media = this.addMedia();
     return (
       <header>
-        {media}
         {heading.title}
         {heading.subtitle}
+        {media}
       </header>
     );
   }
 }
 
 ArticleIncipit.propTypes = {
+  device: React.PropTypes.string,
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
   media: React.PropTypes.instanceOf(Array),
@@ -72,6 +73,7 @@ ArticleIncipit.propTypes = {
 };
 
 ArticleIncipit.defaultProps = {
+  device: '',
   title: '',
   subtitle: '',
   media: [],

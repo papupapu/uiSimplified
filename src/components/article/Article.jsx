@@ -2,10 +2,23 @@ import React from 'react';
 import ArticleIncipit from './ArticleIncipit';
 import './Article.css';
 
+/*
+  We want to show content... let's call it article
+*/
+
 class Article extends React.Component {
+
+  // why should we rerender? let us think about this...
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.device !== this.props.device && this.props.media.length > 1) {
+      return true;
+    }
+    return false;
+  }
 
   articleIncipit() {
     const heading = {
+      device: this.props.device,
       title: this.props.title,
       subtitle: this.props.subtitle,
       media: this.props.media,
@@ -25,6 +38,7 @@ class Article extends React.Component {
 }
 
 Article.propTypes = {
+  device: React.PropTypes.string,
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
   media: React.PropTypes.instanceOf(Array),
@@ -32,6 +46,7 @@ Article.propTypes = {
 };
 
 Article.defaultProps = {
+  device: '',
   title: '',
   subtitle: '',
   media: [],
@@ -39,4 +54,3 @@ Article.defaultProps = {
 };
 
 export default Article;
-

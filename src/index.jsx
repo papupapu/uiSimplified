@@ -9,46 +9,76 @@ class UiSimplified extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      device: '',
+    };
+
     this.articleList = [
       {
-        title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
-        subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
-        media: [
-          {
-            type: 'foto',
-            src: '/images/surf.jpg',
-          },
-          {
-            type: 'foto',
-            src: '/images/surf.jpg',
-          },
-          {
-            type: 'foto',
-            src: '/images/surf.jpg',
-          },
-        ],
+        heading: {
+          title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
+          subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
+          media: [
+            {
+              type: 'foto',
+              src: '/images/surf.jpg',
+            },
+          ],
+        },
       },
       {
-        title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
-        subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
-        media: [
-          {
-            type: 'foto',
-            src: '/images/surf.jpg',
-          },
-        ],
+        heading: {
+          title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
+          subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
+          media: [
+            {
+              type: 'foto',
+              src: '/images/surf.jpg',
+            },
+          ],
+        },
       },
       {
-        title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
-        subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
-        media: [
-          {
-            type: 'foto',
-            src: '/images/surf.jpg',
-          },
-        ],
+        heading: {
+          title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
+          subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
+          media: [
+            {
+              type: 'foto',
+              src: '/images/surf.jpg',
+            },
+            {
+              type: 'foto',
+              src: '/images/surf.jpg',
+            },
+            {
+              type: 'foto',
+              src: '/images/surf.jpg',
+            },
+          ],
+        },
       },
     ];
+  }
+
+  componentDidMount() {
+    // The goal is to be ready with a convinient visual layout at first rendering
+    // and then add user functionality when we know how to serve the best possible
+    this.userDevice();
+  }
+
+  userDevice() {
+    const sw = document.documentElement.clientWidth;
+    const isTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints > 0;
+    let device = '';
+    if (sw > 950 && !isTouch) {
+      device = 'desktop';
+    } else if ((sw < 950 && sw > 670) || (sw > 950 && isTouch)) {
+      device = 'tablet';
+    } else {
+      device = 'smartphone';
+    }
+    this.setState({ device });
   }
 
   fakeFetchArticlesList(headingTag) {
@@ -56,6 +86,7 @@ class UiSimplified extends React.Component {
     for (let i = 0; i < this.articleList.length; i += 1) {
       const obj = this.articleList[i];
       obj.headingTag = headingTag;
+      obj.device = this.state.device;
       articles.push(obj);
     }
     return articles;

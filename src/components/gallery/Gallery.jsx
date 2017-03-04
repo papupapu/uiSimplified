@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from '../common/Image';
-//import './Gallery.css';
+import GallerySlider from './GallerySlider';
+import './Gallery.css';
 
 class Gallery extends React.Component {
 
@@ -14,8 +15,13 @@ class Gallery extends React.Component {
 
   render() {
     return (
-      <div className="gallery" ref={(gallery) => { this.gallery = gallery; }}>
-        <Image src={this.props.src} class={this.props.class} alt={this.props.title} />
+      <div className={this.props.class !== '' ? `${this.props.class} gallery` : 'gallery'} ref={(gallery) => { this.gallery = gallery; }}>
+        {
+          this.props.device === '' ?
+            <Image src={this.props.media[0].src} alt={this.props.device} />
+          :
+            <GallerySlider media={this.props.media} />
+        }
       </div>
     );
   }
@@ -23,11 +29,15 @@ class Gallery extends React.Component {
 }
 
 Gallery.propTypes = {
-
+  device: React.PropTypes.string,
+  media: React.PropTypes.instanceOf(Array),
+  class: React.PropTypes.string,
 };
 
 Gallery.defaultProps = {
-
+  device: '',
+  media: [],
+  class: '',
 };
 
 export default Gallery;
