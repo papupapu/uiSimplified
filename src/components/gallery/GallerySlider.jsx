@@ -31,8 +31,10 @@ class GallerySlider extends React.Component {
     const slides = [];
     this.props.media.forEach(
       (el, index) => {
-        const key = `slide-${index}`;
-        slides.push(<li key={key} style={{ width: `${this.props.sizes[0]}px` }}><Image src={el.src} alt={key} /></li>);
+        if (index < MAX_TO_LOAD) {
+          const key = `slide-${index}`;
+          slides.push(<li key={key} style={{ width: `${this.props.sizes[0]}px` }}><Image src={el.src} alt={key} /></li>);
+        }
       },
     );
     return slides;

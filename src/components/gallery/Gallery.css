@@ -16,13 +16,14 @@
   position:absolute;
   top:0;
   width:4.5rem; height:100%;
-  background:rgb(0,0,0); opacity:.1;
+  background:rgba(0,0,0,0); opacity:.3;
   z-index:1;
 }
 
 .gallery:hover .prev,
 .gallery:hover .next{
   opacity:.5;
+  background:rgba(0,0,0,1);
 }
 
 .gallery .prev{
