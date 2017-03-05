@@ -13,14 +13,14 @@ class UiSimplified extends React.Component {
       device: '',
     };
 
-    this.articleList = [
+    this.articleList = [/*
       {
         heading: {
           title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
           subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
           media: [
             {
-              type: 'foto',
+              type: 'photo',
               src: '/images/surf.jpg',
             },
           ],
@@ -32,27 +32,27 @@ class UiSimplified extends React.Component {
           subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
           media: [
             {
-              type: 'foto',
+              type: 'photo',
               src: '/images/surf.jpg',
             },
           ],
         },
-      },
+      },*/
       {
         heading: {
           title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
           subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
           media: [
             {
-              type: 'foto',
+              type: 'photo',
               src: '/images/surf.jpg',
             },
             {
-              type: 'foto',
+              type: 'photo',
               src: '/images/surf.jpg',
             },
             {
-              type: 'foto',
+              type: 'photo',
               src: '/images/surf.jpg',
             },
           ],
@@ -97,8 +97,8 @@ class UiSimplified extends React.Component {
     return (
       <div className="sw">
         <Article {...articles[0]} />
-        <Article {...articles[1]} />
-        <Article {...articles[2]} />
+        {/* <Article {...articles[1]} />
+        <Article {...articles[2]} /> */}
       </div>
     );
   }

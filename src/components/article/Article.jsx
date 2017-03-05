@@ -10,21 +10,22 @@ class Article extends React.Component {
 
   // why should we rerender? let us think about this...
   shouldComponentUpdate(nextProps) {
-    if (nextProps.device !== this.props.device && this.props.media.length > 1) {
+    if (nextProps.device !== this.props.device && this.props.heading.media.length > 1) {
       return true;
     }
     return false;
   }
 
   articleIncipit() {
-    const heading = {
+    const heading = this.props.heading;
+    const data = {
       device: this.props.device,
-      title: this.props.title,
-      subtitle: this.props.subtitle,
-      media: this.props.media,
+      title: heading.title,
+      subtitle: heading.subtitle,
+      media: heading.media,
       headingTag: this.props.headingTag,
     };
-    return heading;
+    return data;
   }
 
   render() {
@@ -39,17 +40,13 @@ class Article extends React.Component {
 
 Article.propTypes = {
   device: React.PropTypes.string,
-  title: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  media: React.PropTypes.instanceOf(Array),
+  heading: React.PropTypes.instanceOf(Object),
   headingTag: React.PropTypes.string,
 };
 
 Article.defaultProps = {
   device: '',
-  title: '',
-  subtitle: '',
-  media: [],
+  heading: {},
   headingTag: '',
 };
 

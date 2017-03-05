@@ -1,3 +1,58 @@
+.gallery{
+  overflow:hidden;
+}
+
+.gallery .slider{
+  transform:translate(0,0);
+  -webkit-overflow-scrolling: touch;  
+}
+
+.gallery .slider.notouch{
+  transition: transform .3s ease-in;
+}
+
+.gallery .prev,
+.gallery .next{
+  position:absolute;
+  top:0;
+  width:4.5rem; height:100%;
+  background:rgb(0,0,0); opacity:.1;
+  z-index:1;
+}
+
+.gallery:hover .prev,
+.gallery:hover .next{
+  opacity:.5;
+}
+
+.gallery .prev{
+ left:0;
+}
+
+.gallery .next{
+  right:0;
+}
+
+.gallery svg{
+  position:absolute;
+  top:50%;
+  width:3rem; height:auto;
+}
+
+.gallery .prev svg{
+  left:.7rem;
+  transform:translate(0,-50%);
+}
+
+.gallery .next svg{
+  right:.7rem;  
+  transform:translate(0,-50%) rotateY(180deg);
+}
+
+.gallery svg path{
+  fill:#FFF;
+}
+
 
 /*
 .gallery{
