@@ -4,6 +4,7 @@ import './css/reset.css';
 import './css/fonts.css';
 import Article from './components/article/Article';
 import { userDevice } from './utils/UserDevice';
+import { articleList } from '../server/static/Articles';
 
 class UiSimplified extends React.Component {
 
@@ -14,77 +15,6 @@ class UiSimplified extends React.Component {
       device: '',
       viewport: { width: '', height: '' },
     };
-
-    this.articleList = [
-      {
-        heading: {
-          title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
-          subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
-          media: [
-            {
-              type: 'photo',
-              src: '/images/surf1.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf2.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf3.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf4.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf5.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf6.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf7.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf8.jpg',
-            },
-            {
-              type: 'photo',
-              src: '/images/surf9.jpg',
-            },
-          ],
-        },
-      },
-      {
-        heading: {
-          title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
-          subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
-          media: [
-            {
-              type: 'photo',
-              src: '/images/surf2.jpg',
-            },
-          ],
-        },
-      },
-      {
-        heading: {
-          title: 'Femminicidio, via libera dalla Camera a legge per tutelare gli orfani',
-          subtitle: 'Rischia l\'ergastolo chi uccide la coniuge o la convivente. E ai figli delle vittime viene assicurato patrocinio legale e reversibilità della pensione',
-          media: [
-            {
-              type: 'photo',
-              src: '/images/surf3.jpg',
-            },
-          ],
-        },
-      },
-    ];
   }
 
   componentDidMount() {
@@ -105,8 +35,8 @@ class UiSimplified extends React.Component {
 
   fakeFetchArticlesList(headingTag) {
     const articles = [];
-    for (let i = 0; i < this.articleList.length; i += 1) {
-      const obj = this.articleList[i];
+    for (let i = 0; i < articleList.length; i += 1) {
+      const obj = articleList[i];
       obj.headingTag = headingTag;
       obj.device = this.state.device;
       obj.viewport = this.state.viewport;
