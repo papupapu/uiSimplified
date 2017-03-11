@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './css/reset.css';
 import './css/fonts.css';
 import Article from './components/article/Article';
+import { userDevice } from './utils/UserDevice';
 
 class UiSimplified extends React.Component {
 
@@ -11,6 +12,7 @@ class UiSimplified extends React.Component {
 
     this.state = {
       device: '',
+      viewport: { width: '', height: '' },
     };
 
     this.articleList = [
@@ -86,23 +88,19 @@ class UiSimplified extends React.Component {
   }
 
   componentDidMount() {
-    // The goal is to be ready with a convinient visual layout at first rendering
-    // and then add user functionality when we know how to serve the best possible
-    this.userDevice();
+    const ui = userDevice();
+    this.setUiInfos(ui);
+    window.addEventListener('resize', () => {
+      const updatedUi = userDevice();
+      this.setUiInfos(updatedUi);
+    });
   }
 
-  userDevice() {
-    const sw = document.documentElement.clientWidth;
-    const isTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints > 0;
-    let device = '';
-    if (sw > 950 && !isTouch) {
-      device = 'desktop';
-    } else if ((sw < 950 && sw > 670) || (sw > 950 && isTouch)) {
-      device = 'tablet';
-    } else {
-      device = 'smartphone';
-    }
-    this.setState({ device });
+  setUiInfos(ui) {
+    this.setState({
+      device: ui.device,
+      viewport: ui.viewport,
+    });
   }
 
   fakeFetchArticlesList(headingTag) {
@@ -111,6 +109,7 @@ class UiSimplified extends React.Component {
       const obj = this.articleList[i];
       obj.headingTag = headingTag;
       obj.device = this.state.device;
+      obj.viewport = this.state.viewport;
       articles.push(obj);
     }
     return articles;

@@ -33,21 +33,41 @@ class GallerySlider extends React.Component {
   }
 
   componentWillMount() {
-    this.slides = this.createSlides();
+    this.slides = this.createSlides(this.state.sizes[0], this.state.sizes[1]);
   }
 
   componentDidMount() {
-    this.slider.style.width = `${this.props.sizes[0] * this.props.media.length}px`;
-    this.slider.style.height = `${this.props.sizes[1]}px`;
+    this.slider.style.width = `${this.state.sizes[0] * this.props.media.length}px`;
+    this.slider.style.height = `${this.state.sizes[1]}px`;
   }
 
-  createSlides() {
+  componentWillReceiveProps(nextProps) {
+    const device = nextProps.device !== this.props.device;
+    const width = nextProps.sizes[0] !== this.props.sizes[0];
+    const height = nextProps.sizes[1] !== this.props.sizes[1];
+    if (device || width || height) {
+      this.slides = this.createSlides(nextProps.sizes[0], nextProps.sizes[1]);
+      this.setState({
+        device: nextProps.device,
+        sizes: nextProps.sizes,
+      },
+      () => {
+        this.slider.style.width = `${nextProps.sizes[0] * this.props.media.length}px`;
+        this.slider.style.height = `${nextProps.sizes[1]}px`;
+        const coords = nextProps.sizes[0] * this.cur;
+        this.slider.style.transition = 'transform 0s ease-out';
+        this.slider.style.transform = `translate(-${coords}px,0)`;
+      });
+    }
+  }
+
+  createSlides(width, height) {
     const slides = [];
     this.props.media.forEach(
       (el, index) => {
         if (index < this.slidesCreated) {
           const key = `slide-${index}`;
-          const size = { width: `${this.props.sizes[0]}px`, height: `${this.props.sizes[1]}px` };
+          const size = { width: `${width}px`, height: `${height}px` };
           slides.push(<li key={key} style={size}><Image src={el.src} alt={key} /></li>);
         }
       },
@@ -56,23 +76,24 @@ class GallerySlider extends React.Component {
   }
 
   sliderTransition() {
-    this.slider.style.transition = 'transform .3s ease-out';
+    const scope = this;
+    scope.slider.style.transition = 'transform .3s ease-out';
     setTimeout(
       () => {
-        this.slider.style.transition = 'transform 0 ease-out';
+        scope.slider.style.transition = 'transform 0s ease-out';
       },
       315,
     );
   }
 
   sliderGoToCoords() {
-    const coords = this.props.sizes[0] * this.cur;
+    const coords = this.state.sizes[0] * this.cur;
     this.sliderTransition();
     this.slider.style.transform = `translate(-${coords}px,0)`;
     if (this.cur === this.slidesCreated - 1 && this.slidesCreated < this.tot) {
       const howmany = this.slidesCreated + this.slidesToAdd > this.tot;
       this.slidesCreated = howmany ? this.tot : this.slidesCreated + this.slidesToAdd;
-      this.slides = this.createSlides();
+      this.slides = this.createSlides(this.state.sizes[0], this.state.sizes[1]);
       this.setState({ rerender: !this.state.rerender });
     } else if (this.counter) {
       this.counter.innerHTML = `${this.cur + 1} / ${this.tot}`;
@@ -107,7 +128,7 @@ class GallerySlider extends React.Component {
       this.dir = deltaX < 0 ? 'next' : 'prev';
       if ((this.dir === 'next' && this.cur < this.tot - 1) || (this.dir === 'prev' && this.cur > 0)) {
         this.deltaX = deltaX;
-        const coords = deltaX + ((this.props.sizes[0] * this.cur) * -1);
+        const coords = deltaX + ((this.state.sizes[0] * this.cur) * -1);
         this.slider.style.transform = `translate(${coords}px,0)`;
       }
     }
@@ -115,7 +136,7 @@ class GallerySlider extends React.Component {
 
   touchEnd() {
     enableScroll();
-    if (Math.abs(this.deltaX) > this.props.sizes[0] / 4) {
+    if (Math.abs(this.deltaX) > this.state.sizes[0] / 4) {
       this.handleClick(this.dir);
     } else {
       this.sliderGoToCoords();

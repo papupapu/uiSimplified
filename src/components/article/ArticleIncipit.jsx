@@ -4,6 +4,15 @@ import Gallery from '../gallery/Gallery';
 
 class ArticleIncipit extends React.Component {
 
+  shouldComponentUpdate(nextProps) {
+    const device = nextProps.device !== this.props.device;
+    const viewport = nextProps.viewport.width !== this.props.viewport.width;
+    if ((device || viewport) && this.props.media.length > 1) {
+      return true;
+    }
+    return false;
+  }
+
   addHeading() {
     const title = this.props.title;
     const subtitle = this.props.subtitle;
@@ -43,7 +52,7 @@ class ArticleIncipit extends React.Component {
     let output = null;
     if (media.length > 0) {
       if (media.length > 1) {
-        output = <div className="media"><Gallery media={media} class={'mediael'} device={this.props.device} /></div>;
+        output = <div className="media"><Gallery media={media} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
       } else {
         output = <div className="media"><Image src={media[0].src} class={'mediael'} alt={this.props.title} /></div>;
       }
@@ -66,6 +75,7 @@ class ArticleIncipit extends React.Component {
 
 ArticleIncipit.propTypes = {
   device: React.PropTypes.string,
+  viewport: React.PropTypes.instanceOf(Object),
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
   media: React.PropTypes.instanceOf(Array),
@@ -74,6 +84,7 @@ ArticleIncipit.propTypes = {
 
 ArticleIncipit.defaultProps = {
   device: '',
+  viewport: {},
   title: '',
   subtitle: '',
   media: [],
