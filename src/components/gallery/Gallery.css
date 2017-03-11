@@ -17,6 +17,10 @@
   transition: transform .3s ease-in;
 }
 
+.gallery .slider li{
+  float:left;
+}
+
 .gallery .prev,
 .gallery .next{
   position:absolute;

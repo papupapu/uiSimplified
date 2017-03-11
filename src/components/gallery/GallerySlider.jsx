@@ -8,14 +8,24 @@ class GallerySlider extends React.Component {
   constructor(props) {
     super(props);
 
-    this.alreadyLoaded = 1;
+    this.state = {
+      device: this.props.device,
+      sizes: this.props.sizes,
+      alreadyLoaded: 1,
+      isUp: false,
+    };
+
+    this.cur = 0;
     this.startX = 0;
     this.startY = 0;
     this.deltaX = 0;
     this.deltaY = 0;
-    this.isUp = false;
 
     this.createSlides = this.createSlides.bind(this);
+
+    this.touchStart = this.touchStart.bind(this);
+    this.touchMove = this.touchMove.bind(this);
+    this.touchEnd = this.touchEnd.bind(this);
   }
 
   componentDidMount() {
@@ -36,11 +46,49 @@ class GallerySlider extends React.Component {
     return slides;
   }
 
+  touchStart(event) {
+    const touches = event.touches[0];
+    this.startX = touches.pageX;
+    this.startY = touches.pageY;
+    this.disableScroll();
+  }
+
+  touchMove(event) {
+    const touches = event.touches[0];
+    const deltaY = touches.pageY - this.startY;
+    let deltaX = touches.pageX - this.startX;
+    if (Math.abs(deltaY) > 50 && Math.abs(deltaY) > Math.abs(deltaX)) {
+      deltaX = 0;
+    } else {
+      deltaX += ((this.props.sizes[0] * this.cur) * -1);
+      this.slider.style.transform = `translate(${deltaX}px,0)`;
+    }
+  }
+
+  touchEnd(event) {
+    this.enableScroll();
+  }
+
+  _preventDefault(e) {
+    e = e || window.event;
+    if (e.preventDefault)
+        e.preventDefault();
+    e.returnValue = false;  
+  }
+
+  disableScroll() {
+    window.ontouchmove  = this._preventDefault; // mobile
+  }
+
+  enableScroll() {
+      window.ontouchmove = null;  
+  }  
+
   render() {
     const slides = this.createSlides();
     return (
-      <div>
-        <ul className={this.props.device === 'desktop' ? 'slider notouch' : 'slider'} ref={(slider) => { this.slider = slider; }}>
+      <div className={this.state.device === 'desktop' ? 'slider notouch' : 'slider'} ref={(slider) => { this.slider = slider; }} onTouchStart={this.touchStart} onTouchEnd={this.touchEnd} onTouchMove={this.touchMove}>
+        <ul>
           {slides}
         </ul>
         {
