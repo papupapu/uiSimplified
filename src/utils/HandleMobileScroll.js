@@ -1,4 +1,4 @@
-export function artificialPreventDefault(e) {
+function artificialPreventDefault(e) {
   const event = e !== undefined ? e : window.event;
   if (event.preventDefault) {
     event.preventDefault();

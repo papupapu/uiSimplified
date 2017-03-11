@@ -26,9 +26,7 @@ class GallerySlider extends React.Component {
     this.deltaY = 0;
 
     this.createSlides = this.createSlides.bind(this);
-
     this.handleClick = this.handleClick.bind(this);
-
     this.touchStart = this.touchStart.bind(this);
     this.touchMove = this.touchMove.bind(this);
     this.touchEnd = this.touchEnd.bind(this);
@@ -49,7 +47,8 @@ class GallerySlider extends React.Component {
       (el, index) => {
         if (index < this.slidesCreated) {
           const key = `slide-${index}`;
-          slides.push(<li key={key} style={{ width: `${this.props.sizes[0]}px`, height: `${this.props.sizes[1]}px` }}><Image src={el.src} alt={key} /></li>);
+          const size = { width: `${this.props.sizes[0]}px`, height: `${this.props.sizes[1]}px` };
+          slides.push(<li key={key} style={size}><Image src={el.src} alt={key} /></li>);
         }
       },
     );
@@ -71,12 +70,12 @@ class GallerySlider extends React.Component {
     this.sliderTransition();
     this.slider.style.transform = `translate(-${coords}px,0)`;
     if (this.cur === this.slidesCreated - 1 && this.slidesCreated < this.tot) {
-      this.slidesCreated = this.slidesCreated + this.slidesToAdd > this.tot ?
-                              this.tot
-                            :
-                              this.slidesCreated + this.slidesToAdd;
+      const howmany = this.slidesCreated + this.slidesToAdd > this.tot;
+      this.slidesCreated = howmany ? this.tot : this.slidesCreated + this.slidesToAdd;
       this.slides = this.createSlides();
       this.setState({ rerender: !this.state.rerender });
+    } else if (this.counter) {
+      this.counter.innerHTML = `${this.cur + 1} / ${this.tot}`;
     }
   }
 
@@ -127,9 +126,10 @@ class GallerySlider extends React.Component {
   }
 
   render() {
+    const countervalue = `${this.cur + 1} / ${this.tot}`;
     return (
-      <div className="container">
-        <div className={this.state.device === 'desktop' ? 'slider notouch' : 'slider'} ref={(slider) => { this.slider = slider; }} onTouchStart={this.touchStart} onTouchEnd={this.touchEnd} onTouchMove={this.touchMove}>
+      <div className="sliderContainer">
+        <div className={'slider'} ref={(slider) => { this.slider = slider; }} onTouchStart={this.touchStart} onTouchEnd={this.touchEnd} onTouchMove={this.touchMove}>
           <ul>
             {this.slides}
           </ul>
@@ -146,6 +146,9 @@ class GallerySlider extends React.Component {
           :
             null
         }
+        <p ref={(counter) => { this.counter = counter; }} className="textCounter">
+          { countervalue }
+        </p>
       </div>
     );
   }
