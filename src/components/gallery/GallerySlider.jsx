@@ -16,6 +16,7 @@ class GallerySlider extends React.Component {
     };
 
     this.cur = 0;
+    this.tot = this.props.media.length;
     this.startX = 0;
     this.startY = 0;
     this.deltaX = 0;
@@ -68,8 +69,11 @@ class GallerySlider extends React.Component {
     if (event) {
       event.preventDefault();
     }
-    this.cur = dir === 'next' ? this.cur + 1 : this.cur - 1;
-    this.sliderGoToCoords();
+    const cur = dir === 'next' ? this.cur + 1 : this.cur - 1;
+    if ((dir === 'next' && cur < this.tot) || (dir === 'prev' && cur > -1)) {
+      this.cur = cur;
+      this.sliderGoToCoords();
+    }
   }
 
   touchStart(event) {
@@ -86,10 +90,12 @@ class GallerySlider extends React.Component {
       this.deltaX = 0;
     } else {
       this.disableScroll();
-      const coords = deltaX + ((this.props.sizes[0] * this.cur) * -1);
-      this.slider.style.transform = `translate(${coords}px,0)`;
       this.dir = deltaX < 0 ? 'next' : 'prev';
-      this.deltaX = deltaX;
+      if ((this.dir === 'next' && this.cur < this.tot - 1) || (this.dir === 'prev' && this.cur > 0)) {
+        this.deltaX = deltaX;
+        const coords = deltaX + ((this.props.sizes[0] * this.cur) * -1);
+        this.slider.style.transform = `translate(${coords}px,0)`;
+      }
     }
   }
 
