@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from '../common/Image';
+import { disableScroll, enableScroll } from '../../utils/HandleMobileScroll';
 
 const MAX_TO_LOAD = 3;
 
@@ -89,7 +90,7 @@ class GallerySlider extends React.Component {
     if (Math.abs(deltaY) > 5 && Math.abs(deltaY) > Math.abs(deltaX) / 2) {
       this.deltaX = 0;
     } else {
-      this.disableScroll();
+      disableScroll();
       this.dir = deltaX < 0 ? 'next' : 'prev';
       if ((this.dir === 'next' && this.cur < this.tot - 1) || (this.dir === 'prev' && this.cur > 0)) {
         this.deltaX = deltaX;
@@ -100,7 +101,7 @@ class GallerySlider extends React.Component {
   }
 
   touchEnd() {
-    this.enableScroll();
+    enableScroll();
     if (Math.abs(this.deltaX) > this.props.sizes[0] / 4) {
       this.handleClick(this.dir);
     } else {
@@ -109,22 +110,6 @@ class GallerySlider extends React.Component {
     this.startX = 0;
     this.startY = 0;
     this.deltaX = 0;
-  }
-
-  myPreventDefault(e) {
-    const event = e !== undefined ? e : window.event;
-    if (event.preventDefault) {
-      event.preventDefault();
-    }
-    event.returnValue = false;
-  }
-
-  disableScroll() {
-    window.ontouchmove = this.myPreventDefault; // mobile
-  }
-
-  enableScroll() {
-    window.ontouchmove = null;
   }
 
   render() {
