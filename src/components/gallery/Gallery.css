@@ -1,3 +1,9 @@
+/* overwrites ../article/Article.css */
+.mediael.gallery img{
+  width:100%;
+}
+/* /overwrites ../article/Article.css */
+
 .gallery{
   overflow:hidden;
 }
@@ -20,12 +26,6 @@
   z-index:1;
 }
 
-.gallery:hover .prev,
-.gallery:hover .next{
-  opacity:.5;
-  background:rgba(0,0,0,1);
-}
-
 .gallery .prev{
  left:0;
 }
@@ -34,7 +34,14 @@
   right:0;
 }
 
-.gallery svg{
+.gallery:hover .prev,
+.gallery:hover .next{
+  opacity:.5;
+  background:rgba(0,0,0,1);
+}
+
+.gallery .prev svg,
+.gallery .next svg{
   position:absolute;
   top:50%;
   width:3rem; height:auto;
@@ -50,7 +57,8 @@
   transform:translate(0,-50%) rotateY(180deg);
 }
 
-.gallery svg path{
+.gallery .prev svg path,
+.gallery .next svg path{
   fill:#FFF;
 }
 
