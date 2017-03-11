@@ -1,9 +1,7 @@
 import React from 'react';
 import Image from '../common/Image';
 import { disableScroll, enableScroll } from '../../utils/HandleMobileScroll';
-
-const MAX_TO_ADD = 3;
-const MINIMUM_ON_CREATION = 2;
+import { SLIDER_MAX_SLIDES_ON_CREATION, SLIDER_MAX_SLIDES_ON_UPDATE } from '../../../server/configurations/Articles';
 
 class GallerySlider extends React.Component {
 
@@ -18,8 +16,8 @@ class GallerySlider extends React.Component {
 
     this.cur = 0;
     this.tot = this.props.media.length;
-    this.slidesCreated = MINIMUM_ON_CREATION;
-    this.slidesToAdd = MAX_TO_ADD;
+    this.slidesCreated = SLIDER_MAX_SLIDES_ON_CREATION;
+    this.slidesToAdd = SLIDER_MAX_SLIDES_ON_UPDATE;
     this.startX = 0;
     this.startY = 0;
     this.deltaX = 0;
@@ -156,13 +154,13 @@ class GallerySlider extends React.Component {
           </ul>
         </div>
         {
-          this.props.device === 'desktop' ?
+          this.cur > 0 ?
             <a href="" onClick={(e) => { this.handleClick('prev', e); }} className="prev" ref={(prev) => { this.prev = prev; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
           :
-            null
+            null;  
         }
         {
-          this.props.device === 'desktop' ?
+          this.cur > 0 ?        
             <a href="" onClick={(e) => { this.handleClick('next', e); }} className="next" ref={(next) => { this.next = next; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
           :
             null

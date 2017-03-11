@@ -28,8 +28,9 @@
   position:absolute;
   top:0;
   width:4.5rem; height:100%;
-  background:rgba(0,0,0,0); opacity:.3;
+  opacity:.3;
   z-index:1;
+  pointer-events: none;
 }
 
 .gallery .prev{
@@ -38,12 +39,6 @@
 
 .gallery .next{
   right:0;
-}
-
-.gallery:hover .prev,
-.gallery:hover .next{
-  opacity:.5;
-  background:rgba(0,0,0,1);
 }
 
 .gallery .prev svg,
@@ -77,10 +72,22 @@
 }
 
 @media only screen and (min-width: 950px){
+
   .gallery .textCounter{
     top:auto; right:auto; bottom:0; left:50%;
     transform:translate(-50%,0);
   }
+
+  .gallery .prev,
+  .gallery .next{
+    pointer-events: auto;
+  }
+
+  .gallery:hover .prev,
+  .gallery:hover .next{
+    opacity:.7;
+  }  
+  
 }
 
 /*

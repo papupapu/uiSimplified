@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/reset.css';
 import './css/fonts.css';
+import Header from './components/common/header/Header';
 import Article from './components/article/Article';
 import { userDevice } from './utils/UserDevice';
 import { articleList } from '../server/static/Articles';
@@ -14,6 +15,7 @@ class UiSimplified extends React.Component {
     this.state = {
       device: '',
       viewport: { width: '', height: '' },
+      touchscreen: null,
     };
   }
 
@@ -30,6 +32,7 @@ class UiSimplified extends React.Component {
     this.setState({
       device: ui.device,
       viewport: ui.viewport,
+      touchscreen: ui.touchscreen,
     });
   }
 
@@ -40,18 +43,27 @@ class UiSimplified extends React.Component {
       obj.headingTag = headingTag;
       obj.device = this.state.device;
       obj.viewport = this.state.viewport;
-      articles.push(obj);
+      articles.push(<Article {...obj} />);
     }
     return articles;
   }
 
+  headerObj() {
+    return {
+      device: this.state.device,
+      viewport: this.state.viewport,
+    };
+  }
+
   render() {
     const articles = this.fakeFetchArticlesList('h3');
+    const header = this.headerObj();
     return (
-      <div className="sw">
-        <Article {...articles[0]} />
-        <Article {...articles[1]} />
-        <Article {...articles[2]} />
+      <div>
+        <Header {...header} />
+        <div className="sw">
+          {articles}
+        </div>
       </div>
     );
   }
