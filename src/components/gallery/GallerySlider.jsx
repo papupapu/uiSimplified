@@ -23,6 +23,8 @@ class GallerySlider extends React.Component {
 
     this.createSlides = this.createSlides.bind(this);
 
+    this.handleClick = this.handleClick.bind(this);
+
     this.touchStart = this.touchStart.bind(this);
     this.touchMove = this.touchMove.bind(this);
     this.touchEnd = this.touchEnd.bind(this);
@@ -46,60 +48,98 @@ class GallerySlider extends React.Component {
     return slides;
   }
 
+  sliderTransition() {
+    this.slider.style.transition = 'transform .3s ease-out';
+    setTimeout(
+      () => {
+        this.slider.style.transition = 'transform 0 ease-out';
+      },
+      315,
+    );
+  }
+
+  sliderGoToCoords() {
+    const coords = this.props.sizes[0] * this.cur;
+    this.sliderTransition();
+    this.slider.style.transform = `translate(-${coords}px,0)`;
+  }
+
+  handleClick(dir, event) {
+    if (event) {
+      event.preventDefault();
+    }
+    this.cur = dir === 'next' ? this.cur + 1 : this.cur - 1;
+    this.sliderGoToCoords();
+  }
+
   touchStart(event) {
     const touches = event.touches[0];
     this.startX = touches.pageX;
     this.startY = touches.pageY;
-    this.disableScroll();
   }
 
   touchMove(event) {
     const touches = event.touches[0];
     const deltaY = touches.pageY - this.startY;
-    let deltaX = touches.pageX - this.startX;
-    if (Math.abs(deltaY) > 50 && Math.abs(deltaY) > Math.abs(deltaX)) {
-      deltaX = 0;
+    const deltaX = touches.pageX - this.startX;
+    if (Math.abs(deltaY) > 5 && Math.abs(deltaY) > Math.abs(deltaX) / 2) {
+      this.deltaX = 0;
     } else {
-      deltaX += ((this.props.sizes[0] * this.cur) * -1);
-      this.slider.style.transform = `translate(${deltaX}px,0)`;
+      this.disableScroll();
+      const coords = deltaX + ((this.props.sizes[0] * this.cur) * -1);
+      this.slider.style.transform = `translate(${coords}px,0)`;
+      this.dir = deltaX < 0 ? 'next' : 'prev';
+      this.deltaX = deltaX;
     }
   }
 
-  touchEnd(event) {
+  touchEnd() {
     this.enableScroll();
+    if (Math.abs(this.deltaX) > this.props.sizes[0] / 4) {
+      this.handleClick(this.dir);
+    } else {
+      this.sliderGoToCoords();
+    }
+    this.startX = 0;
+    this.startY = 0;
+    this.deltaX = 0;
   }
 
-  _preventDefault(e) {
-    e = e || window.event;
-    if (e.preventDefault)
-        e.preventDefault();
-    e.returnValue = false;  
+  myPreventDefault(e) {
+    const event = e !== undefined ? e : window.event;
+    if (event.preventDefault) {
+      event.preventDefault();
+    }
+    event.returnValue = false;
   }
 
   disableScroll() {
-    window.ontouchmove  = this._preventDefault; // mobile
+    window.ontouchmove = this.myPreventDefault; // mobile
   }
 
   enableScroll() {
-      window.ontouchmove = null;  
-  }  
+    window.ontouchmove = null;
+  }
 
   render() {
     const slides = this.createSlides();
+    const nextcoords = this.props.sizes[0] - 54;
     return (
-      <div className={this.state.device === 'desktop' ? 'slider notouch' : 'slider'} ref={(slider) => { this.slider = slider; }} onTouchStart={this.touchStart} onTouchEnd={this.touchEnd} onTouchMove={this.touchMove}>
-        <ul>
-          {slides}
-        </ul>
+      <div className="container">
+        <div className={this.state.device === 'desktop' ? 'slider notouch' : 'slider'} ref={(slider) => { this.slider = slider; }} onTouchStart={this.touchStart} onTouchEnd={this.touchEnd} onTouchMove={this.touchMove}>
+          <ul>
+            {slides}
+          </ul>
+        </div>
         {
           this.props.device === 'desktop' ?
-            <a href="" className="prev" ref={(prev) => { this.prev = prev; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
+            <a href="" onClick={(e) => { this.handleClick('prev', e); }} className="prev" ref={(prev) => { this.prev = prev; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
           :
             null
         }
         {
           this.props.device === 'desktop' ?
-            <a href="" className="next" ref={(next) => { this.next = next; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
+            <a href="" onClick={(e) => { this.handleClick('next', e); }} className="next" ref={(next) => { this.next = next; }} style={{ left: `${nextcoords}px` }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
           :
             null
         }
