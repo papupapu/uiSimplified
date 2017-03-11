@@ -43,7 +43,7 @@ class UiSimplified extends React.Component {
       obj.headingTag = headingTag;
       obj.device = this.state.device;
       obj.viewport = this.state.viewport;
-      articles.push(<Article {...obj} />);
+      articles.push(<Article key={`article-${i}`} {...obj} />);
     }
     return articles;
   }

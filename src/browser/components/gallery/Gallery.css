@@ -25,12 +25,18 @@
 
 .gallery .prev,
 .gallery .next{
+  display:none;
   position:absolute;
   top:0;
   width:4.5rem; height:100%;
   opacity:.3;
   z-index:1;
   pointer-events: none;
+}
+
+.gallery .prev.active,
+.gallery .next.active{
+  display:block;
 }
 
 .gallery .prev{

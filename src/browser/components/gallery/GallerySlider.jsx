@@ -95,6 +95,16 @@ class GallerySlider extends React.Component {
       this.setState({ rerender: !this.state.rerender });
     } else if (this.counter) {
       this.counter.innerHTML = `${this.cur + 1} / ${this.tot}`;
+      if (this.cur === 0) {
+        this.prev.className = 'prev';
+      } else if (this.prev.className === 'prev') {
+        this.prev.className = 'prev active';
+      }
+      if (this.cur === this.tot - 1) {
+        this.next.className = 'next';
+      } else if (this.next.className === 'next') {
+        this.next.className = 'next active';
+      }
     }
   }
 
@@ -146,6 +156,8 @@ class GallerySlider extends React.Component {
 
   render() {
     const countervalue = `${this.cur + 1} / ${this.tot}`;
+    const prevStyle = this.cur > 0 ? 'prev active' : 'prev';
+    const nextStyle = this.cur < this.tot -1 ? 'next active' : 'next';
     return (
       <div className="sliderContainer">
         <div className={'slider'} ref={(slider) => { this.slider = slider; }} onTouchStart={this.touchStart} onTouchEnd={this.touchEnd} onTouchMove={this.touchMove}>
@@ -153,18 +165,8 @@ class GallerySlider extends React.Component {
             {this.slides}
           </ul>
         </div>
-        {
-          this.cur > 0 ?
-            <a href="" onClick={(e) => { this.handleClick('prev', e); }} className="prev" ref={(prev) => { this.prev = prev; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
-          :
-            null;  
-        }
-        {
-          this.cur > 0 ?        
-            <a href="" onClick={(e) => { this.handleClick('next', e); }} className="next" ref={(next) => { this.next = next; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
-          :
-            null
-        }
+        <a href="" onClick={(e) => { this.handleClick('prev', e); }} className={prevStyle} ref={(prev) => { this.prev = prev; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
+        <a href="" onClick={(e) => { this.handleClick('next', e); }} className={nextStyle} ref={(next) => { this.next = next; }}><svg enableBackground="new 0 0 137.065 137.064" height="137.064" viewBox="0 0 137.065 137.064" width="137.065" xmlns="http://www.w3.org/2000/svg"><path d="m55.12 68.532 51.606-51.614c2.738-2.734 2.738-7.173 0-9.911l-4.955-4.956c-2.737-2.736-7.173-2.736-9.91 0l-61.524 61.526c-2.736 2.736-2.736 7.173 0 9.911l61.524 61.523c2.737 2.737 7.173 2.737 9.91 0l4.955-4.955c2.738-2.738 2.738-7.177 0-9.911z" /></svg></a>
         <p ref={(counter) => { this.counter = counter; }} className="textCounter">
           { countervalue }
         </p>
