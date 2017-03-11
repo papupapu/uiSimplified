@@ -12,7 +12,7 @@ module.exports = {
 	context: APP_DIR,
 
 	entry: {
-		app: './index.jsx'
+		app: './browser/index.jsx'
 	},
 
 	output: {
