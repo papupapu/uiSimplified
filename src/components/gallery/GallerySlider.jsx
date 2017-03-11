@@ -2,7 +2,8 @@ import React from 'react';
 import Image from '../common/Image';
 import { disableScroll, enableScroll } from '../../utils/HandleMobileScroll';
 
-const MAX_TO_LOAD = 3;
+const MAX_TO_ADD = 3;
+const MINIMUM_ON_CREATION = 2;
 
 class GallerySlider extends React.Component {
 
@@ -12,12 +13,13 @@ class GallerySlider extends React.Component {
     this.state = {
       device: this.props.device,
       sizes: this.props.sizes,
-      alreadyLoaded: 1,
-      isUp: false,
+      rerender: false,
     };
 
     this.cur = 0;
     this.tot = this.props.media.length;
+    this.slidesCreated = MINIMUM_ON_CREATION;
+    this.slidesToAdd = MAX_TO_ADD;
     this.startX = 0;
     this.startY = 0;
     this.deltaX = 0;
@@ -45,7 +47,7 @@ class GallerySlider extends React.Component {
     const slides = [];
     this.props.media.forEach(
       (el, index) => {
-        if (index < MAX_TO_LOAD) {
+        if (index < this.slidesCreated) {
           const key = `slide-${index}`;
           slides.push(<li key={key} style={{ width: `${this.props.sizes[0]}px`, height: `${this.props.sizes[1]}px` }}><Image src={el.src} alt={key} /></li>);
         }
@@ -68,6 +70,14 @@ class GallerySlider extends React.Component {
     const coords = this.props.sizes[0] * this.cur;
     this.sliderTransition();
     this.slider.style.transform = `translate(-${coords}px,0)`;
+    if (this.cur === this.slidesCreated - 1 && this.slidesCreated < this.tot) {
+      this.slidesCreated = this.slidesCreated + this.slidesToAdd > this.tot ?
+                              this.tot
+                            :
+                              this.slidesCreated + this.slidesToAdd;
+      this.slides = this.createSlides();
+      this.setState({ rerender: !this.state.rerender });
+    }
   }
 
   handleClick(dir, event) {

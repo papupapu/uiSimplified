@@ -21,15 +21,39 @@ class UiSimplified extends React.Component {
           media: [
             {
               type: 'photo',
-              src: '/images/surf.jpg',
+              src: '/images/surf1.jpg',
             },
             {
               type: 'photo',
-              src: '/images/surf.jpg',
+              src: '/images/surf2.jpg',
             },
             {
               type: 'photo',
-              src: '/images/surf.jpg',
+              src: '/images/surf3.jpg',
+            },
+            {
+              type: 'photo',
+              src: '/images/surf4.jpg',
+            },
+            {
+              type: 'photo',
+              src: '/images/surf5.jpg',
+            },
+            {
+              type: 'photo',
+              src: '/images/surf6.jpg',
+            },
+            {
+              type: 'photo',
+              src: '/images/surf7.jpg',
+            },
+            {
+              type: 'photo',
+              src: '/images/surf8.jpg',
+            },
+            {
+              type: 'photo',
+              src: '/images/surf9.jpg',
             },
           ],
         },
@@ -41,7 +65,7 @@ class UiSimplified extends React.Component {
           media: [
             {
               type: 'photo',
-              src: '/images/surf.jpg',
+              src: '/images/surf2.jpg',
             },
           ],
         },
@@ -53,7 +77,7 @@ class UiSimplified extends React.Component {
           media: [
             {
               type: 'photo',
-              src: '/images/surf.jpg',
+              src: '/images/surf3.jpg',
             },
           ],
         },
