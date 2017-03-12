@@ -56,10 +56,10 @@ class Header extends React.Component {
             <h1 className="logo">logo</h1>
             <a className="menu_handle" href="" onClick={this.toggleSiteNavigation}>
               <svg height="24" width="24" viewBox="0 0 24 24">
-                <path className="x" fill="#979797" fillRule="evenodd" d={x} />
-                <path className="y" fill="#979797" fillRule="evenodd" d={y} />
-                <path className="a" fill="#979797" fillRule="evenodd" d={a} />
-                <path className="b" fill="#979797" fillRule="evenodd" d={b} />
+                <path className="x" fill="#F6A623" fillRule="evenodd" d={x} />
+                <path className="y" fill="#F6A623" fillRule="evenodd" d={y} />
+                <path className="a" fill="#F6A623" fillRule="evenodd" d={a} />
+                <path className="b" fill="#F6A623" fillRule="evenodd" d={b} />
               </svg>
             </a>
           </div>

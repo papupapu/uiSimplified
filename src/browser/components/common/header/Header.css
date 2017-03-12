@@ -2,7 +2,7 @@
 .header{
   width:100vw;
   height:50px;
-  background:#F1F1F1;
+  background:#333;
 }
 
 #header .header{
@@ -114,6 +114,14 @@
 
 .menu_open .menu_open-overlayer.overlayer{
 	transform: translate(0,0);
+}
+
+@media screen and (min-width: 375px) { /* iPhone 6 */
+
+	#nav dl{
+		padding:2.5rem 1.5rem 0;
+	}
+	
 }
 
 @media screen and (min-width: 568px) { /* iPhone5 - landscape */
