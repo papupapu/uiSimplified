@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Lato|PT+Sans:800');
 
 *{
 	box-sizing:border-box;
@@ -19,7 +19,7 @@ html, body{
 }
 
 h1, h2, h3, h4, h5, h6{
-	font-family:'Roboto Slab',Georgia;
+	font-family:'PT Sans',Georgia; font-weight:800;
 }
 
 p, blockquote, pre,
@@ -34,7 +34,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time{
-	font-family:'Roboto',helvetica,arial;
+	font-family:'Lato',helvetica,arial;
 }
 
 .sw{
