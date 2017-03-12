@@ -24,15 +24,15 @@
 
 #header .logo{
 	margin:0 auto;
-	width:58px; height:50px;
-	background:url(/images/style/svg/logo.svg) 0 9px no-repeat;
-	background-size:58px 44px;
+	width:61px; height:50px;
+	background:url(/images/style/svg/logo.png) 0 14px no-repeat;
+	background-size:auto 34px;
 	text-indent:-9999em;
 	transition: all .3s ease-in;
 }
 
 #header.fixed .logo{
-	background-position: 0 3px;
+	background-position: 0 9px;
 }
 
 #header .menu_handle{
@@ -43,7 +43,7 @@
 
 #header .menu_handle svg{
 	position:absolute; 
-	top:50%; left:0;
+	top:50%; left:4px;
 	margin-top:-8px;
 	overflow: visible;
 }
