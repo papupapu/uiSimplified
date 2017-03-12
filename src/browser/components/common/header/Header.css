@@ -6,7 +6,7 @@
 }
 
 #header .header{
-	position:relative; z-index:2;
+	position:relative; z-index:5;
 }
 
 #header.fixed .header{
@@ -25,7 +25,7 @@
 #header .logo{
 	margin:0 auto;
 	width:61px; height:50px;
-	background:url(/images/style/svg/logo.png) 0 14px no-repeat;
+	background:url(/images/style/logo.png) 0 14px no-repeat;
 	background-size:auto 34px;
 	text-indent:-9999em;
 	transition: all .3s ease-in;
@@ -74,4 +74,62 @@
 
 .menu_open #header .menu_handle svg .b{
 	opacity: 0;
+}
+
+#nav{
+	position: fixed; z-index: 4;
+	top:50px; left:0;
+	width:100vw; height:calc(100vh - 50px);
+	background:#F1F1F1;
+	transform: translate(-100%,0);
+	transition:all 300ms;
+}
+
+.menu_open #nav{
+	transform: translate(0,0);	
+}
+
+#nav dl{
+	padding:2.5rem 1rem 0;
+	font-weight:700; font-size:1.6rem; line-height:32px; font-family:'PT Sans',Georgia; text-transform: uppercase;
+}
+
+#nav dt{
+	margin-top:1rem;
+}
+
+#nav a{
+	padding-left:1rem;
+	color:#666;
+	text-decoration:none;
+}
+
+#nav a.hp{
+	padding-left:0;
+}
+
+@media screen and (min-width: 568px) { /* iPhone5 - landscape */
+
+	#nav{
+		width:320px; height:calc(100vh - 50px);
+	}
+
+	.menu_open .menu_open-overlayer.overlayer{
+		display:inline-block;
+	}
+
+}
+
+@media screen and (min-width: 768px) { /* iPad */
+
+	#header .logo,
+	#header.fixed .logo{
+		background-position: 0 center;
+	}
+
+	#header .menu_handle svg{
+		left:5px;
+		margin-top:-12px;
+	}	
+
 }

@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/reset.css';
 import './css/fonts.css';
+import './css/utils.css';
 import Header from './components/common/header/Header';
+import Overlayer from './components/common/Overlayer';
 import Article from './components/article/Article';
 import { userDevice } from './utils/UserDevice';
 import { articleList } from '../server/static/Articles';
@@ -75,6 +77,7 @@ class UiSimplified extends React.Component {
         <div className="sw">
           {articles}
         </div>
+        <Overlayer action={'menu_open'} handleClick={this.toggleSiteNavigation} />
       </div>
     );
   }

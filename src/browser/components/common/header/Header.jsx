@@ -64,6 +64,22 @@ class Header extends React.Component {
             </a>
           </div>
         </div>
+        <nav id="nav">
+          <dl>
+            <dd><a className="hp" href="">Home</a></dd>
+            <dt>Categorie</dt>
+            <dd><a href="">Categoria</a></dd>
+            <dd><a href="">Categoria</a></dd>
+            <dd><a href="">Categoria</a></dd>
+            <dd><a href="">Categoria</a></dd>
+            <dd><a href="">Categoria</a></dd>
+            <dd><a href="">Categoria</a></dd>
+            <dt>Servizi</dt>
+            <dd><a href="">Categoria</a></dd>
+            <dd><a href="">Categoria</a></dd>
+            <dd><a href="">Categoria</a></dd>
+          </dl>
+        </nav>
       </header>
     );
   }
