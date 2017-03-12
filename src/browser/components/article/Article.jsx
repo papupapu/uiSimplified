@@ -25,6 +25,7 @@ class Article extends React.Component {
       viewport: this.props.viewport,
       title: heading.title,
       subtitle: heading.subtitle,
+      infos: heading.infos,
       media: heading.media,
       headingTag: this.props.headingTag,
     };

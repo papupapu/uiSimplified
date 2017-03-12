@@ -41,6 +41,7 @@ export const articleList = [
           src: '/images/surf9.jpg',
         },
       ],
+      infos: {},
     },
   },
   {
@@ -73,6 +74,7 @@ export const articleList = [
           src: '/images/everest6.jpg',
         },
       ],
+      infos: {},
     },
   },
   {
@@ -85,6 +87,7 @@ export const articleList = [
           src: '/images/knicks.jpg',
         },
       ],
+      infos: {},
     },
   },
   {
@@ -105,6 +108,7 @@ export const articleList = [
           src: '/images/moebius1.jpg',
         },
       ],
+      infos: {},
     },
   },
   {
@@ -125,6 +129,57 @@ export const articleList = [
           src: '/images/corsica3.jpg',
         },
       ],
+      infos: {},
+    },
+  },
+  {
+    heading: {
+      title: 'Villa, Sesto Calende (VA)',
+      subtitle: 'Back when The Endless Summer came out, surf travel wasn\'t really a thing. Not in the way it is now, at least. Then Bruce Brown\'s opus was released to the masses, and the trickle of surfers curious to seek, to explore, to find, slowly became a flood. Now, of course, you\'re hard pressed to find a lineup that hasn\'t been explored. Oh, there are places, to be sure, but they\'re fewer and farther between with each passing day.',
+      media: [
+        {
+          type: 'photo',
+          src: '/images/surf1.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf2.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf3.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf4.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf5.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf6.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf7.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf8.jpg',
+        },
+        {
+          type: 'photo',
+          src: '/images/surf9.jpg',
+        },
+      ],
+      infos: {
+        price: '100.000.000',
+        mq: '380',
+        locali: '5',
+        bagni: '2',
+      },
     },
   },
 ];

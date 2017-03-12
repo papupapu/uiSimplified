@@ -16,7 +16,20 @@ class ArticleIncipit extends React.Component {
   addHeading() {
     const title = this.props.title;
     const subtitle = this.props.subtitle;
+    const infos = this.props.infos;
     const heading = {};
+
+    let textinfos = null;
+    if (Object.keys(infos).length > 0) {
+      textinfos = (<p className="infos">
+        <strong>{infos.price}</strong>
+        <span>{infos.mq}</span> {Object.keys(infos)[1]}.&nbsp;
+        <span>{infos.locali}</span> {Object.keys(infos)[2]}&nbsp;
+        <span>{infos.bagni}</span> {Object.keys(infos)[3]}</p>
+      );
+      this.casa = true;
+    }
+    heading.infos = textinfos;
 
     switch (this.props.headingTag) {
       case 'h2':
@@ -43,7 +56,6 @@ class ArticleIncipit extends React.Component {
         heading.title = title !== '' && title !== undefined ? <h1>{title}</h1> : null;
         heading.subtitle = subtitle !== '' && subtitle !== undefined ? <h2>{subtitle}</h2> : null;
     }
-
     return heading;
   }
 
@@ -63,11 +75,18 @@ class ArticleIncipit extends React.Component {
   render() {
     const heading = this.addHeading();
     const media = this.addMedia();
+    const css = this.casa !== null && this.casa !== undefined && this.casa ? 'casa' : null;
+    const actions = this.casa !== null && this.casa !== undefined && this.casa ?
+      <p className="actions"><strong>sonolameglioagenzia</strong> chiamami | salvami</p>
+    :
+      null;
     return (
-      <header>
+      <header className={css}>
+        {heading.infos}
         {heading.title}
         {heading.subtitle}
         {media}
+        {actions}
       </header>
     );
   }
@@ -78,6 +97,7 @@ ArticleIncipit.propTypes = {
   viewport: React.PropTypes.instanceOf(Object),
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
+  infos: React.PropTypes.instanceOf(Object),
   media: React.PropTypes.instanceOf(Array),
   headingTag: React.PropTypes.string,
 };
@@ -87,6 +107,7 @@ ArticleIncipit.defaultProps = {
   viewport: {},
   title: '',
   subtitle: '',
+  infos: {},
   media: [],
   headingTag: '',
 };

@@ -37,6 +37,10 @@ time{
 	font-family:'Lato',helvetica,arial;
 }
 
+#app{
+	padding-bottom:5rem;
+}
+
 .sw{
 	margin:0 auto; padding:0 1rem;
 	max-width:1000px;
@@ -48,5 +52,9 @@ time{
 	html{
 		font-size:75%;
 	}
+
+	#app{
+		padding-bottom:0;
+	}	
 
 }

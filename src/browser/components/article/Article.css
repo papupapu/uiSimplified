@@ -8,7 +8,7 @@
 .item{
 	position:relative; z-index:1;
 	margin:1rem 0; padding:77% 1rem 1rem;
-	background:#FFF;
+	background:#FFF; border:1px solid #E2E1E1; border-bottom-width:3px;
 }
 
 .item h3{
@@ -17,12 +17,48 @@
 }
 
 .item h4{
-	font-size:1.6rem; font-weight:400; line-height:2.2rem; color:#202020;
+	font-size:1.6rem; font-weight:400; line-height:2.2rem; color:#323232;
 	display: -webkit-box;
 	-webkit-line-clamp: 5;
 	-webkit-box-orient: vertical;
 	height:11rem;
 	overflow:hidden; text-overflow: ellipsis;
+}
+
+.item h3{
+	margin-bottom:.7rem;
+	color:#333;
+}
+
+.item .casa h4{
+	color:#676767;
+}
+
+.item p.infos{
+	margin-bottom:.3rem;
+	font-size:1.4rem; line-height:3.8rem; color:#787878;
+	text-align:right;
+}
+
+.item p.infos strong{
+	float:left;
+	font-weight:700; font-size:1.8rem; color:#202020;
+}
+
+.item p.infos span{
+	font-weight:700; font-size:1.8rem; color:#202020;
+}
+
+.item p.actions{
+	margin-top:.9rem; padding-top:.7rem;
+	font-size:1.2rem; line-height:2.2rem; color:#202020;
+	text-align:right;
+	border-top:1px solid #E2E1E1;
+}
+
+.item p.actions strong{
+	float:left;
+	font-weight:700;
 }
 
 .media{
@@ -50,7 +86,7 @@
 	}
 
 	.item{
-		margin:1.5rem 0; padding:77% 1.5rem 1.5rem;
+		margin:1.5rem 0; padding:77% 1.5rem 1.5rem;		
 	}	
 
 }
@@ -60,6 +96,7 @@
 	.item{
 		padding-top:.6rem;
 		height:16.5rem;
+		border-bottom-width:1px;
 	}
 
 	.media{
@@ -70,14 +107,20 @@
 	}
 
 	.item h3,
-	.item h4{
+	.item h4,
+	.item p.infos,
+	.item p.actions{
 		margin-left:21.5rem;
 	}	
 
 	.item h4{
-		-webkit-line-clamp: 3;
-		height:6.4rem;
+		-webkit-line-clamp: 2;
+		height:4.1rem;
 	}
+
+	.item p.actions{
+		margin-top:.9rem; padding-top:.4rem;
+	}	
 
 }
 
@@ -88,18 +131,26 @@
 	}
 
 	.item{
-		padding-top:1rem;
+		padding:0 1.5rem;		
 		height:16.5rem;
 	}		
 
 	.item h3{
-		margin-bottom:.6rem; margin-left:22rem;
+		margin-top:1rem; margin-bottom:.6rem; margin-left:22rem;
 		font-size:2.4rem; line-height:2.8rem;
+	}
+
+	.item .casa h3{
+		margin-top:0;
 	}
 
 	.item h4{
 		margin-left:21.7rem;
 		font-size:1.4rem; line-height:2rem;
 	}
+
+	.item p.actions{
+		margin-top:.9rem; padding:.8rem .3rem 0;
+	}	
 
 }
