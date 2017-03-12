@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|PT+Sans:800');
+@import url('https://fonts.googleapis.com/css?family=Lato|PT+Sans:400,700');
 
 *{
 	box-sizing:border-box;
@@ -19,7 +19,7 @@ html, body{
 }
 
 h1, h2, h3, h4, h5, h6{
-	font-family:'PT Sans',Georgia; font-weight:800;
+	font-family:'PT Sans',Georgia; font-weight:700;
 }
 
 p, blockquote, pre,
