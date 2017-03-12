@@ -1,5 +1,24 @@
-#header{
+#header,
+.header{
   width:100vw;
   height:50px;
   background:#FFF; border-bottom:1px solid #000;
+}
+
+#header.fixed .header{
+	position:fixed;
+	top:0; left:0;
+	z-index:1;
+	transition: top .3s linear;
+}
+
+#header.lurking .header{
+	position:fixed;
+	top:-50px; left:0;
+	z-index:1;
+	transition: top .3s linear;
+}
+
+#header h1{
+	font-size:22px; line-height:50px;
 }

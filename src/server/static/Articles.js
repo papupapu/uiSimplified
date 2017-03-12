@@ -52,38 +52,6 @@ export const articleList = [
           type: 'photo',
           src: '/images/surf1.jpg',
         },
-        {
-          type: 'photo',
-          src: '/images/surf2.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf3.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf4.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf5.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf6.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf7.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf8.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf9.jpg',
-        },
       ],
     },
   },
@@ -99,34 +67,6 @@ export const articleList = [
         {
           type: 'photo',
           src: '/images/surf2.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf3.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf4.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf5.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf6.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf7.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf8.jpg',
-        },
-        {
-          type: 'photo',
-          src: '/images/surf9.jpg',
         },
       ],
     },
