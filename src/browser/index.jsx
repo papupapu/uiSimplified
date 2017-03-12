@@ -7,6 +7,7 @@ import Header from './components/common/header/Header';
 import Overlayer from './components/common/Overlayer';
 import Article from './components/article/Article';
 import { userDevice } from './utils/UserDevice';
+import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
 import { articleList } from '../server/static/Articles';
 
 class UiSimplified extends React.Component {
@@ -44,7 +45,13 @@ class UiSimplified extends React.Component {
 
   toggleSiteNavigation() {
     if (this.doc !== null) {
-      this.doc.className = this.doc.className.indexOf('menu_open') > -1 ? '' : 'menu_open';
+      if (this.doc.className.indexOf('menu_open') > -1) {
+        this.doc.className = '';
+        enableScroll();
+      } else {
+        this.doc.className = 'menu_open';
+        disableScroll();
+      }
     }
   }
 

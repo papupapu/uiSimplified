@@ -25,7 +25,7 @@
 #header .logo{
 	margin:0 auto;
 	width:61px; height:50px;
-	background:url(/images/style/logo.png) 0 14px no-repeat;
+	background:url(/images/style/logo.png) 0 center no-repeat;
 	background-size:auto 34px;
 	text-indent:-9999em;
 	transition: all .3s ease-in;
@@ -44,12 +44,8 @@
 #header .menu_handle svg{
 	position:absolute; 
 	top:50%; left:4px;
-	margin-top:-8px;
-	overflow: visible;
-}
-
-#header.fixed .menu_handle svg{
 	margin-top:-12px;
+	overflow: visible;
 }
 
 #header .menu_handle svg path{
@@ -79,10 +75,12 @@
 #nav{
 	position: fixed; z-index: 4;
 	top:50px; left:0;
+	padding-bottom:2.5rem;
 	width:100vw; height:calc(100vh - 50px);
 	background:rgba(241,241,241,.9);
 	transform: translate(-100%,0);
 	transition:all 300ms;
+	overflow-y:auto;
 }
 
 .menu_open #nav{
@@ -160,6 +158,22 @@
 }
 
 @media screen and (min-width: 950px) {
+
+	body.menu_open{
+		position:fixed;
+	}
+
+	#header	.sw{
+		position:relative;
+	}
+
+	#header .menu_handle{
+		left:1.5rem;
+	}
+
+	#header .menu_handle svg{
+		left:0;
+	}	
 
 	#header .menu_handle svg path{
 		transition:all 500ms;
