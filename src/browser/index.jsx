@@ -17,6 +17,9 @@ class UiSimplified extends React.Component {
       viewport: { width: '', height: '' },
       touchscreen: null,
     };
+
+    this.doc = null;
+    this.toggleSiteNavigation = this.toggleSiteNavigation.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +29,7 @@ class UiSimplified extends React.Component {
       const updatedUi = userDevice();
       this.setUiInfos(updatedUi);
     });
+    this.doc = document.body;
   }
 
   setUiInfos(ui) {
@@ -34,6 +38,12 @@ class UiSimplified extends React.Component {
       viewport: ui.viewport,
       touchscreen: ui.touchscreen,
     });
+  }
+
+  toggleSiteNavigation() {
+    if (this.doc !== null) {
+      this.doc.className = this.doc.className.indexOf('menu_open') > -1 ? '' : 'menu_open';
+    }
   }
 
   fakeFetchArticlesList(headingTag) {
@@ -52,6 +62,7 @@ class UiSimplified extends React.Component {
     return {
       device: this.state.device,
       viewport: this.state.viewport,
+      toggleSiteNavigation: this.toggleSiteNavigation,
     };
   }
 

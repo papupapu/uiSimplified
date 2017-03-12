@@ -8,12 +8,18 @@ class Header extends React.Component {
 
     this.scrollPosition = 0;
     this.scrollDirection = null;
+
+    this.toggleSiteNavigation = this.toggleSiteNavigation.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('scroll', () => {
       this.handleScroll();
     });
+  }
+
+  shouldComponentUpdate() {
+    return false;
   }
 
   handleScroll() {
@@ -33,12 +39,29 @@ class Header extends React.Component {
     }
   }
 
+  toggleSiteNavigation(event) {
+    event.preventDefault();
+    this.props.toggleSiteNavigation();
+  }
+
   render() {
+    const x = 'M 0 11 L 24 11 L 24 13 L 0 13 L 0 11 Z M 0 11';
+    const y = 'M 0 11 L 24 11 L 24 13 L 0 13 L 0 11 Z M 0 11';
+    const a = 'M 0 19 L 24 19 L 24 21 L 0 21 L 0 19 Z M 0 19';
+    const b = 'M 0 3 L 24 3 L 24 5 L 0 5 L 0 3 Z M 0 3';
     return (
       <header id="header" ref={(header) => { this.header = header; }}>
         <div className="header">
           <div className="sw">
-            <h1>Questo di solito è un logo</h1>
+            <h1 className="logo">logo</h1>
+            <a className="menu_handle" href="" onClick={this.toggleSiteNavigation}>
+              <svg height="24" width="24" viewBox="0 0 24 24">
+                <path className="x" fill="#979797" fillRule="evenodd" d={x} />
+                <path className="y" fill="#979797" fillRule="evenodd" d={y} />
+                <path className="a" fill="#979797" fillRule="evenodd" d={a} />
+                <path className="b" fill="#979797" fillRule="evenodd" d={b} />
+              </svg>
+            </a>
           </div>
         </div>
       </header>
@@ -50,11 +73,13 @@ class Header extends React.Component {
 Header.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
+  toggleSiteNavigation: React.PropTypes.func,
 };
 
 Header.defaultProps = {
   device: '',
   viewport: {},
+  toggleSiteNavigation: null,
 };
 
 export default Header;

@@ -6,7 +6,7 @@
 */
 
 .item{
-	position:relative;
+	position:relative; z-index:1;
 	margin:1rem 0; padding:77% 1rem 1rem;
 	background:#FFF;
 }
