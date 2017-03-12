@@ -80,7 +80,7 @@
 	position: fixed; z-index: 4;
 	top:50px; left:0;
 	width:100vw; height:calc(100vh - 50px);
-	background:#F1F1F1;
+	background:rgba(241,241,241,.9);
 	transform: translate(-100%,0);
 	transition:all 300ms;
 }
@@ -108,14 +108,30 @@
 	padding-left:0;
 }
 
+.menu_open-overlayer.overlayer{
+	display:inline-block;
+	transform: translate(-100%,0);
+	transition:all 300ms;	
+}
+
+.menu_open .menu_open-overlayer.overlayer{
+	transform: translate(0,0);
+}
+
 @media screen and (min-width: 568px) { /* iPhone5 - landscape */
 
-	#nav{
-		width:320px; height:calc(100vh - 50px);
+	.menu_open-overlayer.overlayer{
+		display:none;
+		transform: translate(0,0);
+		transition:all 0;	
 	}
 
 	.menu_open .menu_open-overlayer.overlayer{
 		display:inline-block;
+	}
+
+	#nav{
+		width:320px; height:calc(100vh - 50px);
 	}
 
 }
@@ -130,6 +146,28 @@
 	#header .menu_handle svg{
 		left:5px;
 		margin-top:-12px;
-	}	
+	}
+
+	#nav{
+		width:50vw;
+	}
+
+	#nav dl{
+		margin:1.5rem auto 0;padding:1.5rem 1rem;
+		width:320px;
+	}		
+
+}
+
+@media screen and (min-width: 950px) {
+
+	#header .menu_handle svg path{
+		transition:all 500ms;
+	}
+
+	#nav{
+		width:40vw;
+		transition:all 500ms;
+	}
 
 }
