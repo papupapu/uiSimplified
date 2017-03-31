@@ -157,7 +157,7 @@ class GallerySlider extends React.Component {
   render() {
     const countervalue = `${this.cur + 1} / ${this.tot}`;
     const prevStyle = this.cur > 0 ? 'prev active' : 'prev';
-    const nextStyle = this.cur < this.tot -1 ? 'next active' : 'next';
+    const nextStyle = this.cur < this.tot - 1 ? 'next active' : 'next';
     return (
       <div className="sliderContainer">
         <div className={'slider'} ref={(slider) => { this.slider = slider; }} onTouchStart={this.touchStart} onTouchEnd={this.touchEnd} onTouchMove={this.touchMove}>

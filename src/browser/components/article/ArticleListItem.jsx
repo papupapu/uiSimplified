@@ -1,9 +1,12 @@
 import React from 'react';
+// UI elements
 import Image from '../common/Image';
 import Gallery from '../gallery/Gallery';
-import SEOTag from '../../../common/helpers/HtmlFormatting';
+// Product related elements
+import SEOTag from '../../../common/helpers/SEOTag';
+import PRODUCTInfos from '../../../common/helpers/PRODUCTInfos';
 
-class ArticleIncipit extends React.Component {
+class ArticleListItem extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
@@ -12,20 +15,6 @@ class ArticleIncipit extends React.Component {
       return true;
     }
     return false;
-  }
-
-  addHeading() {
-    const heading = {};
-    const formattedHeading = SEOHeading(
-      this.props.headingTag,
-      this.props.title,
-      this.props.subtitle,
-    );
-    heading.title = formattedHeading.title;
-    heading.subtitle = formattedHeading.subtitle;
-    heading.infos = SEOInfos(this.props.infos);
-    this.casa = heading.infos !== null;
-    return heading;
   }
 
   addMedia() {
@@ -42,49 +31,54 @@ class ArticleIncipit extends React.Component {
   }
 
   render() {
-    const { title, subtitle } = this.props;
+    const { title, titleTag, subtitle, subtitleTag, infos } = this.props;
     const media = this.addMedia();
-    const css = this.casa !== null && this.casa !== undefined && this.casa ? 'casa' : null;
-    const actions = this.casa !== null && this.casa !== undefined && this.casa ?
+    const css = Object.keys(infos).length > 0 ? 'casa' : null;
+    const actions = Object.keys(infos).length > 0 ?
       <p className="actions"><strong>sonolameglioagenzia</strong> chiamami | salvami</p>
     :
       null;
+    console.log(actions)      
     return (
-      <header className={css}>
-        <SEOTag
-          tag={'h3'}
-          value={title}
-        />
-        <SEOTag
-          tag={'h4'}
-          value={subtitle}
-        />
-        {media}
-        {actions}
-      </header>
+      <article className="item">
+        <header className={css}>
+          <SEOTag
+            tag={titleTag}
+            value={title}
+          />
+          <SEOTag
+            tag={subtitleTag}
+            value={subtitle}
+          />
+          {media}
+          {actions}
+        </header>
+      </article>
     );
   }
 }
 
-ArticleIncipit.propTypes = {
+ArticleListItem.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
   infos: React.PropTypes.instanceOf(Object),
   media: React.PropTypes.instanceOf(Array),
-  headingTag: React.PropTypes.string,
+  titleTag: React.PropTypes.string,
+  subtitleTag: React.PropTypes.string,
 };
 
-ArticleIncipit.defaultProps = {
+ArticleListItem.defaultProps = {
   device: '',
   viewport: {},
   title: '',
   subtitle: '',
   infos: {},
   media: [],
-  headingTag: '',
+  titleTag: '',
+  subtitleTag: '',
 };
 
-export default ArticleIncipit;
+export default ArticleListItem;
 

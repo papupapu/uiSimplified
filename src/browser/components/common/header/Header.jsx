@@ -1,4 +1,5 @@
 import React from 'react';
+import TextInput from '../input/Text';
 import './Header.css';
 
 class Header extends React.Component {
@@ -65,6 +66,7 @@ class Header extends React.Component {
           </div>
         </div>
         <nav id="nav">
+          <TextInput placeholder="placeholder" label="Cerca" name="qs" required={true} />
           <dl>
             <dd><a className="hp" href="">Home</a></dd>
             <dt>Categorie</dt>

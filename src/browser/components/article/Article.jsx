@@ -1,5 +1,6 @@
 import React from 'react';
-import ArticleIncipit from './ArticleIncipit';
+import ArticleListItem from './ArticleListItem';
+import { SUBTITLE_TAG } from '../../../server/configurations/Articles';
 import './Article.css';
 
 /*
@@ -19,26 +20,35 @@ class Article extends React.Component {
   }
 
   articleIncipit() {
-    const heading = this.props.heading;
+    const { device, viewport, heading: { title, subtitle, infos, media }, titleTag } = this.props;
     const data = {
-      device: this.props.device,
-      viewport: this.props.viewport,
-      title: heading.title,
-      subtitle: heading.subtitle,
-      infos: heading.infos,
-      media: heading.media,
-      headingTag: this.props.headingTag,
+      device,
+      viewport,
+      title,
+      subtitle,
+      infos,
+      media,
+      titleTag,
+      subtitleTag: SUBTITLE_TAG[titleTag],
     };
     return data;
   }
 
   render() {
+    const { type } = this.props;
     const articleIncipit = this.articleIncipit();
-    return (
-      <article className="item">
-        <ArticleIncipit {...articleIncipit} />
-      </article>
-    );
+    switch (type) {
+      case 'list':
+        return (
+          <ArticleListItem {...articleIncipit} />
+        );
+      default:
+        return (
+          <article className="item">
+            not ready
+          </article>
+        );
+    }
   }
 }
 
@@ -46,14 +56,16 @@ Article.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
   heading: React.PropTypes.instanceOf(Object),
-  headingTag: React.PropTypes.string,
+  titleTag: React.PropTypes.string,
+  type: React.PropTypes.string,
 };
 
 Article.defaultProps = {
   device: '',
   viewport: {},
   heading: {},
-  headingTag: '',
+  titleTag: '',
+  type: '',
 };
 
 export default Article;

@@ -55,13 +55,14 @@ class UiSimplified extends React.Component {
     }
   }
 
-  fakeFetchArticlesList(headingTag) {
+  articlesList(titleTag) {
     const articles = [];
     for (let i = 0; i < articleList.length; i += 1) {
       const obj = articleList[i];
-      obj.headingTag = headingTag;
+      obj.titleTag = titleTag;
       obj.device = this.state.device;
       obj.viewport = this.state.viewport;
+      obj.type = 'list';
       articles.push(<Article key={`article-${i}`} {...obj} />);
     }
     return articles;
@@ -76,7 +77,7 @@ class UiSimplified extends React.Component {
   }
 
   render() {
-    const articles = this.fakeFetchArticlesList('h3');
+    const articles = this.articlesList('h3');
     const header = this.headerObj();
     return (
       <div>
