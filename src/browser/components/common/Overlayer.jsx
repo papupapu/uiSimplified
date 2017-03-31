@@ -16,7 +16,12 @@ class Overlayer extends React.Component {
   render() {
     const css = `${this.props.action}-overlayer overlayer`;
     return (
-      <area href="" className={css} onClick={this.handleClick} onTouchStart={this.handleClick} />
+      <area
+        href={null}
+        className={css}
+        onClick={this.handleClick}
+        onTouchStart={this.handleClick}
+      />
     );
   }
 

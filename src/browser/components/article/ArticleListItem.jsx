@@ -38,7 +38,6 @@ class ArticleListItem extends React.Component {
       <p className="actions"><strong>sonolameglioagenzia</strong> chiamami | salvami</p>
     :
       null;
-    console.log(actions)      
     return (
       <article className="item">
         <header className={css}>
