@@ -7,7 +7,7 @@
 
 .item{
 	position:relative; z-index:1;
-	margin:1rem 0; padding:77% 1rem 1rem;
+	margin:1rem 0; padding:72.5% 1rem 1rem;
 	background:#FFF; border:1px solid #E2E1E1; border-bottom-width:3px;
 }
 
@@ -86,7 +86,7 @@
 	}
 
 	.item{
-		margin:1.5rem 0; padding:77% 1.5rem 1.5rem;		
+		margin:1.5rem 0; padding:72.5% 1.5rem 1.5rem;		
 	}	
 
 }
