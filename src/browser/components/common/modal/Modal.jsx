@@ -50,7 +50,7 @@ class Modal extends React.Component {
   render() {
     const close = (
       <a href={null} className="modal_handle" onClick={this.handleClick}>
-        <svg viewBox="0 0 15 15">
+        <svg width="15" height="15" viewBox="0 0 15 15">
           <path
             d={CLOSE.d}
             fillRule="evenodd"

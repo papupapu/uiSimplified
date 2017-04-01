@@ -38,30 +38,37 @@ class ArticleListItem extends React.Component {
     const media = this.addMedia();
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
     const actions = (
-      <p className="actions">
-        <strong>sonolameglioagenzia</strong>
-        &nbsp;
-        <a
-          href=""
-          className="modal_handle"
-          onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
-        >
-          <svg height="19" viewBox="0 0 26 19">
-            <mask id="a" fill="#fff">
-              <path d={MAIL.a} fill="none" />
-            </mask>
-            <path
-              d={MAIL.b}
-              fill="#333f48"
-              fillRule="evenodd"
-              mask="url(#a)"
-              transform=""
-            />
-          </svg>
-        </a>
-        &nbsp;|&nbsp;
-        salvami
-      </p>
+      <div className="actions">
+        <p>
+          <strong>sonolameglioagenzia</strong>
+          <a
+            href=""
+            onClick={(evt) => { evt.preventDefault(); }}
+          >
+            <svg width="26" height="19" viewBox="0 0 26 19">
+              <path
+                d={MAIL.b}
+                fillRule="evenodd"
+                transform=""
+              />
+            </svg>
+          </a>
+          <span>|</span>
+          <a
+            href=""
+            className="modal_handle"
+            onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
+          >
+            <svg width="26" height="19" viewBox="0 0 26 19">
+              <path
+                d={MAIL.b}
+                fillRule="evenodd"
+                transform=""
+              />
+            </svg>
+          </a>
+        </p>
+      </div>
       );
     return (
       <article className="item">
