@@ -18,7 +18,7 @@ class ArticleListItem extends React.Component {
   }
 
   addMedia() {
-    const media = this.props.media;
+    const { media } = this.props;
     let output = null;
     if (media.length > 0) {
       if (media.length > 1) {

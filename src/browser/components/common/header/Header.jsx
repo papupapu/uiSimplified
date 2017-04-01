@@ -42,7 +42,7 @@ class Header extends React.Component {
 
   toggleSiteNavigation(event) {
     event.preventDefault();
-    this.props.toggleSiteNavigation();
+    this.props.toggleSiteNavigation(event);
   }
 
   render() {
@@ -66,7 +66,7 @@ class Header extends React.Component {
           </div>
         </div>
         <nav id="nav">
-          <TextInput placeholder="placeholder" label="Cerca" name="qs" required={true} />
+          <TextInput placeholder="placeholder" label="Cerca" name="qs" required />
           <dl>
             <dd><a className="hp" href="">Home</a></dd>
             <dt>Categorie</dt>

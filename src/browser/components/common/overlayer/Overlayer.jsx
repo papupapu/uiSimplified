@@ -1,4 +1,5 @@
 import React from 'react';
+import './Overlayer.css';
 
 function Overlayer({ action }) {
   return (
