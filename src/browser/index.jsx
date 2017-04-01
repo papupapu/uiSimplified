@@ -5,7 +5,7 @@ import './css/fonts.css';
 import Header from './components/common/header/Header';
 import Modal from './components/common/modal/Modal';
 import Overlayer from './components/common/overlayer/Overlayer';
-import Article from './components/article/Article';
+import List from './components/common/List';
 import { userDevice } from './utils/UserDevice';
 import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
 import { ARTICLELIST_MAX_ITEMS } from '../server/configurations/Articles';
@@ -100,24 +100,11 @@ class UiSimplified extends React.Component {
     }
   }
 
-  articlesList(titleTag, maxToShow = ARTICLELIST_MAX_ITEMS) {
-    const articles = [];
-    const limit = maxToShow < articleList.length ? maxToShow : articleList.length;
-    for (let i = 0; i < limit; i += 1) {
-      const obj = articleList[i];
-      obj.titleTag = titleTag;
-      obj.device = this.state.device;
-      obj.viewport = this.state.viewport;
-      obj.type = 'list';
-      articles.push(<Article key={`article-${i}`} {...obj} />);
-    }
-    return articles;
-  }
-
   headerObj() {
+    const { device, viewport } = this.state;
     return {
-      device: this.state.device,
-      viewport: this.state.viewport,
+      device,
+      viewport,
       toggleSiteNavigation: this.toggleSiteHiddenComponents,
     };
   }
@@ -132,17 +119,30 @@ class UiSimplified extends React.Component {
     );
   }
 
+  articlesList(titleTag, maxToShow = ARTICLELIST_MAX_ITEMS) {
+    const { device, viewport } = this.state;
+    const listObj = {
+      titleTag,
+      device,
+      viewport,
+      maxToShow,
+      list: articleList,
+      contentType: 'articles',
+    };
+    return (
+      <List {...listObj} />
+    );
+  }
+
   render() {
     const header = this.headerObj();
     const content = this.articlesList('h3');
     const modal = this.state.modal ? this.modalObj() : null;
     const overlayer = { action: this.toggleSiteHiddenComponents };
     return (
-      <div>
+      <div className="UiSimplified">
         <Header {...header} />
-        <div className="sw">
-          {content}
-        </div>
+        {content}
         {modal}
         <Overlayer {...overlayer} />
       </div>
