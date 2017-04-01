@@ -12,14 +12,18 @@
 	transform: translate(0,0);
 }
 
-.modal_open .overlayer{
-	opacity:.3;
-	transform: translate(0,0);
-}
-
 @media screen and (min-width: 568px) { /* iPhone5 - landscape */
 
 	.menu_open .overlayer{
+		opacity:.3;
+		transform: translate(0,0);
+	}
+
+}	
+
+@media screen and (min-width: 768px) { /* iPhone5 - landscape */
+
+	.modal_open .overlayer{
 		opacity:.3;
 		transform: translate(0,0);
 	}

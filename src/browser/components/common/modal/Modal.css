@@ -1,0 +1,25 @@
+.modal{
+	position:fixed; z-index:6;
+	top:0; left:0;
+	padding:1rem;
+	width:100vw; height:100vh;
+	background:#FFF;
+	transition:all .25s ease-out;
+}
+
+body.modal_open{
+	position:fixed;
+	overflow: hidden;
+}
+
+@media screen and (min-width: 768px) { /* iPad */
+
+	.modal{
+		z-index:4;
+		top:50%; left:50%;
+		width:calc(100vw - 100px); height:auto; min-height:300px;
+		border-radius:10px;
+		transform:translate(-50%,-50%);
+	}
+
+}	

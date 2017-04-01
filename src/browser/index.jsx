@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './css/reset.css';
 import './css/fonts.css';
 import Header from './components/common/header/Header';
-import Modal from './components/common/Modal';
+import Modal from './components/common/modal/Modal';
 import Overlayer from './components/common/overlayer/Overlayer';
 import Article from './components/article/Article';
 import { userDevice } from './utils/UserDevice';
@@ -48,58 +48,45 @@ class UiSimplified extends React.Component {
   toggleSiteHiddenComponents(evt) {
     if (this.doc !== null) {
       const docClass = this.doc.classList;
-      switch (evt.target.className) {
-        case 'modal':
-        case 'modal_handle':
-          if (docClass.contains('modal_open')) {
-            docClass.remove('modal_open');
-            docClass.add('closing');
-            setTimeout(() => { docClass.remove('closing'); }, 305);
-            enableScroll();
-          } else {
-            if (docClass.contains('menu_open')) {
-              docClass.remove('menu_open');
-            }
-            docClass.add('modal_open');
-            disableScroll();
-          }
-          this.setState({
-            modal: !this.state.modal,
-          });
-          break;
-        case 'menu_handle':
-          if (docClass.contains('menu_open')) {
-            docClass.remove('menu_open');
-            docClass.add('closing');
-            setTimeout(() => { docClass.remove('closing'); }, 305);
-            enableScroll();
-          } else {
-            if (docClass.contains('modal_open')) {
-              docClass.remove('modal_open');
-              this.setState({
-                modal: false,
-              });
-            }
-            docClass.add('menu_open');
-            disableScroll();
-          }
-          break;
-        default: // overlayer
+      let action = evt.target.className;
+      let updateModalState = false;
+      if (action.indexOf('_handle') > -1) {
+        action = action.replace('_handle', '_open');
+        updateModalState = action === 'modal_open';
+        if (docClass.contains(action)) {
+          docClass.remove(action);
+          docClass.add('closing');
+          setTimeout(() => { docClass.remove('closing'); }, 305);
+          enableScroll();
+        } else {
           this.uiHiddenComponentsTriggers.forEach(
-            (action) => {
-              if (docClass.contains(action)) {
-                docClass.remove(action);
-                docClass.add('closing');
-                setTimeout(() => { docClass.remove('closing'); }, 305);
-                enableScroll();
+            (oldaction) => {
+              if (docClass.contains(oldaction) && oldaction !== action) {
+                docClass.remove(oldaction);
+                updateModalState = oldaction === 'modal_open';
               }
             },
           );
-          if (this.state.modal) {
-            this.setState({
-              modal: false,
-            });
-          }
+          docClass.add(action);
+          disableScroll();
+        }
+        if (updateModalState) {
+          this.setState({ modal: !this.state.modal });
+        }        
+      } else { // overlayer
+        this.uiHiddenComponentsTriggers.forEach(
+          (oldaction) => {
+            if (docClass.contains(oldaction)) {
+              docClass.remove(oldaction);
+              docClass.add('closing');
+              setTimeout(() => { docClass.remove('closing'); }, 305);
+              enableScroll();
+            }
+          },
+        );
+        if (this.state.modal) {
+          this.setState({ modal: false });
+        }
       }
     }
   }
@@ -128,7 +115,7 @@ class UiSimplified extends React.Component {
   render() {
     const header = this.headerObj();
     const articles = this.articlesList('h3');
-    const modal = this.state.modal ? <Modal handleClick={this.toggleSiteHiddenComponents} /> : null;
+    const modal = this.state.modal ? <Modal close={this.toggleSiteHiddenComponents} /> : null;
     const overlayer = { action: this.toggleSiteHiddenComponents };
     return (
       <div>

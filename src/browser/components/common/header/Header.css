@@ -106,6 +106,11 @@
 	padding-left:0;
 }
 
+body.menu_open{
+	position:fixed;
+	overflow: hidden;
+}
+
 @media screen and (min-width: 375px) { /* iPhone 6 */
 
 	#nav dl{
@@ -146,10 +151,6 @@
 }
 
 @media screen and (min-width: 950px) {
-
-	body.menu_open{
-		position:fixed;
-	}
 
 	#header	.sw{
 		position:relative;

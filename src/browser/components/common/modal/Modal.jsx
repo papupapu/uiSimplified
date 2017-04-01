@@ -1,4 +1,5 @@
 import React from 'react';
+import './Modal.css';
 
 class Modal extends React.Component {
 
@@ -10,13 +11,17 @@ class Modal extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.handleClick();
+    this.props.close(event);
   }
 
   render() {
     return (
       <div className="modal">
-        modale
+        <a
+          href={null}
+          className="modal_handle"
+          onClick={this.handleClick}
+        >chiudi</a>
       </div>
     );
   }
@@ -24,11 +29,11 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  handleClick: React.PropTypes.func,
+  close: React.PropTypes.func,
 };
 
 Modal.defaultProps = {
-  handleClick: null,
+  close: null,
 };
 
 export default Modal;
