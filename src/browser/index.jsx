@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './css/reset.css';
 import './css/fonts.css';
+
 import Header from './components/common/header/Header';
 import Modal from './components/common/modal/Modal';
 import Overlayer from './components/common/overlayer/Overlayer';
 import List from './components/common/List';
+
 import { userDevice } from './utils/UserDevice';
 import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
 import { ARTICLELIST_MAX_ITEMS } from '../server/configurations/Articles';
@@ -121,17 +124,16 @@ class UiSimplified extends React.Component {
 
   articlesList(titleTag, maxToShow = ARTICLELIST_MAX_ITEMS) {
     const { device, viewport } = this.state;
-    const listObj = {
-      titleTag,
-      device,
-      viewport,
-      maxToShow,
-      list: articleList,
-      contentType: 'articles',
-      openModal: this.toggleSiteHiddenComponents,
-    };
     return (
-      <List {...listObj} />
+      <List
+        titleTag={titleTag}
+        device={device}
+        viewport={viewport}
+        maxToShow={maxToShow}
+        list={articleList}
+        contentType={'articles'}
+        openModal={this.toggleSiteHiddenComponents}
+      />
     );
   }
 

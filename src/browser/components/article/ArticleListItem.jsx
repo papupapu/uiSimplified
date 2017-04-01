@@ -37,35 +37,32 @@ class ArticleListItem extends React.Component {
     const { title, titleTag, subtitle, subtitleTag, infos, openModal } = this.props;
     const media = this.addMedia();
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
-    const actions = Object.keys(infos).length > 0 ?
-      (
-        <p className="actions">
-          <strong>sonolameglioagenzia</strong>
-          &nbsp;
-          <a
-            href=""
-            className="modal_handle"
-            onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
-          >
-            <svg height="19" viewBox="0 0 26 19">
-              <mask id="a" fill="#fff">
-                <path d={MAIL.a} fill="none" />
-              </mask>
-              <path
-                d={MAIL.b}
-                fill="#333f48"
-                fillRule="evenodd"
-                mask="url(#a)"
-                transform=""
-              />
-            </svg>
-          </a>
-          &nbsp;|&nbsp;
-          salvami
-        </p>
-      )
-    :
-      null;
+    const actions = (
+      <p className="actions">
+        <strong>sonolameglioagenzia</strong>
+        &nbsp;
+        <a
+          href=""
+          className="modal_handle"
+          onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
+        >
+          <svg height="19" viewBox="0 0 26 19">
+            <mask id="a" fill="#fff">
+              <path d={MAIL.a} fill="none" />
+            </mask>
+            <path
+              d={MAIL.b}
+              fill="#333f48"
+              fillRule="evenodd"
+              mask="url(#a)"
+              transform=""
+            />
+          </svg>
+        </a>
+        &nbsp;|&nbsp;
+        salvami
+      </p>
+      );
     return (
       <article className="item">
         <header className={css}>

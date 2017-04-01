@@ -66,7 +66,7 @@
 		z-index:4;
 		top:50%; left:50%;
 		padding:2rem;
-		width:calc(100vw - 100px); height:auto; min-height:300px;
+		width:calc(100vw - 3rem); height:auto; min-height:300px;
 		border-radius:10px;
 		transform:translate(-50%,-50%);
 	}
@@ -101,10 +101,10 @@
 
 }
 
-@media screen and (min-width: 950px) { /* Desk */
+@media screen and (min-width: 1024px) { /* Desk */
 
 	.modal{
-		width:1000px;
+		width:calc(1000px - 3rem);
 	}	
 
 }	

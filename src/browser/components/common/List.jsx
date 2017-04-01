@@ -1,27 +1,42 @@
 import React from 'react';
+
 import Article from '../article/Article';
 
-function List({ device, viewport, list, titleTag, maxToShow, contentType, openModal }) {
-  if (list.length > 0) {
-    const limit = maxToShow < list.length ? maxToShow : list.length;
-    if (contentType === 'articles') {
-      const articles = [];
-      for (let i = 0; i < limit; i += 1) {
-        const obj = list[i];
-        obj.titleTag = titleTag;
-        obj.device = device;
-        obj.viewport = viewport;
-        obj.type = 'list';
-        obj.openModal = openModal;
-        articles.push(<Article key={`article-${i}`} {...obj} />);
+class List extends React.Component {
+
+  // why should we rerender? let us think about this...
+  shouldComponentUpdate(nextProps) {
+    const device = nextProps.device !== this.props.device;
+    const viewport = nextProps.viewport.width !== this.props.viewport.width;
+    if (device || viewport) {
+      return true;
+    }
+    return false;
+  }
+
+  render() {
+    const { device, viewport, list, titleTag, maxToShow, contentType, openModal } = this.props;
+    if (list.length > 0) {
+      const limit = maxToShow < list.length ? maxToShow : list.length;
+      if (contentType === 'articles') {
+        const articles = [];
+        for (let i = 0; i < limit; i += 1) {
+          const obj = list[i];
+          obj.titleTag = titleTag;
+          obj.device = device;
+          obj.viewport = viewport;
+          obj.type = 'list';
+          obj.openModal = openModal;
+          articles.push(<Article key={`article-${i}`} {...obj} />);
+        }
+        return (
+          <div className="sw">{articles}</div>
+        );
       }
-      return (
-        <div className="sw">{articles}</div>
-      );
+      return null;
     }
     return null;
   }
-  return null;
 }
 
 List.propTypes = {
