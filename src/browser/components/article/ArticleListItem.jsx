@@ -29,7 +29,14 @@ class ArticleListItem extends React.Component {
     }
     return output;
   }
-
+/*
+          <a
+            href={null}
+            id="login"
+            className="modal_handle"
+            onClick={(evt) => { this.toggleSiteHiddenComponents(evt, { tu: 'suchi' }); }}
+          >modale</a>
+*/
   render() {
     const { title, titleTag, subtitle, subtitleTag, infos } = this.props;
     const media = this.addMedia();
