@@ -6,6 +6,9 @@ import Gallery from '../gallery/Gallery';
 import SEOTag from '../../../common/helpers/SEOTag';
 import PRODUCTInfos from '../../../common/helpers/PRODUCTInfos';
 
+import { MAIL } from '../../../common/graphic/SVGCodes';
+
+
 class ArticleListItem extends React.Component {
 
   shouldComponentUpdate(nextProps) {
@@ -29,20 +32,38 @@ class ArticleListItem extends React.Component {
     }
     return output;
   }
-/*
-          <a
-            href={null}
-            id="login"
-            className="modal_handle"
-            onClick={(evt) => { this.toggleSiteHiddenComponents(evt, { tu: 'suchi' }); }}
-          >modale</a>
-*/
+
   render() {
-    const { title, titleTag, subtitle, subtitleTag, infos } = this.props;
+    const { title, titleTag, subtitle, subtitleTag, infos, openModal } = this.props;
     const media = this.addMedia();
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
     const actions = Object.keys(infos).length > 0 ?
-      <p className="actions"><strong>sonolameglioagenzia</strong> chiamami | salvami</p>
+      (
+        <p className="actions">
+          <strong>sonolameglioagenzia</strong>
+          &nbsp;
+          <a
+            href=""
+            className="modal_handle"
+            onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
+          >
+            <svg height="19" viewBox="0 0 26 19">
+              <mask id="a" fill="#fff">
+                <path d={MAIL.a} fill="none" />
+              </mask>
+              <path
+                d={MAIL.b}
+                fill="#333f48"
+                fillRule="evenodd"
+                mask="url(#a)"
+                transform=""
+              />
+            </svg>
+          </a>
+          &nbsp;|&nbsp;
+          salvami
+        </p>
+      )
     :
       null;
     return (
@@ -76,6 +97,7 @@ ArticleListItem.propTypes = {
   media: React.PropTypes.instanceOf(Array),
   titleTag: React.PropTypes.string,
   subtitleTag: React.PropTypes.string,
+  openModal: React.PropTypes.func,
 };
 
 ArticleListItem.defaultProps = {
@@ -87,6 +109,7 @@ ArticleListItem.defaultProps = {
   media: [],
   titleTag: '',
   subtitleTag: '',
+  openModal: () => {},
 };
 
 export default ArticleListItem;

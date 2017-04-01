@@ -19,9 +19,16 @@ class Article extends React.Component {
     return false;
   }
 
-  articleIncipit() {
-    const { device, viewport, heading: { title, subtitle, infos, media }, titleTag } = this.props;
-    const data = {
+  render() {
+    const { type,
+            device,
+            viewport,
+            heading: { title, subtitle, infos, media },
+            titleTag,
+            openModal,
+          } = this.props;
+
+    const articleIncipit = {
       device,
       viewport,
       title,
@@ -30,13 +37,9 @@ class Article extends React.Component {
       media,
       titleTag,
       subtitleTag: SUBTITLE_TAG[titleTag],
+      openModal,
     };
-    return data;
-  }
 
-  render() {
-    const { type } = this.props;
-    const articleIncipit = this.articleIncipit();
     switch (type) {
       case 'list':
         return (
@@ -58,6 +61,7 @@ Article.propTypes = {
   heading: React.PropTypes.instanceOf(Object),
   titleTag: React.PropTypes.string,
   type: React.PropTypes.string,
+  openModal: React.PropTypes.func,
 };
 
 Article.defaultProps = {
@@ -66,6 +70,7 @@ Article.defaultProps = {
   heading: {},
   titleTag: '',
   type: '',
+  openModal: () => {},
 };
 
 export default Article;

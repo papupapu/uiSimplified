@@ -11,8 +11,23 @@
 	position:fixed; z-index:7;
 	top:1rem; right:1rem;
 	width:4.4rem; height:4.4rem;
-	background:#f90;
-	text-indent:-9999em;
+	cursor:pointer;
+}
+
+.modal .modal_handle svg{
+	position:absolute;
+	top:50%; left:50%;
+	width:24px; height:24px;
+	transform:translate(-50%,-50%) scale(.75,.75);
+}
+
+.modal .modal_handle svg path{	
+	fill:#666;
+	transition:fill .25s ease-out;
+}
+
+.modal .modal_handle:hover svg path{	
+	fill:#f90;
 }
 
 .modal .format{
@@ -28,21 +43,21 @@
 	top:1rem; left:1rem;
 	padding:0 1rem;
 	width:calc(100% - 2rem);
-	font-size:1.8rem; line-height:4.4rem;
-	background:#FFF; border-bottom:1px solid #f0f0f0;
+	font-size:1.6rem; line-height:4.4rem; color:#676767;
+	background:#FFF; border-bottom:1px solid #f0f0f0; border-radius:5px 0 0 0;
 }
 
 .modal .content{
 	margin-top:4.5rem; padding:1rem;
 }
 
-.modal .format p{
-	
+.modal .format h2{
+	margin:.7rem 0 1rem;
+	font-size:2.2rem; line-height:2.8rem; color:#202020;
 }
 
-body.modal_open{
-	position:fixed;
-	overflow: hidden;
+.modal .format p{
+	font-size:1.6rem; line-height:2.4rem; color:#303030;
 }
 
 @media screen and (min-width: 768px) { /* iPad */
@@ -71,11 +86,25 @@ body.modal_open{
 	.modal h1{
 		position:static;
 		top:auto; left:auto;
+		padding:0 2rem;
 		width:100%;
 	}
 
-	.modal .content{
+	.modal .format h2{
 		margin-top:0;
+		font-size:2.4rem; line-height:3rem; color:#202020;
+	}	
+
+	.modal .content{
+		margin-top:0; padding:2rem;
 	}
+
+}
+
+@media screen and (min-width: 950px) { /* Desk */
+
+	.modal{
+		width:1000px;
+	}	
 
 }	

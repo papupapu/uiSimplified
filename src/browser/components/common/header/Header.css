@@ -88,27 +88,23 @@
 }
 
 #nav dl{
-	padding:2.5rem 1rem 0;
-	font-weight:700; font-size:1.6rem; line-height:32px; font-family:'PT Sans',Georgia; text-transform: uppercase;
+	padding:1.5rem 1rem 0;
+	font-weight:700; font-size:1.6rem; line-height:4.4rem; font-family:'PT Sans',Georgia; text-transform: uppercase;
 }
 
 #nav dt{
-	margin-top:1rem;
+	color:#777;
 }
 
 #nav a{
+	display:block;
 	padding-left:1rem;
-	color:#666;
+	color:#333;
 	text-decoration:none;
 }
 
 #nav a.hp{
 	padding-left:0;
-}
-
-body.menu_open{
-	position:fixed;
-	overflow: hidden;
 }
 
 @media screen and (min-width: 375px) { /* iPhone 6 */

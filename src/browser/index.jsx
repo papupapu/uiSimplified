@@ -128,6 +128,7 @@ class UiSimplified extends React.Component {
       maxToShow,
       list: articleList,
       contentType: 'articles',
+      openModal: this.toggleSiteHiddenComponents,
     };
     return (
       <List {...listObj} />

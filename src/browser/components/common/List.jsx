@@ -1,7 +1,7 @@
 import React from 'react';
 import Article from '../article/Article';
 
-function List({ device, viewport, list, titleTag, maxToShow, contentType }) {
+function List({ device, viewport, list, titleTag, maxToShow, contentType, openModal }) {
   if (list.length > 0) {
     const limit = maxToShow < list.length ? maxToShow : list.length;
     if (contentType === 'articles') {
@@ -12,6 +12,7 @@ function List({ device, viewport, list, titleTag, maxToShow, contentType }) {
         obj.device = device;
         obj.viewport = viewport;
         obj.type = 'list';
+        obj.openModal = openModal;
         articles.push(<Article key={`article-${i}`} {...obj} />);
       }
       return (
@@ -30,6 +31,7 @@ List.propTypes = {
   titleTag: React.PropTypes.string,
   maxToShow: React.PropTypes.number,
   contentType: React.PropTypes.string,
+  openModal: React.PropTypes.func,
 };
 
 List.defaultProps = {
@@ -39,6 +41,7 @@ List.defaultProps = {
   titleTag: '',
   maxToShow: 0,
   contentType: '',
+  openModal: () => {},
 };
 
 export default List;
