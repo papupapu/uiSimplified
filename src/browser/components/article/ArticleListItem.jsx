@@ -41,6 +41,9 @@ class ArticleListItem extends React.Component {
     return (
       <article className="item">
         <header className={css}>
+          <PRODUCTInfos
+            infos={infos}
+          />
           <SEOTag
             tag={titleTag}
             value={title}

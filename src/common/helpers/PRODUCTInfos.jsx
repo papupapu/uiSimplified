@@ -1,15 +1,17 @@
 import React from 'react';
 
 function PRODUCTInfos({ infos }) {
-  return Object.keys(infos).length > 0 ?
-      `<p className="infos">
-        <strong>${infos.price}</strong>
-        <span>${infos.mq}</span> {Object.keys(infos)[1]}.&nbsp;
-        <span>${infos.locali}</span> {Object.keys(infos)[2]}&nbsp;
-        <span>${infos.bagni}</span> {Object.keys(infos)[3]}
-      </p>`
-    :
-     null;
+  if (Object.keys(infos).length > 0) {
+    return (
+      <p className="infos">
+        <strong>{infos.price}</strong>
+        <span>{infos.mq}</span> {Object.keys(infos)[1]}.&nbsp;
+        <span>{infos.locali}</span> {Object.keys(infos)[2]}&nbsp;
+        <span>{infos.bagni}</span> {Object.keys(infos)[3]}
+      </p>
+    );
+  }
+  return null;
 }
 
 PRODUCTInfos.propTypes = {
