@@ -26,6 +26,7 @@ class ArticleListItem extends React.Component {
   componentDidMount() {
     this.checkViewport();
     window.addEventListener('scroll', this.checkViewport);
+    this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
