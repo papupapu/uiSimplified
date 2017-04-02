@@ -34,6 +34,7 @@ class ArticleListItem extends React.Component {
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
     const isInViewport = nextState.isInViewport !== this.state.isInViewport;
     if ((device || viewport) && this.props.media.length > 1) {
+      this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
       return true;
     } else if (isInViewport) {
       return true;
