@@ -31,6 +31,7 @@ class Gallery extends React.Component {
         sizes: this.sliderSizes,
         device: nextProps.device,
       };
+      this.gallery.parentNode.style.height = `${Math.floor((70 * this.gallery.offsetWidth) / 100)}px`; // iOS layout fix
       return true;
     }
     return false;
