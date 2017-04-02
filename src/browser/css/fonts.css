@@ -42,7 +42,12 @@ em, i{
 }
 
 #app{
-	padding-bottom:5rem;
+	position:relative;
+	min-height:100%;
+}
+
+.UiSimplified{
+	padding-bottom:25rem;	
 }
 
 .sw{
@@ -56,9 +61,5 @@ em, i{
 	html{
 		font-size:75%;
 	}
-
-	#app{
-		padding-bottom:0;
-	}	
 
 }

@@ -100,7 +100,7 @@
 .media{
 	position:absolute; z-index:2;
 	top:0;left:0;
-	padding-top:70%;
+	padding-top:75%;
 	width:100%;
 	background:url(/images/style/default-thumb.png) center center no-repeat; background-size:cover;
 }
@@ -126,22 +126,6 @@
 		margin:1.5rem 0; padding:72.5% 1.5rem .2rem;		
 	}	
 
-}
-
-@media screenand (min-device-width : 375px) and (-webkit-min-device-pixel-ratio : 2) {
-
-	.media{
-		padding-top:75%;
-	}
-
-}
-
-@media screenand (min-device-width : 414px) and (-webkit-min-device-pixel-ratio : 3) {
-
-	.media{
-		padding-top:75%;
-	}	
-	
 }
 
 @media screen and (min-width: 568px){ /* iPhone5 - landscape */

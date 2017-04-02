@@ -8,6 +8,7 @@ import Header from './components/common/header/Header';
 import Modal from './components/common/modal/Modal';
 import Overlayer from './components/common/overlayer/Overlayer';
 import List from './components/common/List';
+import Footer from './components/common/footer/Footer';
 
 import { userDevice } from './utils/UserDevice';
 import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
@@ -148,6 +149,7 @@ class UiSimplified extends React.Component {
         {content}
         {modal}
         <Overlayer {...overlayer} />
+        <Footer />
       </div>
     );
   }

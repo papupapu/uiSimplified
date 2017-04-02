@@ -1,0 +1,28 @@
+#footer{
+	position:absolute;
+	bottom:0; left:0;
+	width:100%; min-height:25rem;
+	background:#333;
+}
+
+#footer p{
+	padding:1.5rem 0;
+	font-size:1.4rem; line-height:2rem; color:#e1e1e1; text-align:center;
+}
+
+#footer .logo{
+	margin:1.5rem auto 0;
+	width:61px; height:50px;
+	background:url(/images/style/logo.png) 0 center no-repeat;
+	background-size:auto 34px;
+	text-indent:-9999em;
+	transition: all .3s ease-in;
+}
+
+@media screen and (min-width: 768px) { /* iPad */
+
+	#footer p{
+		padding:3rem 1.5rem;
+	}
+	
+}
