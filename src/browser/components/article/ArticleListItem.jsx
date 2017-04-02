@@ -6,7 +6,7 @@ import Gallery from '../gallery/Gallery';
 import SEOTag from '../../../common/helpers/SEOTag';
 import PRODUCTInfos from '../../../common/helpers/PRODUCTInfos';
 
-import { MAIL } from '../../../common/graphic/SVGCodes';
+import { CALENDAR, BALOON } from '../../../common/graphic/SVGCodes';
 import './ArticleListItem.css';
 
 class ArticleListItem extends React.Component {
@@ -46,12 +46,12 @@ class ArticleListItem extends React.Component {
             className="modal_handle"
             onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
           >
-            <svg width="26" height="19" viewBox="0 0 26 19">
-              <path
-                d={MAIL.b}
-                fillRule="evenodd"
-                transform=""
-              />
+            <svg
+              className="calendar"
+              enableBackground="new 0 0 298.314 298.313"
+              viewBox="0 0 298.314 298.313"
+            >
+              <path d={CALENDAR.d} />
             </svg>
           </a>
           <span>|</span>
@@ -61,12 +61,12 @@ class ArticleListItem extends React.Component {
             className="modal_handle"
             onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
           >
-            <svg width="26" height="19" viewBox="0 0 26 19">
-              <path
-                d={MAIL.b}
-                fillRule="evenodd"
-                transform=""
-              />
+            <svg
+              className="baloon"
+              enableBackground="new 0 0 314.014 314.014"
+              viewBox="0 0 314.014 314.014"
+            >
+              <path d={BALOON.d} />
             </svg>
           </a>
         </p>
