@@ -78,7 +78,7 @@ class UiSimplified extends React.Component {
           disableScroll();
         }
         if (updateModalState) {
-          this.modalType = !this.state.modal ? evt.target.id : '';
+          this.modalType = !this.state.modal ? evt.target.getAttribute('data-action') : '';
           this.modalData = !this.state.modal && obj !== null ? obj : null;
           this.setState({ modal: !this.state.modal });
         }

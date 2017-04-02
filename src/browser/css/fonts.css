@@ -33,6 +33,14 @@ time{
 	font-family:'Lato',helvetica,arial;
 }
 
+strong, b{
+	font-weight:500;
+}
+
+em, i{
+	font-style:italic;
+}
+
 #app{
 	padding-bottom:5rem;
 }

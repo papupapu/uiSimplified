@@ -7,7 +7,7 @@ import SEOTag from '../../../common/helpers/SEOTag';
 import PRODUCTInfos from '../../../common/helpers/PRODUCTInfos';
 
 import { MAIL } from '../../../common/graphic/SVGCodes';
-
+import './ArticleListItem.css';
 
 class ArticleListItem extends React.Component {
 
@@ -43,7 +43,8 @@ class ArticleListItem extends React.Component {
           <strong>sonolameglioagenzia</strong>
           <a
             href=""
-            onClick={(evt) => { evt.preventDefault(); }}
+            className="modal_handle"
+            onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
           >
             <svg width="26" height="19" viewBox="0 0 26 19">
               <path
@@ -56,6 +57,7 @@ class ArticleListItem extends React.Component {
           <span>|</span>
           <a
             href=""
+            data-action="sendMail"
             className="modal_handle"
             onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
           >

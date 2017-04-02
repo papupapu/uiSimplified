@@ -1,7 +1,6 @@
 import React from 'react';
 import ArticleListItem from './ArticleListItem';
 import { SUBTITLE_TAG } from '../../../server/configurations/Articles';
-import './Article.css';
 
 /*
   We want to show content... let's call it article
