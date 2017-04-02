@@ -12,7 +12,7 @@ class Article extends React.Component {
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
-    if ((device || viewport) && this.props.heading.media.length > 1) {
+    if (device || viewport) {
       return true;
     }
     return false;

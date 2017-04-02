@@ -33,10 +33,27 @@ class ArticleListItem extends React.Component {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
     const isInViewport = nextState.isInViewport !== this.state.isInViewport;
-    if ((device || viewport) && this.props.media.length > 1) {
-      this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+    if (device || viewport) {
+      /*
+        Just plain horrible!!!
+        Looks like iOS devices will compute height percentages wrong.
+        Need to set the height of the gallery/image container in px as soon as we can.
+
+        TODO:
+        look for a media query solutions to keep layout measures computing separated from APP logic
+      */
+      if (nextProps.viewport.width <= '568') {
+        this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+      } else {
+        this.article.querySelector('.media').style.height = '';
+      }
       return true;
     } else if (isInViewport) {
+      if (nextProps.viewport.width <= '568') {
+        this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+      } else {
+        this.article.querySelector('.media').style.height = '';
+      }      
       return true;
     }
     return false;

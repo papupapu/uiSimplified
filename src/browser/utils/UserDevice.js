@@ -1,4 +1,4 @@
-export function esLintRestInPeace() {}
+export function lintPeace() {}
 
 export function userDevice() {
   const viewport = {
