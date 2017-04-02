@@ -1,22 +1,15 @@
-/*
-
-	uiSimplified:
-	- standard rules
-
-*/
-
-.item{
+.articleListItem{
 	position:relative; z-index:1;
 	margin:1rem 0; padding:72.5% 1rem .2rem;
 	background:#FFF; border:1px solid #E2E1E1; border-bottom-width:3px;
 }
 
-.item h3{
+.articleListItem h3{
 	margin-bottom:1rem;
 	font-size:2.2rem; line-height:2.6rem; color:#131313;
 }
 
-.item h4{
+.articleListItem h4{
 	display: -webkit-box;
 	-webkit-line-clamp: 5; -webkit-box-orient: vertical;
 	height:11rem;
@@ -24,80 +17,80 @@
 	overflow:hidden; text-overflow: ellipsis;
 }
 
-.item h3{
+.articleListItem h3{
 	margin-bottom:.7rem;
 	color:#333;
 }
 
-.item .casa h4{
+.articleListItem .casa h4{
 	color:#676767;
 }
 
-.item p.infos{
+.articleListItem p.infos{
 	margin-bottom:.3rem;
 	font-size:1.4rem; line-height:3.8rem; color:#787878; text-align:right;
 }
 
-.item p.infos strong{
+.articleListItem p.infos strong{
 	float:left;
 	font-weight:700; font-size:1.8rem; color:#202020;
 }
 
-.item p.infos span{
+.articleListItem p.infos span{
 	font-weight:700; font-size:1.8rem; color:#202020;
 }
 
-.item .actions{
+.articleListItem .actions{
 	margin-top:1rem;
 }
 
-.item .actions p{
+.articleListItem .actions p{
 	font-size:1.2rem; line-height:4.4rem; color:#202020;
 	border-top:1px solid #E2E1E1;
 	overflow:hidden;
 }
 
-.item .actions strong{
+.articleListItem .actions strong{
 	float:left;
 	padding-left:1.1rem;
 	font-weight:700; color:#404040;
 }
 
-.item .actions a,
-.item .actions span{
+.articleListItem .actions a,
+.articleListItem .actions span{
 	float:right;
 	color:#E2E1E1;
 }
 
-.item .actions a{
+.articleListItem .actions a{
 	position:relative;
 	width:4.4rem; height:4.4rem;
 }
 
-.item .actions a svg{
+.articleListItem .actions a svg{
 	position:absolute;
 	top:50%; left:50%;
 	width:25px; height:25px;
 	transform:translate(-50%,-50%);
 }
 
-.item .actions a svg.calendar{
+.articleListItem .actions a svg.calendar{
 	width:22px; height:22px;
 }
 
-.item .actions a svg.baloon{
+.articleListItem .actions a svg.baloon{
 	transform:translate(-50%,-45%);
 }
 
-.item .actions a svg path{
+.articleListItem .actions a svg path{
 	fill:#606060;
 }
 
-.item .actions a:hover svg path{
+.articleListItem .actions a:hover svg path{
 	fill:#f90;
 }
 
-.media{
+.articleListItem .media{
 	position:absolute; z-index:2;
 	top:0;left:0;
 	padding-top:75%;
@@ -105,24 +98,20 @@
 	background:url(/images/style/default-thumb.png) center center no-repeat; background-size:cover;
 }
 
-.mediael{
+.articleListItem .mediael{
 	display: block; position: absolute;
 	top: 0; right: 0; bottom: 0; left: 0;
 	width: 100%; height: 100%;
 }
 
-.mediael img{
+.articleListItem .mediael img{
 	display: block;
 	max-width: 100%;
 }
 
 @media screen and (min-width: 375px) { /* iPhone 6 */
 
-	.sw{
-		padding:0 1.5rem;
-	}
-
-	.item{
+	.articleListItem{
 		margin:1.5rem 0; padding:72.5% 1.5rem .2rem;		
 	}	
 
@@ -130,37 +119,37 @@
 
 @media screen and (min-width: 568px){ /* iPhone5 - landscape */
 
-	.item{
+	.articleListItem{
 		padding-top:.6rem;
 		height:16.5rem;
 		border-bottom-width:1px;
 	}
 
-	.media{
+	.articleListItem .media{
 		padding-top:0;
 		width:22rem; height:100%;
 	}
 
-	.item h3,
-	.item h4,
-	.item p.infos,
-	.item .actions{
+	.articleListItem h3,
+	.articleListItem h4,
+	.articleListItem p.infos,
+	.articleListItem .actions{
 		margin-left:21.5rem;
 	}	
 
-	.item h4{
+	.articleListItem h4{
 		-webkit-line-clamp: 2;
 		height:4.1rem;
 	}
 
-	.item .actions{
+	.articleListItem .actions{
 		position:absolute; z-index:1;
 		bottom:0; left:0;
 		margin:0; padding:0 1.5rem 0 23rem;
 		width:100%;
 	}
 
-	.item .actions p{
+	.articleListItem .actions p{
 		padding-top:0;
 	}	
 
@@ -168,7 +157,7 @@
 
 @media screen and (min-width: 568px) and (max-width: 767px)  { /* iPhone5 - landscape */
 
-	.item h3{
+	.articleListItem h3{
 		display: -webkit-box;
 		-webkit-line-clamp: 2; -webkit-box-orient: vertical;
 		margin-bottom:.3rem;		
@@ -176,22 +165,22 @@
 		overflow:hidden; text-overflow: ellipsis;
 	}	
 
-	.item .casa h3{
+	.articleListItem .casa h3{
 		display:block;
 		height:auto;
 		overflow:hidden;
 	}
 
-	.item .casa h4{
+	.articleListItem .casa h4{
 		font-size:1.4rem; line-height:2rem; 
 	}	
 
-	.item p.infos{
+	.articleListItem p.infos{
 		font-size:1.3rem; line-height:3rem;
 	}
 
-	.item p.infos strong,
-	.item p.infos span{
+	.articleListItem p.infos strong,
+	.articleListItem p.infos span{
 		font-size:1.6rem;
 	}
 
@@ -203,34 +192,34 @@
 		font-size:75%;
 	}
 
-	.item{
+	.articleListItem{
 		padding:0 1.5rem;		
 		height:16.5rem;
 	}		
 
-	.item h3{
+	.articleListItem h3{
 		margin-top:1rem; margin-bottom:.6rem; margin-left:22rem;
 		font-size:2.4rem; line-height:2.8rem;
 	}
 
-	.item .casa h3{
+	.articleListItem .casa h3{
 		margin-top:0;
 	}
 
-	.item h4{
+	.articleListItem h4{
 		margin-left:21.7rem;
 		font-size:1.4rem; line-height:2rem;
 	}
 
-	.item .actions p{
+	.articleListItem .actions p{
 		line-height:4rem;
 	}
 
-	.item .actions a{
+	.articleListItem .actions a{
 		width:4rem; height:4rem;
 	}
 
-	.item .actions span{
+	.articleListItem .actions span{
 		padding:0 1rem;
 	}
 

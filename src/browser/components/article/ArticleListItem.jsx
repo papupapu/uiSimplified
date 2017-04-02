@@ -1,8 +1,8 @@
 import React from 'react';
-// UI elements
+
 import Image from '../common/Image';
 import Gallery from '../gallery/Gallery';
-// Product related elements
+
 import SEOTag from '../../../common/helpers/SEOTag';
 import PRODUCTInfos from '../../../common/helpers/PRODUCTInfos';
 
@@ -123,7 +123,7 @@ class ArticleListItem extends React.Component {
       </div>
       );
     return (
-      <article className="item" ref={(article) => { this.article = article; }}>
+      <article className="articleListItem" ref={(article) => { this.article = article; }}>
         <header className={css}>
           <PRODUCTInfos
             infos={infos}

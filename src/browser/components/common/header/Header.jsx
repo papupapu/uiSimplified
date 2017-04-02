@@ -87,14 +87,10 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  device: React.PropTypes.string,
-  viewport: React.PropTypes.instanceOf(Object),
   toggleSiteNavigation: React.PropTypes.func,
 };
 
 Header.defaultProps = {
-  device: '',
-  viewport: {},
   toggleSiteNavigation: null,
 };
 
