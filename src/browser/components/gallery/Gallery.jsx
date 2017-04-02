@@ -22,7 +22,10 @@ class Gallery extends React.Component {
     const viewport = nextProps.viewport.width !== '' && nextProps.viewport.width !== this.props.viewport.width;
     const availableSizes = nextState.iGotSizes && !this.state.iGotSizes;
     if (device || viewport || availableSizes) {
-      this.sliderSizes = [this.gallery.offsetWidth, this.gallery.offsetHeight];
+      this.sliderSizes = [
+        this.gallery.offsetWidth,
+        Math.floor((70 * this.gallery.offsetWidth) / 100),
+      ];
       this.sliderObj = {
         media: this.photoArray,
         sizes: this.sliderSizes,
