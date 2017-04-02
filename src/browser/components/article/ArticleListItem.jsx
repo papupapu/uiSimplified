@@ -11,18 +11,68 @@ import './ArticleListItem.css';
 
 class ArticleListItem extends React.Component {
 
-  shouldComponentUpdate(nextProps) {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isInViewport: false,
+    };
+
+    this.waitingForASignal = true;
+    this.isInViewport = this.isInViewport.bind(this);
+    this.checkViewport = this.checkViewport.bind(this);
+  }
+
+  componentDidMount() {
+    this.checkViewport();
+    window.addEventListener('scroll', this.checkViewport);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
+    const isInViewport = nextState.isInViewport !== this.state.isInViewport;
     if ((device || viewport) && this.props.media.length > 1) {
+      return true;
+    } else if (isInViewport) {
       return true;
     }
     return false;
   }
 
+  componentWillUnMount() {
+    window.removeEventListener('scroll', this.checkViewport);
+  }
+
+  isInViewport() {
+    const rect = this.article.getBoundingClientRect();
+    const viewportHeight = (window.innerHeight || document.documentElement.clientHeight);
+    return (
+      rect.bottom >= 0 &&
+      rect.top < viewportHeight
+    );
+  }
+
+  checkViewport() {
+    if (this.isInViewport() && this.waitingForASignal) {
+      this.waitingForASignal = false;
+      this.setState(
+        { isInViewport: true },
+        () => {
+          window.removeEventListener('scroll', this.checkViewport);
+        },
+      );
+    }
+  }
+
   addMedia() {
     const { media } = this.props;
     let output = null;
+    if (!this.state.isInViewport) {
+      // TODO: no script tag for SEO
+      output = <div className="media" />;
+      return output;
+    }
     if (media.length > 0) {
       if (media.length > 1) {
         output = <div className="media"><Gallery media={media} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
@@ -73,7 +123,7 @@ class ArticleListItem extends React.Component {
       </div>
       );
     return (
-      <article className="item">
+      <article className="item" ref={(article) => { this.article = article; }}>
         <header className={css}>
           <PRODUCTInfos
             infos={infos}

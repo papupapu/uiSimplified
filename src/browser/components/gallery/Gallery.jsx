@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from '../common/Image';
 import GallerySlider from './GallerySlider';
 import './Gallery.css';
 
@@ -10,6 +9,7 @@ class Gallery extends React.Component {
 
     this.state = {
       type: 'photo',
+      iGotSizes: false,
     };
   }
 
@@ -17,10 +17,11 @@ class Gallery extends React.Component {
     this.setSliderMediaUp();
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
     const device = nextProps.device !== '' && nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== '' && nextProps.viewport.width !== this.props.viewport.width;
-    if (device || viewport) {
+    const availableSizes = nextState.iGotSizes && !this.state.iGotSizes;
+    if (device || viewport || availableSizes) {
       this.sliderSizes = [this.gallery.offsetWidth, this.gallery.offsetHeight];
       this.sliderObj = {
         media: this.photoArray,
@@ -35,6 +36,7 @@ class Gallery extends React.Component {
   setSliderMediaUp() {
     const { media } = this.props;
     this.photoArray = media.filter((el) => { if (el.type === 'photo') { return el; } return false; });
+    this.setState({ iGotSizes: true });
   }
 
   render() {
@@ -42,10 +44,10 @@ class Gallery extends React.Component {
     return (
       <div className={this.props.class !== '' ? `${this.props.class} gallery` : 'gallery'} ref={(gallery) => { this.gallery = gallery; }}>
         {
-          this.props.device === '' ?
-            <Image src={this.props.media[0].src} alt={this.props.device} />
-          :
+          this.state.iGotSizes ?
             <GallerySlider {...sliderObj} />
+          :
+            null
         }
       </div>
     );
