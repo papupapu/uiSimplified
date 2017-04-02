@@ -35,11 +35,11 @@
 	top:1rem; left:1rem;
 	width:calc(100% - 2rem); height:calc(100% - 2rem);
 	background:#FFF; border-radius:5px;
-	overflow-y:auto;
+	overflow-y:auto;	
 }
 
 .modal h1{
-	position:fixed; 
+	position:fixed;
 	top:1rem; left:1rem;
 	padding:0 1rem;
 	width:calc(100% - 2rem);
