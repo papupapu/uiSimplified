@@ -6,7 +6,7 @@
 }
 
 #footer p{
-	padding:1.5rem 0;
+	padding:3rem 0 1.5rem;
 	font-size:1.4rem; line-height:2rem; color:#e1e1e1; text-align:center;
 }
 
@@ -24,5 +24,5 @@
 	#footer p{
 		padding:3rem 1.5rem;
 	}
-	
+
 }
