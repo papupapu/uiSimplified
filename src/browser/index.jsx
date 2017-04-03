@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
 
 import './css/reset.css';
 import './css/default.css';
@@ -15,6 +15,8 @@ import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
 
 import { ARTICLELIST_MAX_ITEMS } from '../server/configurations/Articles';
 import { articleList } from '../server/static/Articles';
+
+import BasicExample from './routes';
 
 class UiSimplified extends React.Component {
 
@@ -144,7 +146,7 @@ class UiSimplified extends React.Component {
     return (
       <div className="UiSimplified">
         <Header {...header} />
-        {content}
+        <BasicExample />
         {modal}
         <Overlayer {...overlayer} />
         <Footer />
@@ -153,7 +155,4 @@ class UiSimplified extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <UiSimplified />,
-  document.getElementById('app'),
-);
+ReactDom.render(<UiSimplified />, document.querySelector('#app'));
