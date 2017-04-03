@@ -22,16 +22,17 @@
 }
 
 #header .logo{
+	position:relative;
 	margin:0 auto;
-	width:61px; height:50px;
-	background:url(/images/style/logo.png) 0 center no-repeat;
-	background-size:auto 34px;
-	text-indent:-9999em;
+	width:67px; height:50px;
 	transition: all .3s ease-in;
 }
 
-#header.fixed .logo{
-	background-position: 0 9px;
+#header .logo svg{
+	position:absolute; 
+	top:50%; left:0;
+	transform:translate(0,-50%);
+	pointer-events: none;
 }
 
 #header .menu_handle{

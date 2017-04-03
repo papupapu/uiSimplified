@@ -1,4 +1,5 @@
 import React from 'react';
+import { LOGO, HAMBURGER } from '../../../../common/graphic/SVGCodes';
 import './Header.css';
 
 class Header extends React.Component {
@@ -45,21 +46,23 @@ class Header extends React.Component {
   }
 
   render() {
-    const x = 'M 0 11 L 24 11 L 24 13 L 0 13 L 0 11 Z M 0 11';
-    const y = 'M 0 11 L 24 11 L 24 13 L 0 13 L 0 11 Z M 0 11';
-    const a = 'M 0 19 L 24 19 L 24 21 L 0 21 L 0 19 Z M 0 19';
-    const b = 'M 0 3 L 24 3 L 24 5 L 0 5 L 0 3 Z M 0 3';
     return (
       <header id="header" ref={(header) => { this.header = header; }}>
         <div className="header">
           <div className="sw">
-            <h1 className="logo">logo</h1>
+            <h1 className="logo">
+              <svg viewBox="0 0 67 31">
+                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                  <path d={LOGO.d} fill="#F6A623" />
+                </g>
+              </svg>
+            </h1>
             <a className="menu_handle" href="" onClick={this.toggleSiteNavigation}>
               <svg height="24" width="24" viewBox="0 0 24 24">
-                <path className="x" fill="#F6A623" fillRule="evenodd" d={x} />
-                <path className="y" fill="#F6A623" fillRule="evenodd" d={y} />
-                <path className="a" fill="#F6A623" fillRule="evenodd" d={a} />
-                <path className="b" fill="#F6A623" fillRule="evenodd" d={b} />
+                <path className="x" fill="#F6A623" fillRule="evenodd" d={HAMBURGER.x} />
+                <path className="y" fill="#F6A623" fillRule="evenodd" d={HAMBURGER.y} />
+                <path className="a" fill="#F6A623" fillRule="evenodd" d={HAMBURGER.a} />
+                <path className="b" fill="#F6A623" fillRule="evenodd" d={HAMBURGER.b} />
               </svg>
             </a>
           </div>
