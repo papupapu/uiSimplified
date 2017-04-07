@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 import './Header.css';
 
 class Header extends React.Component {
@@ -68,7 +73,7 @@ class Header extends React.Component {
           <dl>
             <dd><a className="hp" href="">Home</a></dd>
             <dt>Categorie</dt>
-            <dd><a href="">Categoria</a></dd>
+            <dd><Link to="/cat">Categoria</Link></dd>
             <dd><a href="">Categoria</a></dd>
             <dd><a href="">Categoria</a></dd>
             <dd><a href="">Categoria</a></dd>

@@ -4,15 +4,15 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-const Home = () => (
-  <p>home</p>
-);
+import UiSimplified from './UiSimplified';
 
 const BasicExample = () => (
   <Router>
-    <Route exact path="/" component={Home}/>
+    <div>
+    	<UiSimplified />
+    </div>
   </Router>
 );
 
