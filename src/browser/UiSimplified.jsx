@@ -33,7 +33,7 @@ const Cat = () => (
 
 class UiSimplified extends React.Component {
 
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     this.state = {
@@ -159,7 +159,7 @@ class UiSimplified extends React.Component {
     return (
       <div className="UiSimplified">
         <Header {...header} />
-        
+
         <Route exact path="/" component={Home}/>
         <Route path="/cat" component={Cat}/>
 
@@ -170,5 +170,9 @@ class UiSimplified extends React.Component {
     );
   }
 }
+
+UiSimplified.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default UiSimplified;  

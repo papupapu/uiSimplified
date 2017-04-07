@@ -10,9 +10,7 @@ import UiSimplified from './UiSimplified';
 
 const BasicExample = () => (
   <Router>
-    <div>
-    	<UiSimplified />
-    </div>
+    <UiSimplified />
   </Router>
 );
 

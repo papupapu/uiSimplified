@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 class Header extends React.Component {
 
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     this.scrollPosition = 0;
@@ -23,8 +19,8 @@ class Header extends React.Component {
     });
   }
 
-  shouldComponentUpdate() {
-    return false;
+  shouldComponentUpdate(nextProps) {    
+    return true;
   }
 
   handleScroll() {
@@ -49,7 +45,7 @@ class Header extends React.Component {
     this.props.toggleSiteNavigation(event);
   }
 
-  render() {
+  render() {    
     const x = 'M 0 11 L 24 11 L 24 13 L 0 13 L 0 11 Z M 0 11';
     const y = 'M 0 11 L 24 11 L 24 13 L 0 13 L 0 11 Z M 0 11';
     const a = 'M 0 19 L 24 19 L 24 21 L 0 21 L 0 19 Z M 0 19';
@@ -73,7 +69,7 @@ class Header extends React.Component {
           <dl>
             <dd><a className="hp" href="">Home</a></dd>
             <dt>Categorie</dt>
-            <dd><Link to="/cat">Categoria</Link></dd>
+            <dd><NavLink to="/cat">Categoria</NavLink></dd>
             <dd><a href="">Categoria</a></dd>
             <dd><a href="">Categoria</a></dd>
             <dd><a href="">Categoria</a></dd>
@@ -97,6 +93,10 @@ Header.propTypes = {
 
 Header.defaultProps = {
   toggleSiteNavigation: null,
+};
+
+Header.contextTypes = {
+  router: React.PropTypes.object.isRequired
 };
 
 export default Header;

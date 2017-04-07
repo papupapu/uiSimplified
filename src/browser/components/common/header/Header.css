@@ -103,6 +103,10 @@
 	text-decoration:none;
 }
 
+#nav a.active{
+	color:#f90;
+}
+
 #nav a.hp{
 	padding-left:0;
 }
