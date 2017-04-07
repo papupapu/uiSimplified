@@ -23,9 +23,12 @@ class ArticleListItem extends React.Component {
     this.checkViewport = this.checkViewport.bind(this);
   }
 
-  componentDidMount() {
-    this.checkViewport();
+  componentWillMount() {
     window.addEventListener('scroll', this.checkViewport);
+  }  
+
+  componentDidMount() {
+    this.checkViewport();    
     this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
   }
 

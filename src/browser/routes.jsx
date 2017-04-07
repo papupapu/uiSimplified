@@ -1,17 +1,12 @@
 import React from 'react';
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import UiSimplified from './UiSimplified';
 
-const BasicExample = () => (
+const UiRouter = () => (
   <Router>
     <UiSimplified />
   </Router>
 );
 
-export default BasicExample;
+export default UiRouter;

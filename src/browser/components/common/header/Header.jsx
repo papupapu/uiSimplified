@@ -19,7 +19,7 @@ class Header extends React.Component {
     });
   }
 
-  shouldComponentUpdate(nextProps) {    
+  shouldComponentUpdate() {    
     return true;
   }
 
@@ -41,7 +41,9 @@ class Header extends React.Component {
   }
 
   toggleSiteNavigation(event) {
-    event.preventDefault();
+    if (event.target.className === 'menu_handle') {
+      event.preventDefault();
+    }
     this.props.toggleSiteNavigation(event);
   }
 
@@ -67,9 +69,9 @@ class Header extends React.Component {
         </div>
         <nav id="nav">
           <dl>
-            <dd><a className="hp" href="">Home</a></dd>
+            <dd className="hp"><NavLink exact onClick={this.toggleSiteNavigation} to="/">Home</NavLink></dd>
             <dt>Categorie</dt>
-            <dd><NavLink to="/cat">Categoria</NavLink></dd>
+            <dd><NavLink onClick={this.toggleSiteNavigation} to="/cat">Categoria</NavLink></dd>
             <dd><a href="">Categoria</a></dd>
             <dd><a href="">Categoria</a></dd>
             <dd><a href="">Categoria</a></dd>

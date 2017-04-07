@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import BasicExample from './routes';
+import UiRouter from './routes';
 
 ReactDOM.render(
-  <BasicExample />,
+  <UiRouter />,
   document.querySelector('#app')
 );

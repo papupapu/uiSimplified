@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import './css/reset.css';
 import './css/default.css';
@@ -12,20 +8,14 @@ import './css/default.css';
 import Header from './components/common/header/Header';
 import Modal from './components/common/modal/Modal';
 import Overlayer from './components/common/overlayer/Overlayer';
-import List from './components/common/List';
 import Footer from './components/common/footer/Footer';
+
+import Home from './views/Home';
 
 import { userDevice } from './utils/UserDevice';
 import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
 
-import { ARTICLELIST_MAX_ITEMS } from '../server/configurations/Articles';
-import { articleList } from '../server/static/Articles';
-
-import BasicExample from './routes';
-
-const Home = () => (
-  <p>Home</p>
-);
+import uiRouter from './routes';
 
 const Cat = () => (
   <p>Cat</p>
@@ -136,33 +126,26 @@ class UiSimplified extends React.Component {
     );
   }
 
-  articlesList(titleTag, maxToShow = ARTICLELIST_MAX_ITEMS) {
+  homeContent() {
     const { device, viewport } = this.state;
     return (
-      <List
-        titleTag={titleTag}
+      <Home
         device={device}
         viewport={viewport}
-        maxToShow={maxToShow}
-        list={articleList}
-        contentType={'articles'}
         openModal={this.toggleSiteHiddenComponents}
       />
     );
-  }
+  }    
 
   render() {
     const header = this.headerObj();
-    const content = this.articlesList('h3');
     const modal = this.state.modal ? this.modalObj() : null;
     const overlayer = { action: this.toggleSiteHiddenComponents };
     return (
       <div className="UiSimplified">
         <Header {...header} />
-
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" render={this.homeContent.bind(this)}/>
         <Route path="/cat" component={Cat}/>
-
         {modal}
         <Overlayer {...overlayer} />
         <Footer />

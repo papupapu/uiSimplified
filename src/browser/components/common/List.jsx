@@ -30,7 +30,7 @@ class List extends React.Component {
           articles.push(<Article key={`article-${i}`} {...obj} />);
         }
         return (
-          <div className="sw">{articles}</div>
+          <section>{articles}</section>
         );
       }
       return null;
