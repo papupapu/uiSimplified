@@ -6,7 +6,9 @@ import Gallery from '../gallery/Gallery';
 import SEOTag from '../common/helpers/SEOTag';
 import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
 
-import { CALENDAR, BALOON } from '../common/graphic/SVGCodes';
+import Calendar from '../common/graphic/Calendar';
+import Baloon from '../common/graphic/Baloon';
+
 import './ArticleListItem.css';
 
 class ArticleListItem extends React.Component {
@@ -62,7 +64,7 @@ class ArticleListItem extends React.Component {
     return false;
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.checkViewport);
   }
 
@@ -118,13 +120,7 @@ class ArticleListItem extends React.Component {
             className="modal_handle"
             onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
           >
-            <svg
-              className="calendar"
-              enableBackground="new 0 0 298.314 298.313"
-              viewBox="0 0 298.314 298.313"
-            >
-              <path d={CALENDAR.d} />
-            </svg>
+            <Calendar />
           </a>
           <span>|</span>
           <a
@@ -133,13 +129,7 @@ class ArticleListItem extends React.Component {
             className="modal_handle"
             onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
           >
-            <svg
-              className="baloon"
-              enableBackground="new 0 0 314.014 314.014"
-              viewBox="0 0 314.014 314.014"
-            >
-              <path d={BALOON.d} />
-            </svg>
+            <Baloon />
           </a>
         </p>
       </div>

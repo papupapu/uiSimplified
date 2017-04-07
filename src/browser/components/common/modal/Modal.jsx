@@ -1,6 +1,6 @@
 import React from 'react';
 import TextInput from '../input/Text';
-import { CLOSE } from '../../../../common/graphic/SVGCodes';
+import Close from '../graphic/Close';
 import './Modal.css';
 
 class Modal extends React.Component {
@@ -147,13 +147,7 @@ class Modal extends React.Component {
   render() {
     const close = (
       <a href={null} className="modal_handle" onClick={this.handleClick}>
-        <svg width="15" height="15" viewBox="0 0 15 15">
-          <path
-            d={CLOSE.d}
-            fillRule="evenodd"
-            transform={CLOSE.transform}
-          />
-        </svg>
+        <Close />
       </a>
     );
     const body = this.modalBody();
