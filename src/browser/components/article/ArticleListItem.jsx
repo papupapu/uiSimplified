@@ -3,10 +3,10 @@ import React from 'react';
 import Image from '../common/Image';
 import Gallery from '../gallery/Gallery';
 
-import SEOTag from '../../../common/helpers/SEOTag';
-import PRODUCTInfos from '../../../common/helpers/PRODUCTInfos';
+import SEOTag from '../common/helpers/SEOTag';
+import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
 
-import { CALENDAR, BALOON } from '../../../common/graphic/SVGCodes';
+import { CALENDAR, BALOON } from '../common/graphic/SVGCodes';
 import './ArticleListItem.css';
 
 class ArticleListItem extends React.Component {
