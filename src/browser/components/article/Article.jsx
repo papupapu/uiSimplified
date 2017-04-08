@@ -22,6 +22,8 @@ class Article extends React.Component {
     const { type,
             device,
             viewport,
+            id,
+            category,
             heading: { title, subtitle, infos, media },
             titleTag,
             openModal,
@@ -30,6 +32,8 @@ class Article extends React.Component {
     const articleIncipit = {
       device,
       viewport,
+      id,
+      category,
       title,
       subtitle,
       infos,
@@ -57,6 +61,8 @@ class Article extends React.Component {
 Article.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
+  id: React.PropTypes.string,
+  category: React.PropTypes.string,
   heading: React.PropTypes.instanceOf(Object),
   titleTag: React.PropTypes.string,
   type: React.PropTypes.string,
@@ -66,6 +72,8 @@ Article.propTypes = {
 Article.defaultProps = {
   device: '',
   viewport: {},
+  id: '',
+  category: '',
   heading: {},
   titleTag: '',
   type: '',

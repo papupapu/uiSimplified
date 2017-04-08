@@ -1,8 +1,6 @@
-/* overwrites ../article/Article.css */
-.mediael.gallery img{
+.gallery img{
   width:100%;
 }
-/* /overwrites ../article/Article.css */
 
 .gallery .sliderContainer{
   position:relative;

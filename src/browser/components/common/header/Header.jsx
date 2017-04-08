@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 import Hamburger from '../graphic/Hamburger';
 
+import { categoryList } from '../../../../server/static/Categories';
+
 import './Header.css';
 
 class Header extends React.Component {
 
-  constructor(props, context) {
+  constructor(props) {
     super(props);
 
     this.scrollPosition = 0;
@@ -22,7 +24,7 @@ class Header extends React.Component {
     });
   }
 
-  shouldComponentUpdate() {    
+  shouldComponentUpdate() {
     return true;
   }
 
@@ -50,7 +52,18 @@ class Header extends React.Component {
     this.props.toggleSiteNavigation(event);
   }
 
-  render() {    
+  linkList(data) {
+    const list = [];
+    data.forEach(
+      (el) => {
+        list.push(<NavLink key={`nav-el-${el.path}`} onClick={this.toggleSiteNavigation} to={`/${el.path}`}>{el.label}</NavLink>);
+      },
+    );
+    return list;
+  }
+
+  render() {
+    const categories = this.linkList(categoryList);
     return (
       <header id="header" ref={(header) => { this.header = header; }}>
         <div className="header">
@@ -63,14 +76,11 @@ class Header extends React.Component {
         </div>
         <nav id="nav">
           <dl>
-            <dd className="hp"><NavLink exact onClick={this.toggleSiteNavigation} to="/">Home</NavLink></dd>
+            <dd className="hp">
+              <NavLink exact onClick={this.toggleSiteNavigation} to="/">Home</NavLink>
+            </dd>
             <dt>Categorie</dt>
-            <dd><NavLink onClick={this.toggleSiteNavigation} to="/cat">Categoria</NavLink></dd>
-            <dd><a href="">Categoria</a></dd>
-            <dd><a href="">Categoria</a></dd>
-            <dd><a href="">Categoria</a></dd>
-            <dd><a href="">Categoria</a></dd>
-            <dd><a href="">Categoria</a></dd>
+            {categories}
             <dt>Servizi</dt>
             <dd><a href="">Categoria</a></dd>
             <dd><a href="">Categoria</a></dd>
@@ -92,7 +102,7 @@ Header.defaultProps = {
 };
 
 Header.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object.isRequired,
 };
 
 export default Header;

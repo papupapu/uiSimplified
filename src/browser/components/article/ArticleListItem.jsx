@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './ArticleListItem.css';
 
 import Image from '../common/Image';
 import Gallery from '../gallery/Gallery';
@@ -8,8 +11,6 @@ import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
 
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
-
-import './ArticleListItem.css';
 
 class ArticleListItem extends React.Component {
 
@@ -58,7 +59,7 @@ class ArticleListItem extends React.Component {
         this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
       } else {
         this.article.querySelector('.media').style.height = '';
-      }      
+      }
       return true;
     }
     return false;
@@ -108,13 +109,13 @@ class ArticleListItem extends React.Component {
   }
 
   render() {
-    const { title, titleTag, subtitle, subtitleTag, infos, openModal } = this.props;
+    const { id, category, title, titleTag, subtitle, subtitleTag, infos, openModal } = this.props;
     const media = this.addMedia();
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
     const actions = (
       <div className="actions">
         <p>
-          <strong>sonolameglioagenzia</strong>
+          <Link to={`/${category}/${id}`}><strong>sonolameglioagenzia</strong></Link>
           <a
             href=""
             className="modal_handle"
@@ -159,6 +160,8 @@ class ArticleListItem extends React.Component {
 ArticleListItem.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
+  id: React.PropTypes.string,
+  category: React.PropTypes.string,
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
   infos: React.PropTypes.instanceOf(Object),
@@ -171,6 +174,8 @@ ArticleListItem.propTypes = {
 ArticleListItem.defaultProps = {
   device: '',
   viewport: {},
+  id: '',
+  category: '',
   title: '',
   subtitle: '',
   infos: {},

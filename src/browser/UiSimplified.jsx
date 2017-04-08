@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Route } from 'react-router-dom';
 
 import './css/reset.css';
@@ -11,19 +10,22 @@ import Overlayer from './components/common/overlayer/Overlayer';
 import Footer from './components/common/footer/Footer';
 
 import Home from './views/Home';
+import Detail from './views/Detail';
 
 import { userDevice } from './utils/UserDevice';
 import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
 
-import uiRouter from './routes';
+import { categoryList } from '../server/static/Categories';
 
-const Cat = () => (
-  <p>Cat</p>
-);
+const Cat = ({ match }) => {
+  return (
+    <p>{match.path}</p>
+  );
+};
 
 class UiSimplified extends React.Component {
 
-  constructor(props, context) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -38,6 +40,9 @@ class UiSimplified extends React.Component {
     this.modalData = null;
     this.uiHiddenComponents = ['menu', 'modal'];
     this.toggleSiteHiddenComponents = this.toggleSiteHiddenComponents.bind(this);
+
+    this.homeContent = this.homeContent.bind(this);
+    this.detailContent = this.detailContent.bind(this);
   }
 
   componentDidMount() {
@@ -126,6 +131,16 @@ class UiSimplified extends React.Component {
     );
   }
 
+  routeList(data) {
+    const list = [];
+    data.forEach(
+      (el) => {
+        list.push(<Route key={`route-${el.path}`} exact path={`/${el.path}`} component={Cat} />);
+      },
+    );
+    return list;
+  }
+
   homeContent() {
     const { device, viewport } = this.state;
     return (
@@ -135,17 +150,32 @@ class UiSimplified extends React.Component {
         openModal={this.toggleSiteHiddenComponents}
       />
     );
-  }    
+  }
+
+  detailContent({ match }) {
+    const { device, viewport } = this.state;
+    return (
+      <Detail
+        device={device}
+        viewport={viewport}
+        detailId={match.params.id}
+        detailCategory={match.params.category}
+        openModal={this.toggleSiteHiddenComponents}
+      />
+    );
+  }
 
   render() {
     const header = this.headerObj();
     const modal = this.state.modal ? this.modalObj() : null;
     const overlayer = { action: this.toggleSiteHiddenComponents };
+    const categoryRoutes = this.routeList(categoryList);
     return (
       <div className="UiSimplified">
         <Header {...header} />
-        <Route exact path="/" render={this.homeContent.bind(this)}/>
-        <Route path="/cat" component={Cat}/>
+        <Route exact path="/" render={this.homeContent} />
+        {categoryRoutes}
+        <Route path="/:category/:id" render={this.detailContent} />
         {modal}
         <Overlayer {...overlayer} />
         <Footer />
@@ -155,7 +185,7 @@ class UiSimplified extends React.Component {
 }
 
 UiSimplified.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object.isRequired,
 };
 
-export default UiSimplified;  
+export default UiSimplified;
