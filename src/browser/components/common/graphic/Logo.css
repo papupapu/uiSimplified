@@ -1,0 +1,16 @@
+.logo{
+	width:67px; height:50px;
+	background-size:auto 34px;
+}
+
+.logo a{
+	display:block; position:relative;
+	width:67px; height:50px;
+}
+
+.logo svg{
+	position:absolute; 
+	top:50%; left:0;
+	transform:translate(0,-50%);
+	pointer-events: none;
+}
