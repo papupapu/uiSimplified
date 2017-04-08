@@ -6,6 +6,10 @@ import { articleList } from '../../server/static/Articles';
 
 class Detail extends React.Component {
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   // why should we rerender? let us think about this...
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
