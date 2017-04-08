@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleListItem from './ArticleListItem';
+import ListItem from './ListItem';
 import { SUBTITLE_TAG } from '../../../server/configurations/Articles';
 
 /*
@@ -46,12 +46,12 @@ class Article extends React.Component {
     switch (type) {
       case 'list':
         return (
-          <ArticleListItem {...articleIncipit} />
+          <ListItem {...articleIncipit} />
         );
       default:
         return (
-          <article className="item">
-            not ready
+          <article className="detail">
+            {title}
           </article>
         );
     }

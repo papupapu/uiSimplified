@@ -5,7 +5,7 @@ import List from '../components/common/List';
 import { ARTICLELIST_MAX_ITEMS } from '../../server/configurations/Articles';
 import { articleList } from '../../server/static/Articles';
 
-class Home extends React.Component {
+class Category extends React.Component {
 
   // why should we rerender? let us think about this...
   shouldComponentUpdate(nextProps) {
@@ -18,14 +18,15 @@ class Home extends React.Component {
   }
 
   articlesList(titleTag, maxToShow = ARTICLELIST_MAX_ITEMS) {
-    const { device, viewport, openModal } = this.props;
+    const { device, viewport, categoryName, openModal } = this.props;
+    const list = articleList.filter(article => article.category === categoryName);
     return (
       <List
         titleTag={titleTag}
         device={device}
         viewport={viewport}
         maxToShow={maxToShow}
-        list={articleList}
+        list={list}
         contentType={'articles'}
         openModal={openModal}
       />
@@ -33,11 +34,12 @@ class Home extends React.Component {
   }
 
   render() {
+    const { categoryName } = this.props;
     const content = this.articlesList('h3', 5);
     return (
       <div className="mainListing">
         <article>
-          <h1>hp</h1>
+          <h1>{categoryName}</h1>
         </article>
         <div className="sw">{content}</div>
       </div>
@@ -45,16 +47,18 @@ class Home extends React.Component {
   }
 }
 
-Home.propTypes = {
+Category.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
+  categoryName: React.PropTypes.string,
   openModal: React.PropTypes.func,
 };
 
-Home.defaultProps = {
+Category.defaultProps = {
   device: '',
   viewport: {},
+  categoryName: '',
   openModal: () => {},
 };
 
-export default Home;
+export default Category;

@@ -10,18 +10,13 @@ import Overlayer from './components/common/overlayer/Overlayer';
 import Footer from './components/common/footer/Footer';
 
 import Home from './views/Home';
+import Category from './views/Category';
 import Detail from './views/Detail';
 
 import { userDevice } from './utils/UserDevice';
 import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
 
 import { categoryList } from '../server/static/Categories';
-
-const Cat = ({ match }) => {
-  return (
-    <p>{match.path}</p>
-  );
-};
 
 class UiSimplified extends React.Component {
 
@@ -42,6 +37,7 @@ class UiSimplified extends React.Component {
     this.toggleSiteHiddenComponents = this.toggleSiteHiddenComponents.bind(this);
 
     this.homeContent = this.homeContent.bind(this);
+    this.categoryContent = this.categoryContent.bind(this);
     this.detailContent = this.detailContent.bind(this);
   }
 
@@ -135,7 +131,7 @@ class UiSimplified extends React.Component {
     const list = [];
     data.forEach(
       (el) => {
-        list.push(<Route key={`route-${el.path}`} exact path={`/${el.path}`} component={Cat} />);
+        list.push(<Route key={`route-${el.path}`} exact path={`/${el.path}`} render={this.categoryContent} />);
       },
     );
     return list;
@@ -147,6 +143,18 @@ class UiSimplified extends React.Component {
       <Home
         device={device}
         viewport={viewport}
+        openModal={this.toggleSiteHiddenComponents}
+      />
+    );
+  }
+
+  categoryContent({ match }) {
+    const { device, viewport } = this.state;
+    return (
+      <Category
+        device={device}
+        viewport={viewport}
+        categoryName={match.path.replace('/', '')}
         openModal={this.toggleSiteHiddenComponents}
       />
     );

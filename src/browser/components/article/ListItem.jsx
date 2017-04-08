@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './ArticleListItem.css';
+import './ListItem.css';
 
 import Image from '../common/Image';
 import Gallery from '../gallery/Gallery';
@@ -12,7 +12,7 @@ import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
 
-class ArticleListItem extends React.Component {
+class ListItem extends React.Component {
 
   constructor(props) {
     super(props);
@@ -28,10 +28,10 @@ class ArticleListItem extends React.Component {
 
   componentWillMount() {
     window.addEventListener('scroll', this.checkViewport);
-  }  
+  }
 
   componentDidMount() {
-    this.checkViewport();    
+    this.checkViewport();
     this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
   }
 
@@ -157,7 +157,7 @@ class ArticleListItem extends React.Component {
   }
 }
 
-ArticleListItem.propTypes = {
+ListItem.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
   id: React.PropTypes.string,
@@ -171,7 +171,7 @@ ArticleListItem.propTypes = {
   openModal: React.PropTypes.func,
 };
 
-ArticleListItem.defaultProps = {
+ListItem.defaultProps = {
   device: '',
   viewport: {},
   id: '',
@@ -185,5 +185,5 @@ ArticleListItem.defaultProps = {
   openModal: () => {},
 };
 
-export default ArticleListItem;
+export default ListItem;
 

@@ -16,9 +16,17 @@ class Detail extends React.Component {
     return false;
   }
 
+  fetchDetail() {
+    const { detailId } = this.props;
+    const detail = articleList.filter(article => article.id === detailId);
+    detail[0].type = 'detail';
+    return detail[0];
+  }
+
   render() {
+    const content = this.fetchDetail();
     return (
-      <div className="sw">foglia</div>
+      <Article {...content} />
     );
   }
 }
