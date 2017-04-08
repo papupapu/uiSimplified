@@ -4,9 +4,21 @@
 	background:#FFF; border:1px solid #E2E1E1; border-bottom-width:3px;
 }
 
+.articleListItem a{
+	text-decoration:none;
+}
+
+.articleListItem a:hover{
+	color:#000;
+}
+
 .articleListItem h3{
 	margin-bottom:.7rem;
 	font-size:2.2rem; line-height:2.6rem; color:#333;
+}
+
+.articleListItem h3 a{
+	color:#333;
 }
 
 .articleListItem h4{
@@ -17,7 +29,12 @@
 	overflow:hidden; text-overflow: ellipsis;
 }
 
-.articleListItem .casa h4{
+.articleListItem h4 a{
+	color:#323232;
+}
+
+.articleListItem .casa h4,
+.articleListItem .casa h4 a{
 	color:#676767;
 }
 

@@ -28,6 +28,7 @@ class Gallery extends React.Component {
       ];
       this.sliderObj = {
         media: this.photoArray,
+        detailUrl: this.props.detailUrl,
         sizes: this.sliderSizes,
         device: nextProps.device,
       };
@@ -62,6 +63,7 @@ Gallery.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
   media: React.PropTypes.instanceOf(Array),
+  detailUrl: React.PropTypes.string,
   class: React.PropTypes.string,
 };
 
@@ -69,6 +71,7 @@ Gallery.defaultProps = {
   device: '',
   viewport: {},
   media: [],
+  detailUrl: '',
   class: '',
 };
 

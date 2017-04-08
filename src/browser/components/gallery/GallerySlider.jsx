@@ -1,6 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Image from '../common/Image';
+
 import { disableScroll, enableScroll } from '../../utils/HandleMobileScroll';
+
 import { SLIDER_MAX_SLIDES_ON_CREATION, SLIDER_MAX_SLIDES_ON_UPDATE } from '../../../server/configurations/Articles';
 
 class GallerySlider extends React.Component {
@@ -60,13 +64,19 @@ class GallerySlider extends React.Component {
   }
 
   createSlides(width, height) {
+    const { media, detailUrl } = this.props;
     const slides = [];
-    this.props.media.forEach(
+    media.forEach(
       (el, index) => {
         if (index < this.slidesCreated) {
           const key = `slide-${index}`;
           const size = { width: `${width}px`, height: `${height}px` };
-          slides.push(<li key={key} style={size}><Image src={el.src} alt={key} /></li>);
+          slides.push(
+            <li key={key} style={size}>
+              <Link to={detailUrl}>
+                <Image src={el.src} alt={key} />
+              </Link>
+            </li>);
         }
       },
     );
@@ -78,7 +88,9 @@ class GallerySlider extends React.Component {
     scope.slider.style.transition = 'transform .3s ease-out';
     setTimeout(
       () => {
-        scope.slider.style.transition = 'transform 0s ease-out';
+        if (scope.slider !== null) {
+          scope.slider.style.transition = 'transform 0s ease-out';
+        }
       },
       315,
     );
@@ -179,12 +191,14 @@ class GallerySlider extends React.Component {
 GallerySlider.propTypes = {
   device: React.PropTypes.string,
   media: React.PropTypes.instanceOf(Array),
+  detailUrl: React.PropTypes.string,
   sizes: React.PropTypes.instanceOf(Array),
 };
 
 GallerySlider.defaultProps = {
   device: '',
   media: [],
+  detailUrl: '',
   sizes: [],
 };
 

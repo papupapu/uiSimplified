@@ -91,7 +91,8 @@ class ListItem extends React.Component {
   }
 
   addMedia() {
-    const { media } = this.props;
+    const { id, category, media } = this.props;
+    const detailUrl = `/${category}/${id}`;
     let output = null;
     if (!this.state.isInViewport) {
       // TODO: no script tag for SEO
@@ -100,9 +101,9 @@ class ListItem extends React.Component {
     }
     if (media.length > 0) {
       if (media.length > 1) {
-        output = <div className="media"><Gallery media={media} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
+        output = <div className="media"><Gallery media={media} detailUrl={detailUrl} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
       } else {
-        output = <div className="media"><Image src={media[0].src} class={'mediael'} alt={this.props.title} /></div>;
+        output = <div className="media"><Link to={detailUrl}><Image src={media[0].src} class={'mediael'} alt={this.props.title} /></Link></div>;
       }
     }
     return output;
@@ -110,12 +111,13 @@ class ListItem extends React.Component {
 
   render() {
     const { id, category, title, titleTag, subtitle, subtitleTag, infos, openModal } = this.props;
+    const detailUrl = `/${category}/${id}`;
     const media = this.addMedia();
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
     const actions = (
       <div className="actions">
         <p>
-          <Link to={`/${category}/${id}`}><strong>sonolameglioagenzia</strong></Link>
+          <strong>sonolameglioagenzia</strong>
           <a
             href=""
             className="modal_handle"
@@ -144,10 +146,12 @@ class ListItem extends React.Component {
           <SEOTag
             tag={titleTag}
             value={title}
+            url={detailUrl}
           />
           <SEOTag
             tag={subtitleTag}
             value={subtitle}
+            url={detailUrl}
           />
           {media}
           {actions}
