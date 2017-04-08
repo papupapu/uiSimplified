@@ -82,9 +82,9 @@ class Header extends React.Component {
             <dt>Categorie</dt>
             {categories}
             <dt>Servizi</dt>
-            <dd><a href="">Categoria</a></dd>
-            <dd><a href="">Categoria</a></dd>
-            <dd><a href="">Categoria</a></dd>
+            <dd>
+              <NavLink onClick={this.toggleSiteNavigation} to="/sicaadd">404</NavLink>
+            </dd>
           </dl>
         </nav>
       </header>

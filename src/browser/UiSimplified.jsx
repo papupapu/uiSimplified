@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router';
 
 import './css/reset.css';
 import './css/default.css';
@@ -12,6 +12,7 @@ import Footer from './components/common/footer/Footer';
 import Home from './views/Home';
 import Category from './views/Category';
 import Detail from './views/Detail';
+import NotFound from './views/NotFound';
 
 import { userDevice } from './utils/UserDevice';
 import { disableScroll, enableScroll } from './utils/HandleMobileScroll';
@@ -181,9 +182,12 @@ class UiSimplified extends React.Component {
     return (
       <div className="UiSimplified">
         <Header {...header} />
-        <Route exact path="/" render={this.homeContent} />
-        {categoryRoutes}
-        <Route path="/:category/:id" render={this.detailContent} />
+        <Switch>
+          <Route exact path="/" render={this.homeContent} />
+          {categoryRoutes}
+          <Route path="/:category/:id" render={this.detailContent} />
+          <Route component={NotFound} />
+        </Switch>
         {modal}
         <Overlayer {...overlayer} />
         <Footer />
