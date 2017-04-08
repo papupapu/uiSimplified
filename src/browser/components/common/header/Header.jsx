@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Hamburger from '../graphic/Hamburger';
 
@@ -68,7 +68,7 @@ class Header extends React.Component {
       <header id="header" ref={(header) => { this.header = header; }}>
         <div className="header">
           <div className="sw">
-            <h1 className="logo">logo</h1>
+            <h1 className="logo"><Link to="/">uiSimplified</Link></h1>
             <a className="menu_handle" href="" onClick={this.toggleSiteNavigation}>
               <Hamburger />
             </a>

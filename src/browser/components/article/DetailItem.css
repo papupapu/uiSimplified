@@ -1,0 +1,142 @@
+.articleDetailItem{
+	margin-bottom:1rem;
+}
+
+.articleDetailItem .cover{
+	position:absolute;
+	top:5rem; left:0;
+	width:100%; height:calc(50vh - 50px);
+	overflow:hidden;
+}
+
+.articleDetailItem .cover img{
+	position:absolute;
+	top:50%; left:50%;
+	width:100%; height:100%;
+	transform:translate(-50%, -50%);
+}
+
+.articleDetailItem header{
+	position:relative; z-index:1;
+	margin:65% 1rem 0; padding:1.5rem 1rem;
+	background:#FFF;				
+}
+
+.articleDetailItem h1{
+	margin-bottom:1rem;
+	font-size: 2.6rem; line-height:3.2rem; color:#333;
+	
+}
+
+.articleDetailItem h2{
+	font:700 1.8rem/2.8rem 'Lato'; color:#404040;			
+}
+
+.articleDetailItem p.actions{
+	margin-bottom:1.5rem;
+	font-size:1.2rem; line-height:4.4rem; color:#202020;
+	border-bottom:3px solid #333;
+	overflow:hidden;
+}
+
+.articleDetailItem .actions strong{
+	float:left;
+	padding-left:1.1rem;
+	font-weight:700; color:#404040;
+
+}
+
+.articleDetailItem .actions a,
+.articleDetailItem .actions span{
+	float:right;
+	color:#E2E1E1;
+}
+
+.articleDetailItem .actions a{
+	position:relative;
+	width:4.4rem; height:4.4rem;
+}
+
+.articleDetailItem .actions a svg{
+	position:absolute;
+	top:50%; left:50%;
+	width:25px; height:25px;
+	transform:translate(-50%,-50%);
+}
+
+.articleDetailItem .actions a svg.calendar{
+	width:22px; height:22px;
+}
+
+.articleDetailItem .actions a svg.baloon{
+	transform:translate(-50%,-45%);
+}
+
+.articleDetailItem .actions a svg path{
+	fill:#606060;
+}
+
+.articleDetailItem .sw h3{
+	padding:1.5rem 1rem 0;
+	font-size:2rem; line-height:2.6rem;
+	background:#FFF;
+}
+
+.articleDetailItem .sw p{
+	padding:1rem 1rem .5rem;
+	font-size:1.8rem; line-height:2.6rem;
+	background:#FFF;
+}
+
+.articleDetailItem .sw p:last-child{
+	padding-bottom:2rem;
+}
+
+@media screen and (min-width: 375px) { /* iPhone 6 */
+
+	.articleDetailItem{
+		margin-bottom:1.5rem;
+	}
+
+	.articleDetailItem header{
+		margin-right:1.5rem; margin-left:1.5rem; padding:2rem 1.5rem;
+	}
+
+	.articleDetailItem .sw h3,
+	.articleDetailItem .sw p{
+		padding:1.5rem 1.5rem .5rem;
+	}
+
+	.articleDetailItem .sw h3{
+		padding-top:2rem; padding-bottom:0;
+	}
+
+	.articleDetailItem .sw p:last-child{
+		padding-bottom:3rem;
+	}
+
+}
+
+@media screen and (min-width: 768px) { /* iPad */
+
+	.articleDetailItem p.actions{
+		line-height:4rem;
+	}
+
+	.articleDetailItem .actions a{
+		width:4rem; height:4rem;
+	}
+
+	.articleDetailItem .actions span{
+		padding:0 1rem;
+	}
+
+}
+
+@media screen and (min-width: 950px) { /* Desk */
+
+	.articleDetailItem .actions a:hover svg path{
+		fill:#f90;
+	}
+
+}

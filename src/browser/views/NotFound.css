@@ -17,7 +17,7 @@
 
 .notFound p.second{
 	bottom:9rem; left:2rem; 
-	font-size:3rem; text-align:center; color:#787878;
+	font-size:3rem; text-align:center; color:#676767;
 }
 
 .notFound p.third{
@@ -53,7 +53,7 @@
 @media screen and (min-width: 414px) { /* iPhone 6+ */
 
 	.notFound p.first{
-		top:11rem;
+		top:9rem;
 	}	
 
 	.notFound p.second{

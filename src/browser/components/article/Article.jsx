@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
+import DetailItem from './DetailItem';
 import { SUBTITLE_TAG } from '../../../server/configurations/Articles';
 
 /*
@@ -24,13 +25,14 @@ class Article extends React.Component {
             viewport,
             id,
             category,
+            heading,
             heading: { title, subtitle, infos, media },
-            body,
             titleTag,
+            body,
             openModal,
           } = this.props;
 
-    const articleIncipit = {
+    const listItemObj = {
       device,
       viewport,
       id,
@@ -44,16 +46,26 @@ class Article extends React.Component {
       openModal,
     };
 
+    const detailItemObj = {
+      device,
+      viewport,
+      id,
+      category,
+      heading,
+      titleTag,
+      subtitleTag: SUBTITLE_TAG[titleTag],
+      body,
+      openModal,
+    };
+
     switch (type) {
       case 'list':
         return (
-          <ListItem {...articleIncipit} />
+          <ListItem {...listItemObj} />
         );
       default:
         return (
-          <article className="detail">
-            {title}
-          </article>
+          <DetailItem {...detailItemObj} />
         );
     }
   }

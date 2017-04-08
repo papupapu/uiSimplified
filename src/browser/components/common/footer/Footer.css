@@ -15,8 +15,13 @@
 	width:61px; height:50px;
 	background:url(/images/style/logo.png) 0 center no-repeat;
 	background-size:auto 34px;
-	text-indent:-9999em;
 	transition: all .3s ease-in;
+}
+
+#footer .logo a{
+	display:block;
+	width:61px; height:50px;
+	text-indent:-9999em;
 }
 
 @media screen and (min-width: 768px) { /* iPad */

@@ -48,36 +48,39 @@ export const articleList = [
     body: [
       {
         type: 'p',
-        value: 'first paragraph',
+        value: 'Namibia, though, represents something: despite the fact that it has indeed been found by the wandering surfer, there’s something about it so… foreign. Parts of it harbor an alien landscape, barren and windswept, mainly untouched by the destructive hand of man. A surf trip to Namibia isn’t easy–if you do it right, that is. It’s not Bali or Hawaii with their swaying palms and colorful drinks. You can’t step off a plane and into a perfect wave. You’ve got to earn it. That (and the endlessly perfect tubes that are churned out there), coupled with the fact that it’s not a place most surfers will go in their lifetimes, makes each and every edit a dream about a time every surfer yearns for.',
+      },
+      {
+        type: 'h3',
+        value: 'Namibia Surf Guide',
       },
       {
         type: 'p',
-        value: 'second paragraph',
-      },
-      {
-        type: 'ul',
-        value: [
-          {
-            type: 'li',
-            value: 'list item 1',
-          },
-          {
-            type: 'li',
-            value: 'list item 2',
-          },
-          {
-            type: 'li',
-            value: 'list item 3',
-          },
-        ],
+        value: 'Epic surf videos from Namibia have been spread on the internet. And that make many rippers search for some of the long lefts just here.',
       },
       {
         type: 'p',
-        value: 'third paragraph',
+        value: 'Namibia is one of the youngest nations in Africa and it is situated between the Kalahari Desert and the roaring Atlantic Ocean.',
       },
       {
         type: 'p',
-        value: 'fourth paragraph',
+        value: 'Even though a lot of the surfing potential already has been mapped in Namibia and you might even be eble buy some surfing equipment in Swakopmund this does not mean that many surfers go here – on the contrary. Just buckle up for your next brig surf adventure.',
+      },
+      {
+        type: 'h3',
+        value: 'The Waves in Namibia',
+      },
+      {
+        type: 'p',
+        value: 'Consistent swell hits the coast of Namibia and that makes it a perfect place to go search for African waves.',
+      },
+      {
+        type: 'p',
+        value: 'You can fly to Windhoek and head for the coast but it might just be cheaper to fly To Cape Town and go on a wave hunt up the coast to and through Namibia.',
+      },
+      {
+        type: 'p',
+        value: 'A good place to start your search could be around Swakopmund and Walvis Bay just west of Windhoek or further north at the Skeleton coast or in the south at the coast in Namib-Naukluft National Park.',
       },
     ],
   },
