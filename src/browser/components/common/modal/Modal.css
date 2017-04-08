@@ -35,7 +35,7 @@
 	top:1rem; left:1rem;
 	width:calc(100% - 2rem); height:calc(100% - 2rem);
 	background:#FFF; border-radius:5px;
-	overflow-y:scroll;	
+	overflow-y:auto;	
 }
 
 .modal h1{

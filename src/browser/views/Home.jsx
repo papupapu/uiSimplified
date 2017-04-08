@@ -33,7 +33,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const content = this.articlesList('h3', 5);
+    const content = this.articlesList('h3');
     return (
       <div className="mainListing">
         <article>

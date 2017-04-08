@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import './DetailItem.css';
 
@@ -20,43 +19,77 @@ class DetailItem extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    const { heading: { media } } = this.props;
+    if (media.length > 1) {
+      this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+    }
+  }
+
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
     if (device || viewport) {
+      /*
+        Just plain horrible!!!
+        Looks like iOS devices will compute height percentages wrong.
+        Need to set the height of the gallery/image container in px as soon as we can.
+
+        TODO:
+        look for a media query solutions to keep layout measures computing separated from APP logic
+      */
+      if (nextProps.viewport.width <= '568') {
+        this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+      } else {
+        this.article.querySelector('.media').style.height = '';
+      }
       return true;
     }
     return false;
   }
 
   formatDetailBody() {
-    const { body } = this.props;
+    const { device, viewport, body, heading: { title, media } } = this.props;
     const detailBody = [];
+    const detailBodyMedia = media.slice(0);
+    const closingMediaFlag = true;
     body.forEach(
       (el, index) => {
         const n = index + 1;
         switch (el.type) {
           case 'h3':
-            detailBody.push(<h3 key={`${el.type}-${n}`}>{el.value}</h3>);
+            detailBody.push(<h3 key={`${el.type}-${n}`} className="dbt">{el.value}</h3>);
             break;
-          default: // P
-            detailBody.push(<p key={`${el.type}-${n}`}>{el.value}</p>);
+          case 'p':
+            detailBody.push(<p key={`${el.type}-${n}`} className="dbp">{el.value}</p>);
+            break;
+          default:
+            break;
         }
       },
     );
+    if (closingMediaFlag && detailBodyMedia.length > 1) {
+      if (detailBodyMedia.length > 2) {
+        const mediaMinusFirst = detailBodyMedia.splice(1);
+        detailBody.push(<div key="closingMedia" className="media"><Gallery media={mediaMinusFirst} class={'mediael'} device={device} viewport={viewport} /></div>);
+      } else {
+        detailBody.push(<div key="closingMedia" className="media"><Image src={media[1].src} class={'mediael'} alt={title} /></div>);
+      }
+    }
     return detailBody;
   }
 
   render() {
     const {
       id,
-      category,
+      // category,
       heading: { title, subtitle, infos, media },
       titleTag,
       subtitleTag,
-      openModal,
+      // openModal,
     } = this.props;
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
+    const coverImage = media[0].src;
     const detailBody = this.formatDetailBody();
     /*
     const actions = (
@@ -82,8 +115,11 @@ class DetailItem extends React.Component {
     );*/
 
     return (
-      <article className="articleDetailItem" ref={(article) => { this.article = article; }}>
+      <article className="articleDetailItem" ref={(article) => { this.article = article; }} id={id}>
         <header className={css}>
+          <PRODUCTInfos
+            infos={infos}
+          />
           <SEOTag
             tag={titleTag}
             value={title}
@@ -93,7 +129,7 @@ class DetailItem extends React.Component {
             value={subtitle}
           />
         </header>
-        <Image src={media[0].src} class={'cover'} alt={title} />
+        <Image src={coverImage} class={'cover'} alt={title} />
         <div className="sw">
           {detailBody}
         </div>

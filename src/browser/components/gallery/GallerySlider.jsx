@@ -73,9 +73,14 @@ class GallerySlider extends React.Component {
           const size = { width: `${width}px`, height: `${height}px` };
           slides.push(
             <li key={key} style={size}>
-              <Link to={detailUrl}>
-                <Image src={el.src} alt={key} />
-              </Link>
+              {
+                detailUrl !== '' ?
+                  <Link to={detailUrl}>
+                    <Image src={el.src} alt={key} />
+                  </Link>
+                :
+                  <Image src={el.src} alt={key} />
+              }
             </li>);
         }
       },
