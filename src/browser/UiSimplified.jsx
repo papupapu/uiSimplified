@@ -118,7 +118,7 @@ class UiSimplified extends React.Component {
     };
   }
 
-  modalObj() {
+  modalComponent() {
     return (
       <Modal
         type={this.modalType}
@@ -176,7 +176,7 @@ class UiSimplified extends React.Component {
 
   render() {
     const header = this.headerObj();
-    const modal = this.state.modal ? this.modalObj() : null;
+    const modal = this.state.modal ? this.modalComponent() : null;
     const overlayer = { action: this.toggleSiteHiddenComponents };
     const categoryRoutes = this.routeList(categoryList);
     return (

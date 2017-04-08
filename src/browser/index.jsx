@@ -5,5 +5,5 @@ import UiRouter from './routes';
 
 ReactDOM.render(
   <UiRouter />,
-  document.querySelector('#app')
+  document.querySelector('#app'),
 );

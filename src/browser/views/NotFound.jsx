@@ -1,8 +1,13 @@
 import React from 'react';
 
+import './NotFound.css';
+
 function NotFound() {
   return (
-    <p>404 attiva!</p>
+    <div className="notFound">
+    	<p className="first">you might say we made a mistake...</p>
+    	<p className="second">but well... that's just like your opinion man...</p>
+    </div>
   );
 }
 

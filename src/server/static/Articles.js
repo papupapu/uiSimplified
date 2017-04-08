@@ -45,6 +45,41 @@ export const articleList = [
       ],
       infos: {},
     },
+    body: [
+      {
+        type: 'p',
+        value: 'first paragraph',
+      },
+      {
+        type: 'p',
+        value: 'second paragraph',
+      },
+      {
+        type: 'ul',
+        value: [
+          {
+            type: 'li',
+            value: 'list item 1',
+          },
+          {
+            type: 'li',
+            value: 'list item 2',
+          },
+          {
+            type: 'li',
+            value: 'list item 3',
+          },
+        ],
+      },
+      {
+        type: 'p',
+        value: 'third paragraph',
+      },
+      {
+        type: 'p',
+        value: 'fourth paragraph',
+      },
+    ],
   },
   {
     id: 'into-thin-air-a-personal-account-of-the-mt-everest-disaster',

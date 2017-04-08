@@ -1,0 +1,21 @@
+.notFound{
+	position:relative; z-index:1;
+	width:100vw; height:calc(100vh - 150px);
+	background:#e0e0e0 url(/images/style/thedude.png) center bottom no-repeat;
+}
+
+.notFound p{
+	position:absolute;
+	width:calc(100% - 4rem);
+    font-weight: 700; font-family: 'PT Sans',Georgia;
+}
+
+.notFound p.first{
+	top:3.5rem; right:2rem;
+	font-size:1.6rem; text-align:right; color:#999;
+}
+
+.notFound p.second{
+	bottom:9rem; left:2rem; 
+	font-size:3rem; text-align:center; color:#666;
+}

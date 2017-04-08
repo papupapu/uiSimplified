@@ -25,6 +25,7 @@ class Article extends React.Component {
             id,
             category,
             heading: { title, subtitle, infos, media },
+            body,
             titleTag,
             openModal,
           } = this.props;
@@ -64,6 +65,7 @@ Article.propTypes = {
   id: React.PropTypes.string,
   category: React.PropTypes.string,
   heading: React.PropTypes.instanceOf(Object),
+  body: React.PropTypes.instanceOf(Array),
   titleTag: React.PropTypes.string,
   type: React.PropTypes.string,
   openModal: React.PropTypes.func,
@@ -75,6 +77,7 @@ Article.defaultProps = {
   id: '',
   category: '',
   heading: {},
+  body: [],
   titleTag: '',
   type: '',
   openModal: () => {},
