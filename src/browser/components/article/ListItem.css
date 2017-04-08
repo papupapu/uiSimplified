@@ -108,7 +108,7 @@
 	max-width: 100%;
 }
 
-@media screen and (min-width: 375px) { /* iPhone 6 */
+@media screen and (min-width: 321px) { /* iPhone 6 */
 
 	.articleListItem{
 		margin:1.5rem 0; padding:72.5% 1.5rem .2rem;		

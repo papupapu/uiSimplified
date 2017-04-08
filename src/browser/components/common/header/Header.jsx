@@ -56,7 +56,7 @@ class Header extends React.Component {
     const list = [];
     data.forEach(
       (el) => {
-        list.push(<NavLink key={`nav-el-${el.path}`} onClick={this.toggleSiteNavigation} to={`/${el.path}`}>{el.label}</NavLink>);
+        list.push(<dd key={`nav-el-${el.path}`}><NavLink onClick={this.toggleSiteNavigation} to={`/${el.path}`}>{el.label}</NavLink></dd>);
       },
     );
     return list;
