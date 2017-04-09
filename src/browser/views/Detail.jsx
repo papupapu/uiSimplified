@@ -1,6 +1,9 @@
 import React from 'react';
+import { Route } from 'react-router';
 
 import Article from '../components/article/Article';
+
+import NotFound from './NotFound';
 
 import { articleList } from '../../server/static/Articles';
 
@@ -23,18 +26,27 @@ class Detail extends React.Component {
   fetchDetail() {
     const { device, viewport, detailId } = this.props;
     const detail = articleList.filter(article => article.id === detailId);
-    detail[0].titleTag = 'h1';
-    detail[0].type = 'detail';
-    detail[0].device = device;
-    detail[0].viewport = viewport;
-    return detail[0];
+    if (detail.length > 0) {
+      detail[0].titleTag = 'h1';
+      detail[0].type = 'detail';
+      detail[0].device = device;
+      detail[0].viewport = viewport;
+      return detail[0];
+    }
+    return null;
   }
 
   render() {
     const content = this.fetchDetail();
-    return (
-      <Article {...content} />
-    );
+    if (content) {
+      return (
+        <Article {...content} />
+      );
+    } else {
+      return (
+        <Route component={NotFound} />
+      );
+    }
   }
 }
 
