@@ -145,7 +145,7 @@ class DetailItem extends React.Component {
         const mediaMinusFirst = this.correctMediaSizes(detailBodyClosingMedia.splice(1));
         detailBody.push(<div key="closingMedia" className="media closing"><Gallery media={mediaMinusFirst} class={'mediael'} device={device} viewport={viewport} /></div>);
       } else {
-        detailBody.push(<div key="closingMedia" className="media closing"><Image src={media[1].src} cssClassName={'mediael'} alt={title} /></div>);
+        detailBody.push(<div key="closingMedia" className="media closing"><Image src={mediaMinusFirst[1].src} cssClassName={'mediael'} alt={title} /></div>);
       }
     }
     return detailBody;

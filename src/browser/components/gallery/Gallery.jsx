@@ -20,8 +20,12 @@ class Gallery extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     const device = nextProps.device !== '' && nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== '' && nextProps.viewport.width !== this.props.viewport.width;
+    const media = nextProps.media[0].src !== this.props.media[0].src;
     const availableSizes = nextState.iGotSizes && !this.state.iGotSizes;
-    if (device || viewport || availableSizes) {
+    if (device || viewport || media || availableSizes) {
+      if (media) {
+        this.photoArray = nextProps.media.filter((el) => { if (el.type === 'photo') { return el; } return false; });
+      }
       this.sliderSizes = [
         this.gallery.offsetWidth,
         this.gallery.offsetHeight,
