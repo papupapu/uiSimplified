@@ -22,11 +22,17 @@ class DetailItem extends React.Component {
   componentDidMount() {
     const { heading: { media } } = this.props;
     if (media.length > 1) {
+      const mediaElements = this.article.querySelectorAll('.media');
       const h = Math.floor((70 * this.article.offsetWidth) / 100) > 724 ?
                   724
                 :
                   Math.floor((70 * this.article.offsetWidth) / 100);
-      this.article.querySelector('.media').style.height = `${h}px`;
+      mediaElements.forEach(
+        (el) => {
+          const domEl = el;
+          domEl.style.height = `${h}px`;
+        },
+      );
     }
   }
 
@@ -42,14 +48,35 @@ class DetailItem extends React.Component {
         TODO:
         look for a media query solutions to keep layout measures computing separated from APP logic
       */
+      const mediaElements = this.article.querySelectorAll('.media');
       const h = Math.floor((70 * this.article.offsetWidth) / 100) > 724 ?
                   724
                 :
                   Math.floor((70 * this.article.offsetWidth) / 100);
-      this.article.querySelector('.media').style.height = `${h}px`;
+      mediaElements.forEach(
+        (el) => {
+          const domEl = el;
+          domEl.style.height = `${h}px`;
+        },
+      );
       return true;
     }
     return false;
+  }
+
+  formatUnorderedList(ul) {
+    const list = [];
+    ul.value.forEach(
+      (el, index) => {
+        const n = index + 1;
+        const listItem = el.value.label ?
+          <li key={`${el.type}-${ul.value}-${n}`}><span>{el.value.label}</span> {el.value.value}</li>
+        :
+          <li key={`${el.type}-${ul.value}-${n}`}>{el.value}</li>;
+        list.push(listItem);
+      },
+    );
+    return list;
   }
 
   formatDetailBody() {
@@ -57,6 +84,7 @@ class DetailItem extends React.Component {
     const detailBody = [];
     const detailBodyMedia = media.slice(0);
     const closingMediaFlag = true;
+    let list = [];
     body.forEach(
       (el, index) => {
         const n = index + 1;
@@ -67,6 +95,24 @@ class DetailItem extends React.Component {
           case 'p':
             detailBody.push(<p key={`${el.type}-${n}`} className="dbp">{el.value}</p>);
             break;
+          case 'quote':
+            if (el.author) {
+              detailBody.push(<blockquote key={`${el.type}-${n}`} className="dbp">{el.value} <span>{el.author}</span></blockquote>);
+            } else {
+              detailBody.push(<blockquote key={`${el.type}-${n}`} className="dbp">{el.value}</blockquote>);
+            }
+            break;
+          case 'ul':
+            list = this.formatUnorderedList(el);
+            detailBody.push(<ul key={`${el.type}-${n}`} className="dbp">{list}</ul>);
+            break;
+          case 'media':
+            if (el.value.length > 1) {
+              detailBody.push(<div key={`${el.type}-${n}`} className="media"><Gallery media={el.value} class={'mediael'} device={device} viewport={viewport} /></div>);
+            } else {
+              detailBody.push(<div key={`${el.type}-${n}`} className="media"><Image src={el.value[0].src} cssClassName={'mediael'} alt={title} /></div>);
+            }
+            break;
           default:
             break;
         }
@@ -75,9 +121,9 @@ class DetailItem extends React.Component {
     if (closingMediaFlag && detailBodyMedia.length > 1) {
       if (detailBodyMedia.length > 2) {
         const mediaMinusFirst = detailBodyMedia.splice(1);
-        detailBody.push(<div key="closingMedia" className="media"><Gallery media={mediaMinusFirst} class={'mediael'} device={device} viewport={viewport} /></div>);
+        detailBody.push(<div key="closingMedia" className="media closing"><Gallery media={mediaMinusFirst} class={'mediael'} device={device} viewport={viewport} /></div>);
       } else {
-        detailBody.push(<div key="closingMedia" className="media"><Image src={media[1].src} cssClassName={'mediael'} alt={title} /></div>);
+        detailBody.push(<div key="closingMedia" className="media closing"><Image src={media[1].src} cssClassName={'mediael'} alt={title} /></div>);
       }
     }
     return detailBody;

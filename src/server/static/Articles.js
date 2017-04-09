@@ -67,6 +67,15 @@ export const articleList = [
         value: 'Even though a lot of the surfing potential already has been mapped in Namibia and you might even be eble buy some surfing equipment in Swakopmund this does not mean that many surfers go here – on the contrary. Just buckle up for your next brig surf adventure.',
       },
       {
+        type: 'media',
+        value: [
+          {
+            type: 'photo',
+            src: '/images/surf1.jpg',
+          },
+        ],
+      },
+      {
         type: 'h3',
         value: 'The Waves in Namibia',
       },
@@ -118,6 +127,62 @@ export const articleList = [
       ],
       infos: {},
     },
+    body: [
+      {
+        type: 'quote',
+        value: 'With enough determination, any bloody idiot can get up this hill,” Hall observed. “The trick is to get back down alive.',
+        author: 'Jon Krakauer, Into Thin Air',
+      },
+      {
+        type: 'p',
+        value: 'Into Thin Air: A Personal Account of the Mt. Everest Disaster is a 1997 bestselling non-fiction book written by Jon Krakauer. It details the author\'s presence at Mount Everest during the 1996 Mount Everest disaster, when eight climbers were killed and several others were stranded by a "rogue storm". The author\'s expedition was led by the famed guide Rob Hall, and there were other groups trying to summit on the same day, including one led by Scott Fischer, whose guiding agency, Mountain Madness, was perceived as a competitor to Rob Hall\'s agency, Adventure Consultants.',
+      },
+      {
+        type: 'h3',
+        value: 'Hardcover edition specs',
+      },
+      {
+        type: 'ul',
+        id: 'list1',
+        value: [
+          {
+            type: 'li',
+            value: {
+              label: 'Author:',
+              value: 'Jon Krakauer',
+            },
+          },
+          {
+            type: 'li',
+            value: 'Genre: Non-fiction',
+          },
+          {
+            type: 'li',
+            value: 'Pages: 416pp.',
+          },          
+          {
+            type: 'li',
+            value: 'Publication date: 1997',
+          },
+        ],
+      },
+      {
+        type: 'h3',
+        value: 'Summary',
+      },
+      {
+        type: 'p',
+        value: 'In the book, Jon Krakauer described the events leading up to his eventual decision to participate in an Everest expedition in May 1996, despite having mostly given up mountain climbing years before. The 1996 season expedition recorded 8 deaths, the third most on Everest in a single day (the April 2015 Nepal earthquake caused the most, at least 19 deaths), including Krakauer\'s guides Rob Hall and Andy Harris.',
+      },
+      {
+        type: 'p',
+        value: 'Initially, Krakauer, a journalist for adventure magazine Outside, stated that his intentions to climb Everest were purely professional. The original magazine story was to have Krakauer climb only to base camp, and report on the commercialization of the mountain. However, the idea of Everest reawakened his childhood desire for climbing the mountain. Krakauer asked his editor to put off the story for a year so that he could train for a climb to the summit.',
+      },
+      {
+        type: 'p',
+        value: 'From there, the book chronologically moves between events that take place on the mountain and the unfolding tragedy which takes place during the push to the summit. In the book, Krakauer alleges that essential safety methods adopted over the years by experienced guides on Everest are sometimes compromised by the competition between rival guiding agencies to get their clients to the summit.',
+      },
+    ],   
   },
   {
     id: 'why-the-new-york-knicks-suck-it-s-2016-not-2006',
