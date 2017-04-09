@@ -21,10 +21,12 @@ class Detail extends React.Component {
   }
 
   fetchDetail() {
-    const { detailId } = this.props;
+    const { device, viewport, detailId } = this.props;
     const detail = articleList.filter(article => article.id === detailId);
     detail[0].titleTag = 'h1';
     detail[0].type = 'detail';
+    detail[0].device = device;
+    detail[0].viewport = viewport;
     return detail[0];
   }
 

@@ -42,12 +42,12 @@
 
 .articleDetailItem h1{
 	margin-bottom:1rem;
-	font-size: 2.6rem; line-height:3.2rem; color:#333;
+	font-size: 2.8rem; line-height:3.4rem; color:#333;
 	
 }
 
 .articleDetailItem h2{
-	font:700 1.8rem/2.8rem 'Lato'; color:#404040;			
+	font:2rem/2.6rem 'Lato'; color:#404040;			
 }
 
 .articleDetailItem .casa h2{
@@ -105,7 +105,7 @@
 
 .articleDetailItem p.dbp{
 	padding:1rem 1rem .5rem;
-	font-size:1.8rem; line-height:2.6rem;
+	font-size:1.8rem; line-height:2.8rem;
 	background:#FFF;
 }
 
@@ -202,12 +202,8 @@
 		top:0; left:-1.5rem; transform:translate(0,-100%);
 		margin:0; padding:3rem;
 		width:100vw;
-		font-size:4rem; line-height:5.2rem; color:#f1f1f1;
-		background:rgba(0,0,0,.1);
-	}
-
-	.articleDetailItem h1:hover{
-		background:rgba(0,0,0,.3);	
+		font-size:4rem; line-height:5.2rem; color:#FFF;
+		background:rgba(0,0,0,.3);
 	}
 
 	.articleDetailItem h2{
@@ -215,13 +211,17 @@
 		font-size:2rem; line-height:3rem;
 	}
 
+	.articleDetailItem p.dbp{
+		line-height:3rem;
+	}	
+
 }
 
 @media screen and (min-width: 950px) { /* Desk */
 
 	.articleDetailItem .actions a:hover svg path{
 		fill:#f90;
-	}
+	}	
 
 }
 

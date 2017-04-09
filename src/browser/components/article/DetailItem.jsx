@@ -22,7 +22,11 @@ class DetailItem extends React.Component {
   componentDidMount() {
     const { heading: { media } } = this.props;
     if (media.length > 1) {
-      this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+      const h = Math.floor((70 * this.article.offsetWidth) / 100) > 724 ?
+                  724
+                :
+                  Math.floor((70 * this.article.offsetWidth) / 100);
+      this.article.querySelector('.media').style.height = `${h}px`;
     }
   }
 
@@ -38,11 +42,11 @@ class DetailItem extends React.Component {
         TODO:
         look for a media query solutions to keep layout measures computing separated from APP logic
       */
-      if (nextProps.viewport.width <= '568') {
-        this.article.querySelector('.media').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
-      } else {
-        this.article.querySelector('.media').style.height = '';
-      }
+      const h = Math.floor((70 * this.article.offsetWidth) / 100) > 724 ?
+                  724
+                :
+                  Math.floor((70 * this.article.offsetWidth) / 100);
+      this.article.querySelector('.media').style.height = `${h}px`;
       return true;
     }
     return false;
