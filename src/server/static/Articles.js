@@ -103,27 +103,31 @@ export const articleList = [
       media: [
         {
           type: 'photo',
-          src: '/images/everest1.jpg',
+          src: 'everest1.jpg',
         },
         {
           type: 'photo',
-          src: '/images/everest2.jpg',
+          src: 'everest2.jpg',
         },
         {
           type: 'photo',
-          src: '/images/everest3.jpg',
+          src: 'everest3.jpg',
         },
         {
           type: 'photo',
-          src: '/images/everest4.jpg',
+          src: 'everest4.jpg',
         },
         {
           type: 'photo',
-          src: '/images/everest5.jpg',
+          src: 'everest5.jpg',
         },
         {
           type: 'photo',
-          src: '/images/everest6.jpg',
+          src: 'everest6.jpg',
+        },
+        {
+          type: 'photo',
+          src: 'everest7.jpg',
         },
       ],
       infos: {},
@@ -160,7 +164,7 @@ export const articleList = [
           {
             type: 'li',
             value: 'Pages: 416pp.',
-          },          
+          },
           {
             type: 'li',
             value: 'Publication date: 1997',
@@ -183,7 +187,7 @@ export const articleList = [
         type: 'p',
         value: 'From there, the book chronologically moves between events that take place on the mountain and the unfolding tragedy which takes place during the push to the summit. In the book, Krakauer alleges that essential safety methods adopted over the years by experienced guides on Everest are sometimes compromised by the competition between rival guiding agencies to get their clients to the summit.',
       },
-    ],   
+    ],
   },
   {
     id: 'why-the-new-york-knicks-suck-it-s-2016-not-2006',
