@@ -5,42 +5,43 @@ export const articleList = [
     heading: {
       title: 'Why Namibia Represents What Surf Travel Should Be About',
       subtitle: 'Back when The Endless Summer came out, surf travel wasn\'t really a thing. Not in the way it is now, at least. Then Bruce Brown\'s opus was released to the masses, and the trickle of surfers curious to seek, to explore, to find, slowly became a flood. Now, of course, you\'re hard pressed to find a lineup that hasn\'t been explored. Oh, there are places, to be sure, but they\'re fewer and farther between with each passing day.',
+      responsiveMedia: true,
       media: [
         {
           type: 'photo',
-          src: '/images/surf1.jpg',
+          src: 'surf1.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf2.jpg',
+          src: 'surf2.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf3.jpg',
+          src: 'surf3.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf4.jpg',
+          src: 'surf4.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf5.jpg',
+          src: 'surf5.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf6.jpg',
+          src: 'surf6.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf7.jpg',
+          src: 'surf7.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf8.jpg',
+          src: 'surf8.jpg',
         },
         {
           type: 'photo',
-          src: '/images/surf9.jpg',
+          src: 'surf9.jpg',
         },
       ],
       infos: {},
@@ -71,7 +72,7 @@ export const articleList = [
         value: [
           {
             type: 'photo',
-            src: '/images/surf1.jpg',
+            src: 'surf5.jpg',
           },
         ],
       },

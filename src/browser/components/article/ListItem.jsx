@@ -12,6 +12,8 @@ import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
 
+import { IMAGE_SIZES } from '../../../server/configurations/Default';
+
 class ListItem extends React.Component {
 
   constructor(props) {
@@ -90,6 +92,24 @@ class ListItem extends React.Component {
     }
   }
 
+  correctMediaSizes(media) {
+    const { device } = this.props;
+    let correctMedia = [];
+    if (media[0].src.indexOf('/images') < 0) {
+      media.forEach(
+        (el) => {
+          correctMedia.push({
+            src: `/images/${IMAGE_SIZES[device]}/${el.src}`,
+            type: el.type,
+          });
+        },
+      );
+    } else {
+      correctMedia = media;
+    }
+    return correctMedia;
+  }
+
   addMedia() {
     const { id, category, media } = this.props;
     const detailUrl = `/${category}/${id}`;
@@ -100,10 +120,11 @@ class ListItem extends React.Component {
       return output;
     }
     if (media.length > 0) {
-      if (media.length > 1) {
-        output = <div className="media"><Gallery media={media} detailUrl={detailUrl} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
+      const readyForResponsive = this.correctMediaSizes(media);
+      if (readyForResponsive.length > 1) {
+        output = <div className="media"><Gallery media={readyForResponsive} detailUrl={detailUrl} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
       } else {
-        output = <div className="media"><Link to={detailUrl}><Image src={media[0].src} cssClassName={'mediael'} alt={this.props.title} /></Link></div>;
+        output = <div className="media"><Link to={detailUrl}><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={this.props.title} /></Link></div>;
       }
     }
     return output;
