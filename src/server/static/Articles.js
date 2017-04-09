@@ -302,4 +302,77 @@ export const articleList = [
       },
     },
   },
+  {
+    id: 'eight-reasons-why-teahupoo-is-the-most-dangerous-wave-in-the-world',
+    category: 'surf',
+    heading: {
+      title: '8 reasons why Teahupoo is the most dangerous wave in the world',
+      subtitle: 'Teahupoo is the most dangerous break in the world. The waves there have a unique combination of size, power and speed made more dangerous because they break over a sharp coral reef lying only meters below the surface. To those scary variables we can add sharks, capsizing boats and a capacity to literally pull your pants down.',
+      responsiveMedia: true,
+      media: [
+        {
+          type: 'photo',
+          src: 'teahupoo1.jpg',
+        },
+      ],
+      infos: {},
+    },
+    body: [
+      {
+        type: 'p',
+        value: 'With the world’s best surfers heading to Tahiti for the upcoming Billabong Pro, we look at just why Teahupoo isn’t scary — it’s terrifying.',
+      },
+      {
+        type: 'h3',
+        value: 'It can rip your face off',
+      },
+      {
+        type: 'media',
+        value: [
+          {
+            type: 'photo',
+            src: 'teahupoo2.jpg',
+          },
+        ],
+      },
+      {
+        type: 'p',
+        value: 'Keala Kennelly is the undisputed queen of Teahupoo, having surfed and survived the biggest swells at the break. Just last month she caught what has been called the heaviest wave ridden by a woman. However, back in 2011 she came close to losing her life at the wave after a wipeout had her face collide with the coral reef. She was taken to the hospital to have the coral dug out of her face before receiving 30 stitches. She posted the photo above on Facebook afterward, saying, “Sorry if you were eating dinner... I look much better now, I promise.”',
+      },
+      {
+        type: 'h3',
+        value: 'It is faster than a motorcycle',
+      },
+      {
+        type: 'media',
+        value: [
+          {
+            type: 'photo',
+            src: 'teahupoo3.jpg',
+          },
+        ],
+      },
+      {
+        type: 'p',
+        value: 'Teahupoo breaks fast. How fast? Well, when Robbie Maddison recently tried to outrun the wave on a motorcycle, he found that the wave was much, much faster. If a modified KTM 250 SX two-stroke engine that drove a paddle steamer-like back tire can’t outrun it, what chance does a fiberglass surfboard have?',
+      },
+      {
+        type: 'h3',
+        value: 'It can rip your boardshorts off!',
+      },
+      {
+        type: 'media',
+        value: [
+          {
+            type: 'photo',
+            src: 'teahupoo4.jpg',
+          },
+        ],
+      },
+      {
+        type: 'p',
+        value: 'Hawaiian surfer Bruce Irons is another veteran and standout at the Tahitian wave. However, in 2013 during the Code Red swell, the wave literally left him with his pants down. After falling in a massive tube, Irons was rag-dolled over the reef and all the way into the lagoon, losing his skin and his boardshorts in the process. Luckily for him, his tow partner, Koby Abberton, came to the rescue on his Jet Ski. He picked the pants-less Irons up and then did a few victory laps to the cheers of the packed channel.',
+      },
+    ],
+  },
 ];

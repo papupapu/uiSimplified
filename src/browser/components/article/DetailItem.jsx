@@ -22,8 +22,16 @@ class DetailItem extends React.Component {
   }
 
   componentDidMount() {
-    const { heading: { media } } = this.props;
-    if (media.length > 1) {
+    const { heading: { media }, body } = this.props;
+    const bm = body.filter(
+      (el) => {
+        if (el.type === 'media') {
+          return el;
+        }
+        return false;
+      },
+    );
+    if (media.length > 1 || bm.length > 0) {
       const mediaElements = this.article.querySelectorAll('.media');
       const h = Math.floor((70 * this.article.offsetWidth) / 100) > 724 ?
                   724
