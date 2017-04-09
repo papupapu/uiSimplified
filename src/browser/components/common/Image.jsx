@@ -17,13 +17,14 @@ class Image extends React.Component {
   }
 
   render() {
+    const { src, alt, cssClassName } = this.props;
     const img = this.state.error ?
-      <img src={this.props.src} style={{ display: 'none' }} onLoad={this.handleLoad} className={this.props.class} alt={this.props.alt} />
+      <img src={src} style={{ display: 'none' }} onLoad={this.handleLoad} alt={alt} />
     :
-      <img src={this.props.src} className={this.props.class} alt={this.props.alt} />;
+      <img src={src} alt={alt} />;
 
     return (
-      <figure>{img}</figure>
+      <figure className={cssClassName}>{img}</figure>
     );
   }
 
@@ -31,13 +32,13 @@ class Image extends React.Component {
 
 Image.propTypes = {
   src: React.PropTypes.string,
-  class: React.PropTypes.string,
+  cssClassName: React.PropTypes.string,
   alt: React.PropTypes.string,
 };
 
 Image.defaultProps = {
   src: '',
-  class: '',
+  cssClassName: '',
   alt: '',
 };
 

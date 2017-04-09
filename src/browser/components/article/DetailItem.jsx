@@ -73,7 +73,7 @@ class DetailItem extends React.Component {
         const mediaMinusFirst = detailBodyMedia.splice(1);
         detailBody.push(<div key="closingMedia" className="media"><Gallery media={mediaMinusFirst} class={'mediael'} device={device} viewport={viewport} /></div>);
       } else {
-        detailBody.push(<div key="closingMedia" className="media"><Image src={media[1].src} class={'mediael'} alt={title} /></div>);
+        detailBody.push(<div key="closingMedia" className="media"><Image src={media[1].src} cssClassName={'mediael'} alt={title} /></div>);
       }
     }
     return detailBody;
@@ -129,7 +129,7 @@ class DetailItem extends React.Component {
             value={subtitle}
           />
         </header>
-        <Image src={coverImage} class={'cover'} alt={title} />
+        <Image src={coverImage} cssClassName={'cover'} alt={title} />
         <div className="sw">
           {detailBody}
         </div>

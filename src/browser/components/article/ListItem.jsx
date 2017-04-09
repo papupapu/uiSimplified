@@ -103,7 +103,7 @@ class ListItem extends React.Component {
       if (media.length > 1) {
         output = <div className="media"><Gallery media={media} detailUrl={detailUrl} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
       } else {
-        output = <div className="media"><Link to={detailUrl}><Image src={media[0].src} class={'mediael'} alt={this.props.title} /></Link></div>;
+        output = <div className="media"><Link to={detailUrl}><Image src={media[0].src} cssClassName={'mediael'} alt={this.props.title} /></Link></div>;
       }
     }
     return output;
