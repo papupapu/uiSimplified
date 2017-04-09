@@ -8,7 +8,7 @@ const 	path 				= require('path'),
 		cssFolder 			= 'style/';
 
 module.exports = {
-
+	devtool: "source-map",
 	context: APP_DIR,
 
 	entry: {
@@ -80,7 +80,11 @@ module.exports = {
 			name 		: 'commons',
 			filename	: jsFolder + 'commons.js',
 			minChunks	: 2
-		})		
+		}),
+	   new webpack.LoaderOptionsPlugin({
+    	 minimize: true,
+    	 sourceMap: true,
+   		})			
 	]
 
 };
