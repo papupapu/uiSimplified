@@ -96,6 +96,14 @@
 
 }
 
+@media screen and (min-width: 569px) {
+
+	.notFound{
+		height:calc(100vh - 150px);
+	}
+
+}
+
 @media screen and (min-width: 768px) { /* iPad */
 
 	.notFound{	

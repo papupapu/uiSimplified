@@ -11,7 +11,7 @@ import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
 
-import { IMAGE_SIZES } from '../../../server/configurations/Default';
+import { IMAGE_SIZES, IMAGE_SERVER } from '../../../server/configurations/Default';
 
 class DetailItem extends React.Component {
 
@@ -82,13 +82,13 @@ class DetailItem extends React.Component {
   }
 
   correctMediaSizes(media) {
-    const { device } = this.props;
+    const { device, category } = this.props;
     let correctMedia = [];
     if (media[0].src.indexOf('/images') < 0) {
       media.forEach(
         (el) => {
           correctMedia.push({
-            src: `/images/${IMAGE_SIZES[device]}/${el.src}`,
+            src: `${IMAGE_SERVER}/${category}/${IMAGE_SIZES[device]}/${el.src}`,
             type: el.type,
           });
         },
@@ -155,7 +155,7 @@ class DetailItem extends React.Component {
     const {
       id,
       device,
-      // category,
+      category,
       heading: { title, subtitle, infos, media },
       titleTag,
       subtitleTag,
@@ -164,7 +164,7 @@ class DetailItem extends React.Component {
 
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
     const responsiveMedia = media[0].src.indexOf('/images') < 0;
-    const coverImage = responsiveMedia ? `/images/${IMAGE_SIZES[device]}/${media[0].src}` : media[0].src;
+    const coverImage = responsiveMedia ? `${IMAGE_SERVER}/${category}/${IMAGE_SIZES[device]}/${media[0].src}` : media[0].src;
     const detailBody = this.formatDetailBody();
     /*
     const actions = (

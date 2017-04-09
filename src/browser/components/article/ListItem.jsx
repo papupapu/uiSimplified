@@ -12,7 +12,7 @@ import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
 
-import { IMAGE_SIZES } from '../../../server/configurations/Default';
+import { IMAGE_SIZES, IMAGE_SERVER } from '../../../server/configurations/Default';
 
 class ListItem extends React.Component {
 
@@ -93,13 +93,13 @@ class ListItem extends React.Component {
   }
 
   correctMediaSizes(media) {
-    const { device } = this.props;
+    const { category } = this.props;
     let correctMedia = [];
     if (media[0].src.indexOf('/images') < 0) {
       media.forEach(
         (el) => {
           correctMedia.push({
-            src: `/images/${IMAGE_SIZES[device]}/${el.src}`,
+            src: `${IMAGE_SERVER}/${category}/${IMAGE_SIZES.smartphone}/${el.src}`,
             type: el.type,
           });
         },

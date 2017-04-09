@@ -4,4 +4,5 @@ export const IMAGE_SIZES = {
   tablet: '768x577',
   smartphone: '345x259',
 };
+export const IMAGE_SERVER = 'http://res.cloudinary.com/dia4050i1/image/upload/v1491748513';
 

@@ -6,7 +6,7 @@ const 	fs 			= require('fs'),
 
 app.set('port', (process.env.app_port || 8080));
 
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(function(req, res, next) { // Additional middleware which will set headers that we need on each request. 
@@ -14,6 +14,10 @@ app.use(function(req, res, next) { // Additional middleware which will set heade
     res.setHeader('Cache-Control', 'no-cache'); // Disable caching so we'll always get the latest comments.
     next();
 });
+
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
 
 app.listen(
 	app.get('port'),
