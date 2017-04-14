@@ -84,6 +84,7 @@ class Header extends React.Component {
             {categories}
             <dt>Servizi</dt>
             <dd>
+              <NavLink onClick={this.toggleSiteNavigation} to="/gallery/5">Gallery</NavLink>
               <NavLink onClick={this.toggleSiteNavigation} to="/sicaadd">404</NavLink>
             </dd>
           </dl>
