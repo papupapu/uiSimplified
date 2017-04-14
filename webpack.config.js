@@ -72,14 +72,14 @@ module.exports = {
 	},	
 
 	plugins: [
-		new ExtractTextPlugin({
-			filename	: cssFolder + '[name].bundle.css',
-			allChunks 	: true
-		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name 		: 'commons',
 			filename	: jsFolder + 'commons.js',
 			minChunks	: 2
+		}),	
+		new ExtractTextPlugin({
+			filename	: cssFolder + '[name].bundle.css',
+			allChunks 	: true
 		}),
 	   new webpack.LoaderOptionsPlugin({
     	 minimize: true,
@@ -90,28 +90,3 @@ module.exports = {
 };
 
 process.noDeprecation = true;
-
-
-/*
-
-	Multiple files output
-
-		entry: {
-			tpl1: './tpl1.jsx',
-			tpl2: './tpl2.jsx',
-			tpl3: './tpl3.jsx'
-		}
-
-		- avoids packing the same dipendencies more than once if WebPack tries to load them twice
-
-		plugins: [
-			new webpack.optimize.CommonsChunkPlugin({
-				name 		: 'commons',
-				filename	: 'commons.js',
-				minChunks	: 2
-			})
-		]	
-
-
-
-*/

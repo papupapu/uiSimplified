@@ -174,6 +174,12 @@ class UiSimplified extends React.Component {
     );
   }
 
+  galleryContent({ match }) {
+    return (
+      <div>gallery per id: {match.params.id}</div>
+    );
+  }
+
   render() {
     const header = this.headerObj();
     const modal = this.state.modal ? this.modalComponent() : null;
@@ -181,16 +187,23 @@ class UiSimplified extends React.Component {
     const categoryRoutes = this.routeList(categoryList);
     return (
       <div className="UiSimplified">
-        <Header {...header} />
+        {
+          this.context.router.route.location.pathname.indexOf('gallery') === -1 &&
+            <Header {...header} />
+        }
         <Switch>
           <Route exact path="/" render={this.homeContent} />
+          <Route path="/gallery/:id" render={this.galleryContent} />
           {categoryRoutes}
           <Route path="/:category/:id" render={this.detailContent} />
           <Route component={NotFound} />
         </Switch>
         {modal}
         <Overlayer {...overlayer} />
-        <Footer />
+        {
+          this.context.router.route.location.pathname.indexOf('gallery') === -1 &&
+            <Footer />
+        }
       </div>
     );
   }
