@@ -8,11 +8,10 @@ import Gallery from '../gallery/Gallery';
 
 import SEOTag from '../common/helpers/SEOTag';
 import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
+import CorrectMediaSizes from '../common/helpers/CorrectMediaSizes';
 
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
-
-import { IMAGE_SIZES, IMAGE_SERVER } from '../../../server/configurations/Default';
 
 class ListItem extends React.Component {
 
@@ -92,26 +91,8 @@ class ListItem extends React.Component {
     }
   }
 
-  correctMediaSizes(media) {
-    const { category } = this.props;
-    let correctMedia = [];
-    if (media[0].src.indexOf('/images') < 0) {
-      media.forEach(
-        (el) => {
-          correctMedia.push({
-            src: `${IMAGE_SERVER}/${category}/${IMAGE_SIZES.smartphone}/${el.src}`,
-            type: el.type,
-          });
-        },
-      );
-    } else {
-      correctMedia = media;
-    }
-    return correctMedia;
-  }
-
   addMedia() {
-    const { id, category, media } = this.props;
+    const { device, id, category, media } = this.props;
     const detailUrl = `/${category}/${id}`;
     let output = null;
     if (!this.state.isInViewport) {
@@ -120,9 +101,9 @@ class ListItem extends React.Component {
       return output;
     }
     if (media.length > 0) {
-      const readyForResponsive = this.correctMediaSizes(media);
+      const readyForResponsive = CorrectMediaSizes('smartphone', category, media);
       if (readyForResponsive.length > 1) {
-        output = <div className="media"><Gallery media={readyForResponsive} detailUrl={detailUrl} class={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
+        output = <div className="media"><Gallery media={readyForResponsive} slidesLinkTo={detailUrl} cssClassName={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
       } else {
         output = <div className="media"><Link to={detailUrl}><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={this.props.title} /></Link></div>;
       }

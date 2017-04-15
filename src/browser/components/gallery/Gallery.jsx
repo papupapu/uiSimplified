@@ -8,7 +8,6 @@ class Gallery extends React.Component {
     super(props);
 
     this.state = {
-      type: 'photo',
       iGotSizes: false,
     };
   }
@@ -32,9 +31,10 @@ class Gallery extends React.Component {
       ];
       this.sliderObj = {
         media: this.photoArray,
-        detailUrl: this.props.detailUrl,
+        slidesLinkTo: this.props.slidesLinkTo,
         sizes: this.sliderSizes,
         device: nextProps.device,
+        type: this.props.type,
       };
       return true;
     }
@@ -50,7 +50,7 @@ class Gallery extends React.Component {
   render() {
     const sliderObj = this.sliderObj;
     return (
-      <div className={this.props.class !== '' ? `${this.props.class} gallery` : 'gallery'} ref={(gallery) => { this.gallery = gallery; }}>
+      <div className={this.props.cssClassName !== '' ? `${this.props.cssClassName} gallery` : 'gallery'} ref={(gallery) => { this.gallery = gallery; }}>
         {
           this.state.iGotSizes ?
             <GallerySlider {...sliderObj} />
@@ -67,16 +67,22 @@ Gallery.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
   media: React.PropTypes.instanceOf(Array),
-  detailUrl: React.PropTypes.string,
-  class: React.PropTypes.string,
+  category: React.PropTypes.string,
+  title: React.PropTypes.string,
+  slidesLinkTo: React.PropTypes.string,
+  cssClassName: React.PropTypes.string,
+  type: React.PropTypes.string,
 };
 
 Gallery.defaultProps = {
   device: '',
   viewport: {},
   media: [],
-  detailUrl: '',
-  class: '',
+  slidesLinkTo: '',
+  category: '',
+  title: '',
+  cssClassName: '',
+  type: 'contained',
 };
 
 export default Gallery;

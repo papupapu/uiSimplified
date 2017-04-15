@@ -1,4 +1,4 @@
-export function lintPeace() {}
+export function lintInPeace() {}
 
 export function userDevice() {
   const viewport = {

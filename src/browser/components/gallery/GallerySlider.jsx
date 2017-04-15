@@ -64,18 +64,18 @@ class GallerySlider extends React.Component {
   }
 
   createSlides(width, height) {
-    const { media, detailUrl } = this.props;
+    const { media, slidesLinkTo, type } = this.props;
     const slides = [];
     media.forEach(
       (el, index) => {
         if (index < this.slidesCreated) {
           const key = `slide-${index}`;
-          const size = { width: `${width}px`, height: `${height}px` };
+          const liStyle = type === 'fullPage' ? { width: `${width}px`, height: `${height}px`, backgroundImage: `url(${el.src})` } : { width: `${width}px`, height: `${height}px` };
           slides.push(
-            <li key={key} style={size}>
+            <li key={key} style={liStyle}>
               {
-                detailUrl !== '' ?
-                  <Link to={detailUrl}>
+                slidesLinkTo !== '' ?
+                  <Link to={slidesLinkTo}>
                     <Image src={el.src} alt={key} />
                   </Link>
                 :
@@ -196,15 +196,17 @@ class GallerySlider extends React.Component {
 GallerySlider.propTypes = {
   device: React.PropTypes.string,
   media: React.PropTypes.instanceOf(Array),
-  detailUrl: React.PropTypes.string,
+  slidesLinkTo: React.PropTypes.string,
   sizes: React.PropTypes.instanceOf(Array),
+  type: React.PropTypes.string,
 };
 
 GallerySlider.defaultProps = {
   device: '',
   media: [],
-  detailUrl: '',
+  slidesLinkTo: '',
   sizes: [],
+  type: '',
 };
 
 export default GallerySlider;

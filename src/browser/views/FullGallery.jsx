@@ -1,13 +1,15 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-import Article from '../components/article/Article';
+import Gallery from '../components/gallery/Gallery';
 
 import NotFound from './NotFound';
 
+import CorrectMediaSizes from '../components/common/helpers/CorrectMediaSizes';
+
 import { articleList } from '../../server/static/Articles';
 
-class Detail extends React.Component {
+class FullGallery extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -23,24 +25,29 @@ class Detail extends React.Component {
     return false;
   }
 
-  fetchDetail() {
+  fetchGallery() {
     const { device, viewport, detailId } = this.props;
     const detail = articleList.filter(article => article.id === detailId);
+    const gallery = {};
     if (detail.length > 0) {
-      detail[0].titleTag = 'h1';
-      detail[0].type = 'detail';
-      detail[0].device = device;
-      detail[0].viewport = viewport;
-      return detail[0];
+      gallery.device = device;
+      gallery.viewport = viewport;
+      gallery.category = detail[0].category;
+      gallery.title = detail[0].heading.title;
+      gallery.media = CorrectMediaSizes(device, detail[0].category, detail[0].heading.media);
+      gallery.type = 'fullPage';
+      return gallery;
     }
     return null;
   }
 
   render() {
-    const content = this.fetchDetail();
-    if (content) {
+    const gallery = this.fetchGallery();
+    if (gallery) {
       return (
-        <Article {...content} />
+        <div className="fullPage">
+          <Gallery {...gallery} />
+        </div>
       );
     }
     return (
@@ -49,20 +56,16 @@ class Detail extends React.Component {
   }
 }
 
-Detail.propTypes = {
+FullGallery.propTypes = {
   device: React.PropTypes.string,
   viewport: React.PropTypes.instanceOf(Object),
   detailId: React.PropTypes.string,
-  detailCategory: React.PropTypes.string,
-  openModal: React.PropTypes.func,
 };
 
-Detail.defaultProps = {
+FullGallery.defaultProps = {
   device: '',
   viewport: {},
   detailId: '',
-  detailCategory: '',
-  openModal: () => {},
 };
 
-export default Detail;
+export default FullGallery;

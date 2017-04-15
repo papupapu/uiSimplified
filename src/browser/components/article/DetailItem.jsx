@@ -7,11 +7,10 @@ import Gallery from '../gallery/Gallery';
 
 import SEOTag from '../common/helpers/SEOTag';
 import PRODUCTInfos from '../common/helpers/PRODUCTInfos';
+import CorrectMediaSizes from '../common/helpers/CorrectMediaSizes';
 
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
-
-import { IMAGE_SIZES, IMAGE_SERVER } from '../../../server/configurations/Default';
 
 class DetailItem extends React.Component {
 
@@ -89,26 +88,8 @@ class DetailItem extends React.Component {
     return list;
   }
 
-  correctMediaSizes(media) {
-    const { device, category } = this.props;
-    let correctMedia = [];
-    if (media[0].src.indexOf('/images') < 0) {
-      media.forEach(
-        (el) => {
-          correctMedia.push({
-            src: `${IMAGE_SERVER}/${category}/${IMAGE_SIZES[device]}/${el.src}`,
-            type: el.type,
-          });
-        },
-      );
-    } else {
-      correctMedia = media;
-    }
-    return correctMedia;
-  }
-
   formatDetailBody() {
-    const { device, viewport, body, heading: { title, media } } = this.props;
+    const { device, viewport, id, category, body, heading: { title, media } } = this.props;
     const detailBody = [];
     const detailBodyClosingMedia = media.slice(0);
     const closingMediaFlag = true;
@@ -136,9 +117,9 @@ class DetailItem extends React.Component {
             detailBody.push(<ul key={`${el.type}-${n}`} className="dbp">{list}</ul>);
             break;
           case 'media':
-            readyForResponsive = this.correctMediaSizes(el.value);
+            readyForResponsive = CorrectMediaSizes(device, category, el.value);
             if (el.value.length > 1) {
-              detailBody.push(<div key={`${el.type}-${n}`} className="media"><Gallery media={readyForResponsive} class={'mediael'} device={device} viewport={viewport} /></div>);
+              detailBody.push(<div key={`${el.type}-${n}`} className="media"><Gallery media={readyForResponsive} cssClassName={'mediael'} device={device} viewport={viewport} /></div>);
             } else {
               detailBody.push(<div key={`${el.type}-${n}`} className="media"><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={title} /></div>);
             }
@@ -149,11 +130,12 @@ class DetailItem extends React.Component {
       },
     );
     if (closingMediaFlag && detailBodyClosingMedia.length > 1) {
-      if (detailBodyClosingMedia.length > 2) {
-        const mediaMinusFirst = this.correctMediaSizes(detailBodyClosingMedia.splice(1));
-        detailBody.push(<div key="closingMedia" className="media closing"><Gallery media={mediaMinusFirst} class={'mediael'} device={device} viewport={viewport} /></div>);
+      const mediaMinusFirst = CorrectMediaSizes(device, category, detailBodyClosingMedia.splice(1));
+      if (mediaMinusFirst.length > 2) {
+        const fullGalleryUrl = `/gallery/${id}`;
+        detailBody.push(<div key="closingMedia" className="media closing"><Gallery media={mediaMinusFirst} slidesLinkTo={fullGalleryUrl} cssClassName={'mediael'} device={device} viewport={viewport} /></div>);
       } else {
-        detailBody.push(<div key="closingMedia" className="media closing"><Image src={mediaMinusFirst[1].src} cssClassName={'mediael'} alt={title} /></div>);
+        detailBody.push(<div key="closingMedia" className="media closing"><Image src={mediaMinusFirst[0].src} cssClassName={'mediael'} alt={title} /></div>);
       }
     }
     return detailBody;
@@ -171,8 +153,7 @@ class DetailItem extends React.Component {
     } = this.props;
 
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
-    const responsiveMedia = media[0].src.indexOf('/images') < 0;
-    const coverImage = responsiveMedia ? `${IMAGE_SERVER}/${category}/${IMAGE_SIZES[device]}/${media[0].src}` : media[0].src;
+    const coverImage = CorrectMediaSizes(device, category, media[0].src);
     const detailBody = this.formatDetailBody();
     /*
     const actions = (

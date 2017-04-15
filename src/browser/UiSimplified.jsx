@@ -12,6 +12,7 @@ import Footer from './components/common/footer/Footer';
 import Home from './views/Home';
 import Category from './views/Category';
 import Detail from './views/Detail';
+import FullGallery from './views/FullGallery';
 import NotFound from './views/NotFound';
 
 import { userDevice } from './utils/UserDevice';
@@ -40,6 +41,7 @@ class UiSimplified extends React.Component {
     this.homeContent = this.homeContent.bind(this);
     this.categoryContent = this.categoryContent.bind(this);
     this.detailContent = this.detailContent.bind(this);
+    this.galleryContent = this.galleryContent.bind(this);
   }
 
   componentDidMount() {
@@ -175,8 +177,13 @@ class UiSimplified extends React.Component {
   }
 
   galleryContent({ match }) {
+    const { device, viewport } = this.state;
     return (
-      <div>gallery per id: {match.params.id}</div>
+      <FullGallery
+        device={device}
+        viewport={viewport}
+        detailId={match.params.id}
+      />
     );
   }
 
@@ -185,12 +192,23 @@ class UiSimplified extends React.Component {
     const modal = this.state.modal ? this.modalComponent() : null;
     const overlayer = { action: this.toggleSiteHiddenComponents };
     const categoryRoutes = this.routeList(categoryList);
+    const fullLayout = this.context.router.route.location.pathname.indexOf('gallery') === -1;
+    if (!fullLayout) {
+      return (
+        <div className="UiSimplified justContent">
+          <Switch>
+            <Route exact path="/" render={this.homeContent} />
+            <Route path="/gallery/:id" render={this.galleryContent} />
+            {categoryRoutes}
+            <Route path="/:category/:id" render={this.detailContent} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      );
+    }
     return (
       <div className="UiSimplified">
-        {
-          this.context.router.route.location.pathname.indexOf('gallery') === -1 &&
-            <Header {...header} />
-        }
+        <Header {...header} />
         <Switch>
           <Route exact path="/" render={this.homeContent} />
           <Route path="/gallery/:id" render={this.galleryContent} />
@@ -200,10 +218,7 @@ class UiSimplified extends React.Component {
         </Switch>
         {modal}
         <Overlayer {...overlayer} />
-        {
-          this.context.router.route.location.pathname.indexOf('gallery') === -1 &&
-            <Footer />
-        }
+        <Footer />
       </div>
     );
   }

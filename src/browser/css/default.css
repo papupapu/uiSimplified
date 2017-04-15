@@ -50,6 +50,10 @@ em, i{
 	padding-bottom:25rem;	
 }
 
+.UiSimplified.justContent{
+	padding:0;
+}
+
 .sw{
 	margin:0 auto; padding:0 1rem;
 	max-width:1000px;
