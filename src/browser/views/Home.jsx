@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Article from '../components/article/Article';
 import List from '../components/common/List';
 
 import { ARTICLELIST_MAX_ITEMS } from '../../server/configurations/Articles';
@@ -21,15 +22,31 @@ class Home extends React.Component {
     return false;
   }
 
+  mainArticle() {
+    const { device, viewport, openModal } = this.props;
+    const article = articleList.slice(0);
+    return (
+      <Article
+        device={device}
+        viewport={viewport}
+        titleTag={'h2'}
+        type={'listCover'}
+        {...article[0]}
+        openModal={openModal}
+      />
+    );
+  }
+
   articlesList(titleTag, maxToShow = ARTICLELIST_MAX_ITEMS) {
     const { device, viewport, openModal } = this.props;
+    const list = articleList.slice(0);
     return (
       <List
         titleTag={titleTag}
         device={device}
         viewport={viewport}
         maxToShow={maxToShow}
-        list={articleList}
+        list={list.splice(1)}
         contentType={'articles'}
         openModal={openModal}
       />
@@ -37,12 +54,11 @@ class Home extends React.Component {
   }
 
   render() {
+    const mainArticle = this.mainArticle();
     const content = this.articlesList('h3');
     return (
       <div className="mainListing">
-        <article>
-          <h1>hp</h1>
-        </article>
+        {mainArticle}
         <div className="sw">{content}</div>
       </div>
     );

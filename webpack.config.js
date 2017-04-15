@@ -12,16 +12,6 @@ module.exports = {
 	context: APP_DIR,
 
 	entry: {
-	    footer: './browser/components/common/footer/Footer.jsx',
-	    header: './browser/components/common/header/Header.jsx',
-
-	    galleryslider: './browser/components/gallery/GallerySlider.jsx',
-	    gallery: './browser/components/gallery/Gallery.jsx',
-
-	    listitem: './browser/components/article/ListItem.jsx',
-	    detailitem: './browser/components/article/DetailItem.jsx',
-	    article: './browser/components/article/Article.jsx',
-
 	    routes: './browser/routes.jsx',
 		ui: './browser/UiSimplified.jsx',
 		app: './browser/index.jsx',

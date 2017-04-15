@@ -74,12 +74,16 @@ class Header extends React.Component {
   }
 
   render() {
+    const seoLogo = this.props.isHome ?
+      <h1 className="logo"><Link to="/"><Logo /></Link></h1>
+    :
+      <h5 className="logo"><Link to="/"><Logo /></Link></h5>;
     const categories = this.linkList(categoryList);
     return (
       <header id="header" ref={(header) => { this.header = header; }}>
         <div className="header">
           <div className="sw">
-            <h1 className="logo"><Link to="/"><Logo /></Link></h1>
+            {seoLogo}
             <a className="menu_handle" href="" onClick={this.toggleSiteNavigation}>
               <Hamburger />
             </a>
@@ -106,10 +110,12 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
+  isHome: React.PropTypes.bool,
   toggleSiteNavigation: React.PropTypes.func,
 };
 
 Header.defaultProps = {
+  isHome: false,
   toggleSiteNavigation: null,
 };
 

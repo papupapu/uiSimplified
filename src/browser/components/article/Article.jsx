@@ -1,4 +1,5 @@
 import React from 'react';
+import CoverItem from './CoverItem';
 import ListItem from './ListItem';
 import DetailItem from './DetailItem';
 import { SUBTITLE_TAG } from '../../../server/configurations/Articles';
@@ -63,6 +64,10 @@ class Article extends React.Component {
         return (
           <ListItem {...listItemObj} />
         );
+      case 'listCover':
+        return (
+          <CoverItem {...listItemObj} />
+        );      
       default:
         return (
           <DetailItem {...detailItemObj} />

@@ -116,6 +116,7 @@ class UiSimplified extends React.Component {
 
   headerObj() {
     return {
+      isHome: this.context.router.route.location.pathname === '/',
       toggleSiteNavigation: this.toggleSiteHiddenComponents,
     };
   }

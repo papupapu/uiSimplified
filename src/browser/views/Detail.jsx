@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router';
 
 import Article from '../components/article/Article';
+import List from '../components/common/List';
 
 import NotFound from './NotFound';
 
@@ -36,11 +37,41 @@ class Detail extends React.Component {
     return null;
   }
 
+  fetchRelated() {
+    const { device, viewport, detailId, detailCategory, openModal } = this.props;
+    const related = articleList.filter(article =>
+        article.category === detailCategory && article.id !== detailId);
+    if (related.length > 0) {
+      return (
+        <List
+          titleTag="h3"
+          device={device}
+          viewport={viewport}
+          maxToShow={5}
+          list={related}
+          contentType={'articles'}
+          openModal={openModal}
+        />
+      );
+    }
+    return null;
+  }
+
   render() {
     const content = this.fetchDetail();
+    const related = this.fetchRelated();
     if (content) {
       return (
-        <Article {...content} />
+        <div>
+          <Article {...content} />
+          {
+            related &&
+              <section className="sw related">
+                <h3><strong>{this.props.detailCategory}</strong> more articles you may like</h3>
+                {related}
+              </section>
+          }
+        </div>
       );
     }
     return (

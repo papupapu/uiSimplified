@@ -175,6 +175,16 @@
 	width:3rem; height:3rem;
 }
 
+.sw.related > h3{
+	padding:3rem 0 1rem;
+	font-size:1.8rem; font-weight: 400; line-height:3.2rem; text-align:center;
+}
+
+.sw.related > h3 strong{
+	display:block;
+	font-style:italic; font-size:2.4rem; 
+}
+
 @media screen and (min-width: 375px) { /* iPhone 6 */
 
 	.articleDetailItem{
@@ -190,7 +200,7 @@
 		padding:1.5rem 1.5rem .5rem;
 	}
 
-	.articleDetailItem .sw h3{
+	.articleDetailItem .sw h3{		
 		padding-top:2rem; padding-bottom:0;
 	}
 
@@ -324,5 +334,10 @@
 	.articleDetailItem .media.closing{
 		border-bottom:1.5rem solid #FFF;
 	}
+
+	.sw.related{
+		padding:0;
+	}
+
 
 }
