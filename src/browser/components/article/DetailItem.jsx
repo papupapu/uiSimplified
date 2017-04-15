@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './DetailItem.css';
 
@@ -11,6 +12,7 @@ import CorrectMediaSizes from '../common/helpers/CorrectMediaSizes';
 
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
+import GoFullGallery from '../common/graphic/GoFullGallery';
 
 class DetailItem extends React.Component {
 
@@ -119,7 +121,10 @@ class DetailItem extends React.Component {
           case 'media':
             readyForResponsive = CorrectMediaSizes(device, category, el.value);
             if (el.value.length > 1) {
-              detailBody.push(<div key={`${el.type}-${n}`} className="media"><Gallery media={readyForResponsive} cssClassName={'mediael'} device={device} viewport={viewport} /></div>);
+              detailBody.push(
+                <div key={`${el.type}-${n}`} className="media">
+                  <Gallery media={readyForResponsive} cssClassName={'mediael'} device={device} viewport={viewport} />
+                </div>);
             } else {
               detailBody.push(<div key={`${el.type}-${n}`} className="media"><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={title} /></div>);
             }
@@ -131,9 +136,13 @@ class DetailItem extends React.Component {
     );
     if (closingMediaFlag && detailBodyClosingMedia.length > 1) {
       const mediaMinusFirst = CorrectMediaSizes(device, category, detailBodyClosingMedia.splice(1));
-      if (mediaMinusFirst.length > 2) {
+      if (mediaMinusFirst.length > 1) {
         const fullGalleryUrl = `/gallery/${id}`;
-        detailBody.push(<div key="closingMedia" className="media closing"><Gallery media={mediaMinusFirst} slidesLinkTo={fullGalleryUrl} cssClassName={'mediael'} device={device} viewport={viewport} /></div>);
+        detailBody.push(
+          <div key="closingMedia" className="media closing">
+            <Gallery media={mediaMinusFirst} slidesLinkTo={fullGalleryUrl} cssClassName={'mediael'} device={device} viewport={viewport} />
+            <Link className="goFull" to={fullGalleryUrl}><GoFullGallery /></Link>
+          </div>);
       } else {
         detailBody.push(<div key="closingMedia" className="media closing"><Image src={mediaMinusFirst[0].src} cssClassName={'mediael'} alt={title} /></div>);
       }

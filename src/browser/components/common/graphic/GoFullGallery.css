@@ -1,0 +1,8 @@
+.gofullgallery{	
+	overflow: visible;
+	pointer-events: none;
+}
+
+.gofullgallery path{
+	fill:#FFF;
+}

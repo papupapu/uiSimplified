@@ -20,6 +20,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
+    this.checkscroll = true;
     window.addEventListener('scroll', () => {
       this.handleScroll();
     });
@@ -29,20 +30,29 @@ class Header extends React.Component {
     return true;
   }
 
+  componentWillUnmount() {
+    this.checkscroll = false;
+    window.removeEventListener('scroll', () => {
+      this.handleScroll();
+    });
+  }
+
   handleScroll() {
-    const scrollPosition = document.body.scrollTop;
-    this.scrollDirection = scrollPosition > this.scrollPosition ? 'down' : 'up';
-    this.scrollPosition = scrollPosition;
-    if (this.scrollDirection === 'up') {
-      if (this.scrollPosition > 0) {
-        this.header.className = 'fixed';
+    if (this.checkscroll) {
+      const scrollPosition = document.body.scrollTop;
+      this.scrollDirection = scrollPosition > this.scrollPosition ? 'down' : 'up';
+      this.scrollPosition = scrollPosition;
+      if (this.scrollDirection === 'up') {
+        if (this.scrollPosition > 0) {
+          this.header.className = 'fixed';
+        } else {
+          this.header.className = '';
+        }
+      } else if (this.scrollPosition > 50) {
+        this.header.className = 'lurking';
       } else {
         this.header.className = '';
       }
-    } else if (this.scrollPosition > 50) {
-      this.header.className = 'lurking';
-    } else {
-      this.header.className = '';
     }
   }
 

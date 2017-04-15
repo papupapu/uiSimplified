@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './ListItem.css';
-
 import Image from '../common/Image';
 import Gallery from '../gallery/Gallery';
+
+import './ListItem.css';
 
 import SEOTag from '../common/helpers/SEOTag';
 import PRODUCTInfos from '../common/helpers/PRODUCTInfos';

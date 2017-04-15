@@ -1,10 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Gallery from '../components/gallery/Gallery';
 
 import NotFound from './NotFound';
 
+import Close from '../components/common/graphic/Close';
 import CorrectMediaSizes from '../components/common/helpers/CorrectMediaSizes';
 
 import { articleList } from '../../server/static/Articles';
@@ -47,6 +49,7 @@ class FullGallery extends React.Component {
       return (
         <div className="fullPage">
           <Gallery {...gallery} />
+          <Link className="goBack" to={`/${gallery.category}/${this.props.detailId}`}><Close /></Link>
         </div>
       );
     }
