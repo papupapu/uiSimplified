@@ -18,7 +18,7 @@
 
 .articleDetailItem header{
 	position:relative; z-index:1;
-	margin:0 1rem; padding:1.5rem 1rem;
+	margin:0 1rem; padding:1.5rem 1rem .5rem;
 	background:#FFF;				
 }
 
@@ -43,7 +43,6 @@
 .articleDetailItem h1{
 	margin-bottom:1rem;
 	font-size: 2.8rem; line-height:3.4rem; color:#333;
-	
 }
 
 .articleDetailItem h2{
@@ -192,7 +191,7 @@
 	}
 
 	.articleDetailItem header{
-		margin-right:1.5rem; margin-left:1.5rem; padding:2rem 1.5rem;
+		margin-right:1.5rem; margin-left:1.5rem; padding:2rem 1.5rem .5rem;
 	}
 
 	.articleDetailItem .sw h3.dbt,
@@ -247,6 +246,10 @@
 	.articleDetailItem header{
 		margin:0 1.5rem; padding:1.5rem 1.5rem 0;
 	}
+
+	.articleDetailItem h2{
+		font-weight:700;
+	}	
 
 	.articleDetailItem .media .goFull{
 	    padding: .2rem .4rem .1rem;
@@ -326,7 +329,7 @@
 	}	
 
 	.articleDetailItem h2{
-		margin:0 auto; padding:2.5rem 3.5rem 1rem;
+		margin:0 auto; padding:2.5rem 1.5rem .5rem;
 		max-width:1000px;
 		background:#FFF;
 	}		

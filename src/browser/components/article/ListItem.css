@@ -149,8 +149,7 @@
 
 	.articleListItem{
 		padding-top:.6rem;
-		height:16.5rem;
-		border-bottom-width:1px;
+		height:16.7rem;
 	}
 
 	.articleListItem .media{
@@ -220,8 +219,7 @@
 @media screen and (min-width: 768px) { /* iPad */
 
 	.articleListItem{
-		padding:0 1.5rem;		
-		height:16.5rem;
+		padding:0 1.5rem;
 	}		
 
 	.articleListItem .title{
