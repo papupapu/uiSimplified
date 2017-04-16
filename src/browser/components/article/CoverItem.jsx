@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Image from '../common/Image';
-import Gallery from '../gallery/Gallery';
 
 import './CoverItem.css';
 
@@ -12,6 +11,7 @@ import CorrectMediaSizes from '../common/helpers/CorrectMediaSizes';
 
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
+import GoFullGallery from '../common/graphic/GoFullGallery';
 
 class CoverItem extends React.Component {
 
@@ -91,34 +91,28 @@ class CoverItem extends React.Component {
     }
   }
 
-  addMedia() {
-    const { device, id, category, media } = this.props;
+  addCoverImage() {
+    const { device, id, category, title, media } = this.props;
+    const imgSrc = CorrectMediaSizes(device, category, media[0].src);
     const detailUrl = `/${category}/${id}`;
     let output = null;
     if (!this.state.isInViewport) {
       // TODO: no script tag for SEO
-      output = <div className="media" />;
+      output = <Link to={detailUrl}><figure className="cover" /></Link>;
       return output;
     }
-    if (media.length > 0) {
-      const readyForResponsive = CorrectMediaSizes('smartphone', category, media);
-      if (readyForResponsive.length > 1) {
-        output = <div className="media"><Gallery media={readyForResponsive} slidesLinkTo={detailUrl} cssClassName={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
-      } else {
-        output = <div className="media"><Link to={detailUrl}><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={this.props.title} /></Link></div>;
-      }
-    }
+    output = <Link to={detailUrl}><Image src={imgSrc} cssClassName={'cover'} alt={title} /></Link>;
     return output;
   }
 
   render() {
     const {
-      device, id, category, title, titleTag, subtitle, subtitleTag, infos, openModal,
+      id, category, title, titleTag, subtitle, subtitleTag, infos, media, openModal,
     } = this.props;
     const detailUrl = `/${category}/${id}`;
-    const media = this.addMedia();
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
-    const coverImage = CorrectMediaSizes(device, category, this.props.media[0].src);
+    const coverImage = this.addCoverImage();
+    const galleryIco = media.length > 1 ? <Link className="goFull" to={`/gallery/${id}`}><GoFullGallery /></Link> : null;
     const actions = (
       <div className="actions">
         <p>
@@ -162,7 +156,8 @@ class CoverItem extends React.Component {
           />
           {actions}
         </header>
-        <Image src={coverImage} cssClassName={'cover'} alt={title} />
+        {coverImage}
+        {galleryIco}
       </article>
     );
   }

@@ -8,7 +8,8 @@ class List extends React.Component {
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
-    if (device || viewport) {
+    const content = nextProps.list[0].id !== this.props.list[0].id;
+    if (device || viewport || content) {
       return true;
     }
     return false;

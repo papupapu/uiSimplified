@@ -14,7 +14,8 @@ class Article extends React.Component {
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
-    if (device || viewport) {
+    const content = nextProps.id !== this.props.id;
+    if (device || viewport || content) {
       return true;
     }
     return false;
@@ -58,7 +59,6 @@ class Article extends React.Component {
       body,
       openModal,
     };
-
     switch (type) {
       case 'list':
         return (
@@ -67,7 +67,7 @@ class Article extends React.Component {
       case 'listCover':
         return (
           <CoverItem {...listItemObj} />
-        );      
+        );
       default:
         return (
           <DetailItem {...detailItemObj} />

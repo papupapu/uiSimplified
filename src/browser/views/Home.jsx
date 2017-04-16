@@ -25,15 +25,19 @@ class Home extends React.Component {
   mainArticle() {
     const { device, viewport, openModal } = this.props;
     const article = articleList.slice(0);
+    const articleObj = {
+      device,
+      viewport,
+      id: article[0].id,
+      category: article[0].category,
+      heading: article[0].heading,
+      body: article[0].body,
+      titleTag: 'h2',
+      type: 'listCover',
+      openModal,
+    };
     return (
-      <Article
-        device={device}
-        viewport={viewport}
-        titleTag={'h2'}
-        type={'listCover'}
-        {...article[0]}
-        openModal={openModal}
-      />
+      <Article {...articleObj} />
     );
   }
 

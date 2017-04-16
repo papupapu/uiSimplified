@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Image from '../common/Image';
-import Gallery from '../gallery/Gallery';
 
 import './ListItem.css';
 
@@ -12,6 +11,7 @@ import CorrectMediaSizes from '../common/helpers/CorrectMediaSizes';
 
 import Calendar from '../common/graphic/Calendar';
 import Baloon from '../common/graphic/Baloon';
+import GoFullGallery from '../common/graphic/GoFullGallery';
 
 class ListItem extends React.Component {
 
@@ -40,6 +40,7 @@ class ListItem extends React.Component {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
     const isInViewport = nextState.isInViewport !== this.state.isInViewport;
+    const content = nextProps.id !== this.props.id;
     if (device || viewport) {
       /*
         Just plain horrible!!!
@@ -61,6 +62,8 @@ class ListItem extends React.Component {
       } else {
         this.article.querySelector('.media').style.height = '';
       }
+      return true;
+    } else if (content) {
       return true;
     }
     return false;
@@ -92,7 +95,7 @@ class ListItem extends React.Component {
   }
 
   addMedia() {
-    const { device, id, category, media } = this.props;
+    const { device, id, category, title, media } = this.props;
     const detailUrl = `/${category}/${id}`;
     let output = null;
     if (!this.state.isInViewport) {
@@ -102,11 +105,8 @@ class ListItem extends React.Component {
     }
     if (media.length > 0) {
       const readyForResponsive = CorrectMediaSizes('smartphone', category, media);
-      if (readyForResponsive.length > 1) {
-        output = <div className="media"><Gallery media={readyForResponsive} slidesLinkTo={detailUrl} cssClassName={'mediael'} device={this.props.device} viewport={this.props.viewport} /></div>;
-      } else {
-        output = <div className="media"><Link to={detailUrl}><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={this.props.title} /></Link></div>;
-      }
+      const galleryIco = readyForResponsive.length > 1 ? <Link className="goFull" to={`/gallery/${id}`}><GoFullGallery /></Link> : null;
+      output = <div className="media"><Link to={detailUrl}><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={title} /></Link>{galleryIco}</div>;
     }
     return output;
   }
@@ -149,11 +149,13 @@ class ListItem extends React.Component {
             tag={titleTag}
             value={title}
             url={detailUrl}
+            cssClassName="title"
           />
           <SEOTag
             tag={subtitleTag}
             value={subtitle}
             url={detailUrl}
+            cssClassName="subtitle"
           />
           {media}
           {actions}

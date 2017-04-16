@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Article from '../components/article/Article';
 import List from '../components/common/List';
 
 import { ARTICLELIST_MAX_ITEMS } from '../../server/configurations/Articles';
@@ -21,6 +22,25 @@ class Category extends React.Component {
     return false;
   }
 
+  mainArticle() {
+    const { device, viewport, categoryName, openModal } = this.props;
+    const list = articleList.filter(article => article.category === categoryName);
+    const articleObj = {
+      device,
+      viewport,
+      id: list[0].id,
+      category: list[0].category,
+      heading: list[0].heading,
+      body: list[0].body,
+      titleTag: 'h2',
+      type: 'listCover',
+      openModal,
+    };
+    return (
+      <Article {...articleObj} />
+    );
+  }
+
   articlesList(titleTag, maxToShow = ARTICLELIST_MAX_ITEMS) {
     const { device, viewport, categoryName, openModal } = this.props;
     const list = articleList.filter(article => article.category === categoryName);
@@ -30,7 +50,7 @@ class Category extends React.Component {
         device={device}
         viewport={viewport}
         maxToShow={maxToShow}
-        list={list}
+        list={list.splice(1)}
         contentType={'articles'}
         openModal={openModal}
       />
@@ -39,12 +59,12 @@ class Category extends React.Component {
 
   render() {
     const { categoryName } = this.props;
+    const mainArticle = this.mainArticle();
     const content = this.articlesList('h3', 5);
     return (
-      <div className="mainListing">
-        <article>
-          <h1>{categoryName}</h1>
-        </article>
+      <div className="mainListing category">
+        <h1 className="categoryTitle">{categoryName}</h1>
+        {mainArticle}
         <div className="sw">{content}</div>
       </div>
     );

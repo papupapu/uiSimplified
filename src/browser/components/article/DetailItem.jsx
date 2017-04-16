@@ -16,12 +16,6 @@ import GoFullGallery from '../common/graphic/GoFullGallery';
 
 class DetailItem extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   componentDidMount() {
     const { heading: { media }, body } = this.props;
     const bm = body.filter(
@@ -47,32 +41,37 @@ class DetailItem extends React.Component {
     }
   }
 
+
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
-    if (device || viewport) {
-      /*
-        Just plain horrible!!!
-        Looks like iOS devices will compute height percentages wrong.
-        Need to set the height of the gallery/image container in px as soon as we can.
-
-        TODO:
-        look for a media query solutions to keep layout measures computing separated from APP logic
-      */
-      const mediaElements = this.article.querySelectorAll('.media');
-      const h = Math.floor((70 * this.article.offsetWidth) / 100) > 724 ?
-                  724
-                :
-                  Math.floor((70 * this.article.offsetWidth) / 100);
-      mediaElements.forEach(
-        (el) => {
-          const domEl = el;
-          domEl.style.height = `${h}px`;
-        },
-      );
+    const content = nextProps.id !== this.props.id;
+    if (device || viewport || content) {
       return true;
     }
     return false;
+  }
+
+  componentDidUpdate() {
+    /*
+      Just plain horrible!!!
+      Looks like iOS devices will compute height percentages wrong.
+      Need to set the height of the gallery/image container in px as soon as we can.
+
+      TODO:
+      look for a media query solutions to keep layout measures computing separated from APP logic
+    */
+    const mediaElements = this.article.querySelectorAll('.media');
+    const h = Math.floor((70 * this.article.offsetWidth) / 100) > 724 ?
+                724
+              :
+                Math.floor((70 * this.article.offsetWidth) / 100);
+    mediaElements.forEach(
+      (el) => {
+        const domEl = el;
+        domEl.style.height = `${h}px`;
+      },
+    );
   }
 
   formatUnorderedList(ul) {

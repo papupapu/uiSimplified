@@ -10,15 +10,30 @@ import { articleList } from '../../server/static/Articles';
 
 class Detail extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailId: this.props.detailId,
+    };
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.detailId !== this.props.detailId) {
+      this.setState({ detailId: nextProps.detailId });
+      window.scrollTo(0, 0);
+    }
   }
 
   // why should we rerender? let us think about this...
   shouldComponentUpdate(nextProps) {
     const device = nextProps.device !== this.props.device;
     const viewport = nextProps.viewport.width !== this.props.viewport.width;
-    if (device || viewport) {
+    const content = nextProps.detailId !== this.props.detailId;
+    if (device || viewport || content) {
       return true;
     }
     return false;
