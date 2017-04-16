@@ -49,7 +49,13 @@ class FullGallery extends React.Component {
       return (
         <div className="fullPage">
           <Gallery {...gallery} />
-          <Link className="goBack" to={`/${gallery.category}/${this.props.detailId}`}><Close /></Link>
+          <a
+            href=""
+            className="goBack"
+            onClick={(e) => { e.preventDefault(); this.context.router.history.goBack(); }}
+          >
+            <Close />
+          </a>
         </div>
       );
     }
@@ -69,6 +75,10 @@ FullGallery.defaultProps = {
   device: '',
   viewport: {},
   detailId: '',
+};
+
+FullGallery.contextTypes = {
+  router: React.PropTypes.object.isRequired,
 };
 
 export default FullGallery;
